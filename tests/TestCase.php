@@ -2,9 +2,9 @@
 
 namespace Foxws\LivewireUse\Tests;
 
+use Foxws\LivewireUse\LivewireUseServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Foxws\LivewireUse\LivewireUseServiceProvider;
 
 class TestCase extends Orchestra
 {
