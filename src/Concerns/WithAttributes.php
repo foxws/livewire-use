@@ -29,3 +29,4 @@ trait WithAttributes
             $this->setAttribute($key, $value);
         }
     }
+}
