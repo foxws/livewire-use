@@ -2,18 +2,17 @@
 
 namespace Foxws\LivewireUse\Concerns;
 
-use DateTime;
 use DateTimeZone;
 use Illuminate\Support\Carbon;
 
 trait WithCarbon
 {
-    protected function localTimezone(string $value = 'now'): DateTime
+    protected function localTimezone(string $value = 'now'): Carbon
     {
         return Carbon::parse($value)->setTimezone(config('app.timezone'));
     }
 
-    protected function userTimezone(string $value = 'now'): DateTime
+    protected function userTimezone(string $value = 'now'): Carbon
     {
         $carbon = $this->localTimezone($value);
 
