@@ -12,6 +12,11 @@ trait WithAttributes
     {
         data_set($this, 'attributes', new Attributes(), false);
     }
+    
+    protected function resetAttributes(): void
+    {
+        data_set($this, 'attributes', new Attributes());
+    }
 
     protected function getAttribute(string $key, mixed $default = null): mixed
     {
