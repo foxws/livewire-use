@@ -2,9 +2,9 @@
 
 namespace Foxws\LivewireUse\Components;
 
+use Foxws\LivewireUse\Concerns\WithState;
 use Illuminate\View\View;
 use Livewire\Component;
-use Foxws\LivewireUse\Concerns\WithState;
 
 abstract class StepComponent extends Component
 {

@@ -2,14 +2,14 @@
 
 namespace Foxws\LivewireUse\Components;
 
-use Illuminate\Support\Arr;
-use Illuminate\View\View;
-use Livewire\Component;
-use Livewire\Livewire;
 use Foxws\LivewireUse\Concerns\WithState;
 use Foxws\LivewireUse\Concerns\WithSteps;
 use Foxws\LivewireUse\Enums\StepStatus;
 use Foxws\LivewireUse\Support\State;
+use Illuminate\Support\Arr;
+use Illuminate\View\View;
+use Livewire\Component;
+use Livewire\Livewire;
 
 abstract class WizardComponent extends Component
 {

@@ -2,8 +2,8 @@
 
 namespace Foxws\LivewireUse\Concerns;
 
-use Illuminate\Support\Arr;
 use Foxws\LivewireUse\Support\State;
+use Illuminate\Support\Arr;
 
 trait WithState
 {

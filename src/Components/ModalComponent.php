@@ -2,11 +2,11 @@
 
 namespace Foxws\LivewireUse\Components;
 
+use Foxws\LivewireUse\Concerns\WithModal;
+use Foxws\LivewireUse\Concerns\WithState;
 use Illuminate\Support\Arr;
 use Illuminate\View\View;
 use Livewire\Component;
-use Foxws\LivewireUse\Concerns\WithModal;
-use Foxws\LivewireUse\Concerns\WithState;
 
 abstract class ModalComponent extends Component
 {
@@ -28,7 +28,7 @@ abstract class ModalComponent extends Component
 
         // Set modal
         $this->fill(Arr::only($parameters, [
-            'component', 'backdrop', 'class', 'escapable', 'focus'
+            'component', 'backdrop', 'class', 'escapable', 'focus',
         ]));
 
         // Open modal
