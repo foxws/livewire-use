@@ -68,7 +68,7 @@ class LivewireUseServiceProvider extends PackageServiceProvider
 
             Blade::anonymousComponentNamespace(
                 directory: $fullPath,
-                namespace: $prefix,
+                prefix: $prefix,
             );
         });
 
