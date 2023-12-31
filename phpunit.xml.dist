@@ -16,7 +16,7 @@
     backupStaticProperties="false"
 >
     <testsuites>
-        <testsuite name="Foxws Test Suite">
+        <testsuite name="main">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
