@@ -1,10 +1,10 @@
 <?php
 
-namespace FoxWS\LivewireUse\Tests;
+namespace Foxws\LivewireUse\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use FoxWS\LivewireUse\LivewireUseServiceProvider;
+use Foxws\LivewireUse\LivewireUseServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -13,7 +13,7 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'FoxWS\\LivewireUse\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName) => 'Foxws\\LivewireUse\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
     }
 

@@ -2,7 +2,7 @@
     "name": "foxws/livewire-use",
     "description": "Collection of essential Livewire",
     "keywords": [
-        "FoxWS",
+        "foxws",
         "laravel",
         "livewire-use"
     ],
@@ -10,7 +10,7 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "FoxWS",
+            "name": "Foxws",
             "email": "foxws@users.noreply.github.com",
             "role": "Developer"
         }
@@ -35,13 +35,13 @@
     },
     "autoload": {
         "psr-4": {
-            "FoxWS\\LivewireUse\\": "src/",
-            "FoxWS\\LivewireUse\\Database\\Factories\\": "database/factories/"
+            "Foxws\\LivewireUse\\": "src/",
+            "Foxws\\LivewireUse\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "FoxWS\\LivewireUse\\Tests\\": "tests/",
+            "Foxws\\LivewireUse\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/"
         }
     },
@@ -73,10 +73,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "FoxWS\\LivewireUse\\LivewireUseServiceProvider"
+                "Foxws\\LivewireUse\\LivewireUseServiceProvider"
             ],
             "aliases": {
-                "LivewireUse": "FoxWS\\LivewireUse\\Facades\\LivewireUse"
+                "LivewireUse": "Foxws\\LivewireUse\\Facades\\LivewireUse"
             }
         }
     },
