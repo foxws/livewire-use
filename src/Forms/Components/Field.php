@@ -26,10 +26,9 @@ abstract class Field extends Component
         public ?string $name = null,
     ) {
         data_set($this, 'uuid', md5(serialize($this)), false);
-        data_set($this, 'name', $this->modelName(), false);
     }
 
-    public function modelName(): ?string
+    public function wireModel(): ?string
     {
         return $this->attributes->whereStartsWith('wire:model')->first();
     }
