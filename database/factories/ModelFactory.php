@@ -1,6 +1,6 @@
 <?php
 
-namespace FoxWS\LivewireUse\Database\Factories;
+namespace Foxws\LivewireUse\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 

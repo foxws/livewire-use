@@ -1,6 +1,6 @@
 <?php
 
-namespace FoxWS\LivewireUse;
+namespace Foxws\LivewireUse;
 
 class LivewireUse
 {

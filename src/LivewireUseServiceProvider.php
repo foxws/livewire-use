@@ -1,10 +1,10 @@
 <?php
 
-namespace FoxWS\LivewireUse;
+namespace Foxws\LivewireUse;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use FoxWS\LivewireUse\Commands\LivewireUseCommand;
+use Foxws\LivewireUse\Commands\LivewireUseCommand;
 
 class LivewireUseServiceProvider extends PackageServiceProvider
 {

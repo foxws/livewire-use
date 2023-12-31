@@ -52,8 +52,8 @@ php artisan vendor:publish --tag="livewire-use-views"
 ## Usage
 
 ```php
-$livewireUse = new FoxWS\LivewireUse();
-echo $livewireUse->echoPhrase('Hello, FoxWS!');
+$livewireUse = new Foxws\LivewireUse();
+echo $livewireUse->echoPhrase('Hello, Foxws!');
 ```
 
 ## Testing
@@ -76,7 +76,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [FoxWS](https://github.com/foxws)
+- [Foxws](https://github.com/foxws)
 - [All Contributors](../../contributors)
 
 ## License

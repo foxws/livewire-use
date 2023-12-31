@@ -1,6 +1,6 @@
 <?php
 
-// config for FoxWS/LivewireUse
+// config for Foxws/LivewireUse
 return [
 
 ];

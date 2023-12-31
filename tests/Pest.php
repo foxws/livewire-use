@@ -1,5 +1,5 @@
 <?php
 
-use FoxWS\LivewireUse\Tests\TestCase;
+use Foxws\LivewireUse\Tests\TestCase;
 
 uses(TestCase::class)->in(__DIR__);

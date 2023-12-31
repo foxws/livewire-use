@@ -1,6 +1,6 @@
 <?php
 
-namespace FoxWS\LivewireUse\Commands;
+namespace Foxws\LivewireUse\Commands;
 
 use Illuminate\Console\Command;
 
