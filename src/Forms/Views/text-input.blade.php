@@ -1,8 +1,9 @@
-<div>
-    foo
+<div wire:key="{{ $uuid }}">
     <input type="text" {{ $attributes }}>
-    {{-- @dd($attributes) --}}
-    {{ $wireModel() }}
 
-    {{-- @error($name) <span class="error">{{ $message }}</span> @enderror --}}
+    @error($wireModel())
+    <div>
+        <span class="error">{{ $message }}</span>
+    </div>
+    @enderror
 </div>

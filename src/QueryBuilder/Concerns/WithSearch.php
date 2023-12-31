@@ -8,8 +8,8 @@ use Livewire\Attributes\Validate;
 
 trait WithSearch
 {
+    #[Validate('nullable|string|max:10')]
     #[Url(as: 'q', except: '', history: true)]
-    #[Validate('nullable|string|max:255')]
     public ?string $search = null;
 
     public function hasSearch(): bool

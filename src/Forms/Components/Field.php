@@ -25,7 +25,7 @@ abstract class Field extends Component
         public ?string $uuid = null,
         public ?string $name = null,
     ) {
-        data_set($this, 'uuid', md5(serialize($this)), false);
+        $this->uuid ??= md5(serialize($this));
     }
 
     public function wireModel(): ?string

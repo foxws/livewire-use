@@ -8,12 +8,12 @@ use Livewire\Attributes\Validate;
 
 trait WithSorts
 {
-    #[Url(as: 's', except: '', history: true)]
     #[Validate('nullable|string|max:255')]
+    #[Url(as: 's', except: '', history: true)]
     public ?string $sort = null;
 
-    #[Url(as: 'd', except: '', history: true)]
     #[Validate('nullable|string|in:asc,desc')]
+    #[Url(as: 'd', except: '', history: true)]
     public ?string $direction = null;
 
     public function hasSort(): bool
