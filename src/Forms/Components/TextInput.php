@@ -6,10 +6,8 @@ use Illuminate\View\View;
 
 class TextInput extends Field
 {
-    protected string $view = 'lw-forms::text-input';
-
     public function render(): View
     {
-        return view($this->view);
+        return view('lw-forms::text-input');
     }
 }
