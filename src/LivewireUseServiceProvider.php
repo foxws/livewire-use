@@ -21,11 +21,11 @@ class LivewireUseServiceProvider extends PackageServiceProvider
     public function bootingPackage(): void
     {
         $this
-            ->configureComponents()
-            ->configureViews();
+            ->registerComponents()
+            ->registerViews();
     }
 
-    protected function configureComponents(): static
+    protected function registerComponents(): static
     {
         $components = ComponentScout::create()->get();
 
@@ -48,7 +48,7 @@ class LivewireUseServiceProvider extends PackageServiceProvider
         return $this;
     }
 
-    protected function configureViews(): static
+    protected function registerViews(): static
     {
         $paths = collect(File::directories(__DIR__));
 
