@@ -3,10 +3,13 @@
         <x-forms-label for="{{ $id() }}" :$label />
     @endif
 
-    <div {{ $attributes->class([
-        'input-group' => $prepend || $append,
-        'input-error' => $errors->has($id())
-    ])}}
+    <div
+        {{ $attributes
+            ->class([
+                'input-group' => filled($prepend || $append),
+                'input-error' => $errors->has($id())
+            ])
+        }}
     >
         {{ $prepend }}
 
@@ -18,8 +21,8 @@
                 ])
                 ->class([
                     'input peer',
-                    'input-prepend' => $prepend,
-                    'input-append' => $append,
+                    'input-prepend' => filled($prepend),
+                    'input-append' => filled($append),
                     'input-error' => $errors->has($id())
                 ])
             }}
