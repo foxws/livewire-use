@@ -3,6 +3,6 @@ import typography from '@tailwindcss/typography';
 
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./resources/**/*.blade.php', './vendor/foxws/livewire-use/**/*.blade.php', './vendor/foxws/livewire-use/**/*.php'],
+  content: ['./resources/**/*.blade.php', './vendor/foxws/livewire-use/**/*.blade.php'],
   plugins: [forms, typography],
 };

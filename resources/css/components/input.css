@@ -1,6 +1,14 @@
 @layer components {
+    .label {
+        @apply block;
+    }
+
     .input {
-        @apply w-full !border-0 !border-opacity-0 bg-transparent focus:!border-transparent focus:!ring-0;
+        @apply w-full border-0 border-opacity-0 bg-transparent focus:border-transparent focus:ring-0;
+
+        &-group {
+            @apply flex flex-1 items-center;
+        }
 
         &-prepend {
             @apply rounded-l-none;
