@@ -1,6 +1,6 @@
 <?php
 
-namespace Foxws\LivewireUse\Forms\Components;
+namespace Foxws\LivewireUse\Support\Blade;
 
 use Illuminate\View\Component as BaseComponent;
 
