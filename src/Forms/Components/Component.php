@@ -6,16 +6,14 @@ use Illuminate\View\Component as BaseComponent;
 
 abstract class Component extends BaseComponent
 {
-    public function __construct(
-        public ?string $uuid = null,
-        public ?string $name = null,
-    ) {
-        $this->uuid ??= md5(serialize($this));
+    public function uuid(): string
+    {
+        return md5(serialize($this));
     }
 
     public function id(): string
     {
-        return $this->name ?: $this->wireModel() ?: $this->uuid;
+        return $this->wireModel() ?: $this->uuid();
     }
 
     public function wireModel(): ?string

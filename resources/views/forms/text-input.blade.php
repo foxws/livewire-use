@@ -1,9 +1,13 @@
-<x-forms-field>
-    <input type="text" {{ $attributes }}>
+<div wire:key="{{ $uuid() }}">
+    @if ($label)
+        <x-forms-label for="{{ $id() }}" :$label />
+    @endif
 
-    @error($id())
+    {{-- <input type="text" {{ $attributes }}> --}}
+
+    {{-- @error($id())
         <div>
             <span class="error">{{ $message }}</span>
         </div>
-    @enderror
-</x-forms-field>
+    @enderror --}}
+</div>
