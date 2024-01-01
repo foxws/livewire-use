@@ -4,8 +4,9 @@ namespace Foxws\LivewireUse\Forms\Components;
 
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\View\Component;
+use Illuminate\View\View;
 
-abstract class Field extends Component
+class Field extends Component
 {
     public string|Htmlable|null $label = null;
 
@@ -26,6 +27,11 @@ abstract class Field extends Component
         public ?string $name = null,
     ) {
         $this->uuid ??= md5(serialize($this));
+    }
+
+    public function render(): View
+    {
+        return view('livewire-use::forms.field');
     }
 
     public function wireModel(): ?string

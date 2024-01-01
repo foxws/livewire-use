@@ -1,9 +1,9 @@
-<div wire:key="{{ $uuid }}">
+<x-forms-field>
     <input type="text" {{ $attributes }}>
 
     @error($wireModel())
-    <div>
-        <span class="error">{{ $message }}</span>
-    </div>
+        <div>
+            <span class="error">{{ $message }}</span>
+        </div>
     @enderror
-</div>
+</x-forms-field>
