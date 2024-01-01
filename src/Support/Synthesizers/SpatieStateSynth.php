@@ -7,7 +7,7 @@ use Spatie\ModelStates\State;
 
 class SpatieStateSynth extends Synth
 {
-    public static $key = 'state';
+    public static $key = 'sta';
 
     public static function match($target)
     {
