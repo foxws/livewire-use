@@ -52,6 +52,6 @@ class LivewireUseServiceProvider extends PackageServiceProvider
             ->match('/(.*)\\\\/')
             ->kebab()
             ->prepend(config('livewire-use.prefix'))
-            ->finish('-');;
+            ->finish('-');
     }
 }
