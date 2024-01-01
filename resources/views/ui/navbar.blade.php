@@ -3,7 +3,7 @@
         {{ $start }}
     </div>
 
-    <div class="navbar-content">
+    <div class="navbar-center">
         {{ $slot }}
     </div>
 

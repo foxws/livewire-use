@@ -9,6 +9,7 @@
         <div
             x-cloak
             x-show="open"
+            class="dropdown-content"
         >
             {{ $content }}
         </div>

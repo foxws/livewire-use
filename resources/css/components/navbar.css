@@ -2,20 +2,24 @@
     .navbar {
         @apply flex items-center justify-between;
 
-        &-item {
-            @apply hover:text-primary-300 focus:text-primary-400 active:text-primary-400 line-clamp-1 cursor-pointer;
-
-            &-active {
-                @apply text-primary-400 hover:text-primary-400;
-            }
+        * {
+            @apply inline-flex;
         }
 
-        &-brand {
-            @apply flex items-center space-x-4 text-2xl font-medium lowercase;
+        &-start {
+            @apply w-2/4 justify-start;
         }
 
-        &-menu {
-            @apply flex items-center space-x-6;
+        &-center {
+            @apply shrink-0;
+        }
+
+        &-end {
+            @apply w-2/4 justify-end;
+        }
+
+        .link-active {
+            @apply text-primary-400 hover:text-primary-400;
         }
     }
 }
