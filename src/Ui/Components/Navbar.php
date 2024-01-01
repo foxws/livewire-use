@@ -13,7 +13,6 @@ class Navbar extends Component
         public string|null $inactiveClass = null,
         public string|Htmlable|null $start = null,
         public string|Htmlable|null $end = null,
-        public string|Htmlable|null $menu = null,
     ) {}
 
     public function render(): View
