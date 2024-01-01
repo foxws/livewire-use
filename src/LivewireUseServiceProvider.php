@@ -2,7 +2,7 @@
 
 namespace Foxws\LivewireUse;
 
-use Foxws\LivewireUse\Support\ComponentScout;
+use Foxws\LivewireUse\Support\Discover\ComponentScout;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Stringable;
 use Spatie\LaravelPackageTools\Package;

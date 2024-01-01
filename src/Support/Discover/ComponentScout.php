@@ -1,6 +1,6 @@
 <?php
 
-namespace Foxws\LivewireUse\Support;
+namespace Foxws\LivewireUse\Support\Discover;
 
 use Illuminate\View\Component;
 use Spatie\StructureDiscoverer\Discover;
