@@ -11,6 +11,10 @@
             'link-append' => filled($append),
         ])
     }}
+
+    @if ($route)
+        wire:navigate
+    @endif
 >
     {{ $prepend }}
 

@@ -6,8 +6,6 @@ use Foxws\LivewireUse\Support\Blade\Component;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\View\View;
 
-use function Pest\Laravel\get;
-
 class Link extends Component
 {
     public function __construct(

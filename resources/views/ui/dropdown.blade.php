@@ -2,16 +2,19 @@
     <div
         x-ref="dropdown"
         x-on:click="open = ! open"
+        x-on:click.outside="open = false"
         {{ $attributes->class('dropdown') }}
     >
         {{ $slot }}
 
-        <div
-            x-cloak
-            x-show="open"
-            class="dropdown-content"
-        >
-            {{ $content }}
-        </div>
+        @if ($content)
+            <div
+                x-cloak
+                x-show="open"
+                class="dropdown-content"
+            >
+                {{ $content }}
+            </div>
+        @endif
     </div>
 </div>
