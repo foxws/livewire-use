@@ -10,7 +10,7 @@ class ComponentScout extends StructureScout
 {
     protected function definition(): Discover
     {
-        return Discover::in(__DIR__.'/..')
+        return Discover::in(__DIR__.'/../..')
             ->extending(Component::class)
             ->full();
     }

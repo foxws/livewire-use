@@ -35,6 +35,8 @@ class LivewireUseServiceProvider extends PackageServiceProvider
 
         collect($components)
             ->each(function (DiscoveredClass $class) {
+                dd(static::getComponentPrefix($class));
+
                 $name = str($class->name)
                     ->kebab()
                     ->prepend(static::getComponentPrefix($class));
@@ -48,11 +50,10 @@ class LivewireUseServiceProvider extends PackageServiceProvider
     protected static function getComponentPrefix(DiscoveredClass $class): Stringable
     {
         return str($class->namespace)
-            ->replaceFirst('Foxws\\LivewireUse', '')
-            ->replaceLast('\\Components', '')
-            ->replace('\\', '')
+            ->after('Foxws\\LivewireUse\\')
+            ->match('/(.*)\\\\/')
             ->kebab()
             ->prepend(config('livewire-use.prefix'))
-            ->finish('-');
+            ->finish('-');;
     }
 }
