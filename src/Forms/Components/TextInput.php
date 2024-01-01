@@ -8,6 +8,6 @@ class TextInput extends Field
 {
     public function render(): View
     {
-        return view('lw-forms::text-input');
+        return view('livewire-use::forms.text-input');
     }
 }

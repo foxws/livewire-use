@@ -4,7 +4,7 @@ namespace Foxws\LivewireUse;
 
 use Foxws\LivewireUse\Support\ComponentScout;
 use Illuminate\Support\Facades\Blade;
-use Illuminate\Support\Facades\File;
+use Illuminate\Support\Stringable;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Spatie\StructureDiscoverer\Data\DiscoveredClass;
@@ -15,14 +15,14 @@ class LivewireUseServiceProvider extends PackageServiceProvider
     {
         $package
             ->name('livewire-use')
-            ->hasConfigFile();
+            ->hasConfigFile()
+            ->hasViews();
     }
 
     public function bootingPackage(): void
     {
         $this
-            ->registerComponents()
-            ->registerViews();
+            ->registerComponents();
     }
 
     protected function registerComponents(): static
@@ -31,16 +31,9 @@ class LivewireUseServiceProvider extends PackageServiceProvider
 
         collect($components)
             ->each(function (DiscoveredClass $class) {
-                $prefix = str($class->namespace)
-                    ->replaceFirst('Foxws\\LivewireUse', '')
-                    ->replaceLast('\\Components', '')
-                    ->replace('\\', '')
-                    ->kebab()
-                    ->prepend(config('livewire-use.prefix', 'lw-'));
-
                 $name = str($class->name)
                     ->kebab()
-                    ->prepend("{$prefix}::");
+                    ->prepend(static::getComponentPrefix($class));
 
                 Blade::component($class->getFcqn(), $name->value());
             });
@@ -48,30 +41,14 @@ class LivewireUseServiceProvider extends PackageServiceProvider
         return $this;
     }
 
-    protected function registerViews(): static
+    protected static function getComponentPrefix(DiscoveredClass $class): Stringable
     {
-        $paths = collect(File::directories(__DIR__));
-
-        $paths->each(function (string $path) {
-            $fullPath = "$path/Views";
-
-            $prefix = str($path)
-                ->basename()
-                ->kebab()
-                ->prepend(config('livewire-use.prefix', 'lw-'))
-                ->value();
-
-            $this->loadViewsFrom(
-                path: $fullPath,
-                namespace: $prefix,
-            );
-
-            Blade::anonymousComponentNamespace(
-                directory: $fullPath,
-                prefix: $prefix,
-            );
-        });
-
-        return $this;
+        return str($class->namespace)
+            ->replaceFirst('Foxws\\LivewireUse', '')
+            ->replaceLast('\\Components', '')
+            ->replace('\\', '')
+            ->kebab()
+            ->prepend(config('livewire-use.prefix'))
+            ->finish('-');
     }
 }
