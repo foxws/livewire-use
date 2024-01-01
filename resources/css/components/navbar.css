@@ -6,20 +6,20 @@
             @apply inline-flex;
         }
 
+        &-brand {
+            @apply items-center;
+        }
+
         &-start {
-            @apply w-2/4 justify-start;
+            @apply w-2/4 items-center justify-start;
         }
 
         &-center {
-            @apply shrink-0;
+            @apply shrink-0 items-center;
         }
 
         &-end {
-            @apply w-2/4 justify-end;
-        }
-
-        .link-active {
-            @apply text-primary-400 hover:text-primary-400;
+            @apply w-2/4 items-center justify-end;
         }
     }
 }

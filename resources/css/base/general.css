@@ -1,3 +1,9 @@
-/* @layer base {
+@layer base {
+    .link {
+        @apply hover:text-primary-400;
 
-} */
+        &-active {
+            @apply text-primary-400 hover:text-primary-300;
+        }
+    }
+}
