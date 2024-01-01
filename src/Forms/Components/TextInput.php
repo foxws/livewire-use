@@ -16,6 +16,7 @@ class TextInput extends Component
         public string|Htmlable|null $prefix = null,
         public string|Htmlable|null $suffix = null,
         public bool $inline = false,
+        public bool $clearable = false,
     ) {}
 
     public function render(): View

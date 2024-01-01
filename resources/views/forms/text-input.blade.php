@@ -3,7 +3,7 @@
         <x-forms-label for="{{ $id() }}" :$label />
     @endif
 
-    {{-- <input type="text" {{ $attributes }}> --}}
+    <input type="text" {{ $attributes }}>
 
     {{-- @error($id())
         <div>
