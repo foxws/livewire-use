@@ -35,8 +35,6 @@ class LivewireUseServiceProvider extends PackageServiceProvider
 
         collect($components)
             ->each(function (DiscoveredClass $class) {
-                dd(static::getComponentPrefix($class));
-
                 $name = str($class->name)
                     ->kebab()
                     ->prepend(static::getComponentPrefix($class));
