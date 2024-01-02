@@ -10,4 +10,9 @@ class Form extends BaseForm
 {
     use WithSearch;
     use WithSorts;
+
+    public function submit(): void
+    {
+        $this->validate();
+    }
 }
