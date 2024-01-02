@@ -8,7 +8,9 @@ abstract class Component extends BaseComponent
 {
     public function uuid(): string
     {
-        return md5(serialize($this));
+        $checksum = crc32(serialize($this));
+
+        return printf('%u', $checksum);
     }
 
     public function id(): string
