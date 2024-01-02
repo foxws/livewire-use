@@ -44,16 +44,6 @@ trait WithScroll
         return count($this->items) > 0;
     }
 
-    public function onFirstPage(): bool
-    {
-        return $this->builder()->onFirstPage();
-    }
-
-    public function onLastPage(): bool
-    {
-        return $this->builder()->onLastPage();
-    }
-
     protected function mergeItems(array $values = []): void
     {
         $this->items = array_merge_recursive(
