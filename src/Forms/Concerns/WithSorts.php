@@ -1,19 +1,16 @@
 <?php
 
-namespace Foxws\LivewireUse\QueryBuilder\Concerns;
+namespace Foxws\LivewireUse\Forms\Concerns;
 
 use Illuminate\Support\Arr;
-use Livewire\Attributes\Url;
 use Livewire\Attributes\Validate;
 
 trait WithSorts
 {
     #[Validate('nullable|string|max:255')]
-    #[Url(as: 's', except: '', history: true)]
     public ?string $sort = null;
 
     #[Validate('nullable|string|in:asc,desc')]
-    #[Url(as: 'd', except: '', history: true)]
     public ?string $direction = null;
 
     public function hasSort(): bool

@@ -2,6 +2,7 @@
 
 namespace Foxws\LivewireUse\QueryBuilder\Components;
 
+use Foxws\LivewireUse\QueryBuilder\Concerns\WithSession;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -11,6 +12,8 @@ use Livewire\Component;
 
 abstract class QueryBuilder extends Component
 {
+    use WithSession;
+
     protected static string $model;
 
     public function boot(): void
