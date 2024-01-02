@@ -3,13 +3,11 @@
 namespace Foxws\LivewireUse\QueryBuilder\Concerns;
 
 use Illuminate\Support\Stringable;
-use Livewire\Attributes\Url;
 use Livewire\Attributes\Validate;
 
 trait WithSearch
 {
-    #[Validate('nullable|string|max:128')]
-    #[Url(as: 'q', except: '', history: true)]
+    #[Validate('nullable|string|max:32')]
     public ?string $search = null;
 
     public function hasSearch(): bool

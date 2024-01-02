@@ -11,7 +11,7 @@ trait WithChecked
 
     public function hasChecked(): bool
     {
-        return filled($this->checked);
+        return count($this->checked) > 0;
     }
 
     public function isChecked(string|int|null $value = null): bool
