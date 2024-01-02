@@ -1,5 +1,5 @@
 <div
-    wire:key="{{ $uuid() }}"
+    wire:key="{{ $hash() }}"
     x-data="{ open: false }"
 >
     <div

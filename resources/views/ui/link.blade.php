@@ -1,5 +1,5 @@
 <a
-    wire:key="{{ $uuid() }}"
+    wire:key="{{ $hash() }}"
     @if ($route) wire:navigate @endif
     {{ $attributes
         ->merge([

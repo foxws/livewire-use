@@ -4,9 +4,9 @@ namespace Foxws\LivewireUse\QueryBuilder\Forms;
 
 use Foxws\LivewireUse\QueryBuilder\Concerns\WithSearch;
 use Foxws\LivewireUse\QueryBuilder\Concerns\WithSorts;
-use Livewire\Form as BaseForm;
+use Livewire\Form;
 
-class Form extends BaseForm
+class FilterForm extends Form
 {
     use WithSearch;
     use WithSorts;

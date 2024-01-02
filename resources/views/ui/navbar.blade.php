@@ -1,5 +1,5 @@
 <nav
-    wire:key="{{ $uuid() }}"
+    wire:key="{{ $hash() }}"
     {{ $attributes->class(['navbar']) }}
 >
     <div class="navbar-start">

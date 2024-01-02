@@ -2,11 +2,10 @@
 
 namespace Foxws\LivewireUse\Forms\Components;
 
-use Foxws\LivewireUse\Support\Blade\Component;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\View\View;
 
-class TextInput extends Component
+class TextInput extends Field
 {
     public function __construct(
         public string|Htmlable|null $label = null,

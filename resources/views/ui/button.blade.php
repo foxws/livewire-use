@@ -1,5 +1,5 @@
 <button
-    wire:key="{{ $uuid() }}"
+    wire:key="{{ $hash() }}"
     {{ $attributes
         ->except(['href'])
         ->merge([
