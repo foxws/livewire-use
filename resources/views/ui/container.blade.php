@@ -1,3 +1,6 @@
-<div wire:key="{{ $uuid() }}" {{ $attributes->class(['container']) }}>
+<div
+    wire:key="{{ $uuid() }}"
+    {{ $attributes->class(['container']) }}
+>
     {{ $slot }}
 </div>

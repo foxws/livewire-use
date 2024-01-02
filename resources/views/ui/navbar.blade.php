@@ -1,4 +1,7 @@
-<nav wire:key="{{ $uuid() }}" {{ $attributes->class(['navbar']) }}>
+<nav
+    wire:key="{{ $uuid() }}"
+    {{ $attributes->class(['navbar']) }}
+>
     <div class="navbar-start">
         {{ $start }}
     </div>
@@ -11,4 +14,3 @@
         {{ $end }}
     </div>
 </<nav>
-

@@ -11,7 +11,8 @@ class Navbar extends Component
     public function __construct(
         public string|Htmlable|null $start = null,
         public string|Htmlable|null $end = null,
-    ) {}
+    ) {
+    }
 
     public function render(): View
     {

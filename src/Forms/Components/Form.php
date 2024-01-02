@@ -10,7 +10,8 @@ class Form extends Component
 {
     public function __construct(
         public string|Htmlable|null $actions = null,
-    ) {}
+    ) {
+    }
 
     public function render(): View
     {

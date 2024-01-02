@@ -1,4 +1,7 @@
-<div wire:key="{{ $uuid() }}" x-data="{ open: false }">
+<div
+    wire:key="{{ $uuid() }}"
+    x-data="{ open: false }"
+>
     <div
         x-ref="dropdown"
         x-on:click="open = ! open"

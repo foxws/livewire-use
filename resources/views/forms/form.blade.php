@@ -1,4 +1,7 @@
-<form wire:key="{{ $uuid }}" {{ $attributes }}>
+<form
+    wire:key="{{ $uuid }}"
+    {{ $attributes }}
+>
     {{ $slot }}
 
     {{ $actions }}

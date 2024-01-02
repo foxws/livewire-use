@@ -1,16 +1,18 @@
-<div wire:key="{{ $uuid() }}" class="w-full">
+<div
+    wire:key="{{ $uuid() }}"
+    class="w-full"
+>
     @if ($label)
-        <x-forms-label for="{{ $id() }}" :$label />
+        <x-forms-label
+            for="{{ $id() }}"
+            :$label
+        />
     @endif
 
-    <div
-        {{ $attributes
-            ->class([
-                'input-group' => filled($prepend || $append),
-                'input-error' => $errors->has($id())
-            ])
-        }}
-    >
+    <div {{ $attributes->class([
+        'input-group' => filled($prepend || $append),
+        'input-error' => $errors->has($id()),
+    ]) }}>
         {{ $prepend }}
 
         <input

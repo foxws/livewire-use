@@ -1,9 +1,7 @@
 <button
     wire:key="{{ $uuid() }}"
     {{ $attributes
-        ->except([
-            'href',
-        ])
+        ->except(['href'])
         ->merge([
             'type' => 'button',
         ])

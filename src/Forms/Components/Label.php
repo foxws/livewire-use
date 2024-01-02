@@ -11,7 +11,8 @@ class Label extends Component
     public function __construct(
         public string|Htmlable|null $label = null,
         public bool $inline = false,
-    ) {}
+    ) {
+    }
 
     public function render(): View
     {

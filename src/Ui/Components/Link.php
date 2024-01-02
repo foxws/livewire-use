@@ -15,7 +15,8 @@ class Link extends Component
         public ?string $route = null,
         public ?array $parameters = null,
         public ?bool $absolute = null,
-    ) {}
+    ) {
+    }
 
     public function render(): View
     {

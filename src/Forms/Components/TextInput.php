@@ -13,7 +13,8 @@ class TextInput extends Component
         public string|Htmlable|null $hint = null,
         public string|Htmlable|null $prepend = null,
         public string|Htmlable|null $append = null,
-    ) {}
+    ) {
+    }
 
     public function render(): View
     {

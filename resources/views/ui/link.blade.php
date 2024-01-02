@@ -1,5 +1,6 @@
 <a
     wire:key="{{ $uuid() }}"
+    @if ($route) wire:navigate @endif
     {{ $attributes
         ->merge([
             'href' => $url(),
@@ -8,13 +9,9 @@
             'link',
             'link-active' => $isActive(),
             'link-prepend' => filled($prepend),
-            'link-append' => filled($append),
+            'link-append' => filled($append)
         ])
     }}
-
-    @if ($route)
-        wire:navigate
-    @endif
 >
     {{ $prepend }}
 
