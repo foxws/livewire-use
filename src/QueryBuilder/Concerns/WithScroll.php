@@ -2,7 +2,6 @@
 
 namespace Foxws\LivewireUse\QueryBuilder\Concerns;
 
-use Foxws\LivewireUse\QueryBuilder\Components\QueryBuilder;
 use Illuminate\Support\Sleep;
 use Livewire\Attributes\Locked;
 
@@ -10,11 +9,6 @@ trait WithScroll
 {
     #[Locked]
     public array $items = [];
-
-    public function bootWithScroll(): void
-    {
-        throw_if(! is_subclass_of(static::class, QueryBuilder::class));
-    }
 
     public function mountWithScroll(): void
     {
