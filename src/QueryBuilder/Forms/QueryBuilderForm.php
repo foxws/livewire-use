@@ -15,4 +15,9 @@ abstract class QueryBuilderForm extends Form
 
         $this->store();
     }
+
+    public function destroy(): void
+    {
+        $this->resetStore();
+    }
 }
