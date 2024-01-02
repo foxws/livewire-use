@@ -2,9 +2,22 @@
 
 namespace Foxws\LivewireUse\Models\Concerns;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User;
 
-trait WithAuthorization
+trait WithAuthentication
 {
+    protected function isAuthenticated(): bool
+    {
+        return auth()->check();
+    }
 
+    protected function getAuthUser(): ?User
+    {
+        return auth()->user();
+    }
+
+    protected function getAuthId(): ?string
+    {
+        return auth()->id();
+    }
 }
