@@ -27,6 +27,7 @@ trait WithSession
     {
         $this->fill($this->getStore());
 
+        // Validate restored session
         rescue(
             fn () => $this->validate(),
             fn () => $this->resetStore(),
