@@ -37,8 +37,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Foxws\\LivewireUse\\": "src/",
-            "Foxws\\LivewireUse\\Database\\Factories\\": "database/factories/"
+            "Foxws\\LivewireUse\\": "src/"
         }
     },
     "autoload-dev": {
