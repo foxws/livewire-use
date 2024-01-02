@@ -3,9 +3,12 @@
 namespace Foxws\LivewireUse\Models\Concerns;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 trait WithAuthorization
 {
+    use AuthorizesRequests;
+
     protected function can(string $ability, mixed $model): void
     {
         $this->authorize($ability, $model);

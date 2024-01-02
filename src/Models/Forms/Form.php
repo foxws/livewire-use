@@ -9,7 +9,7 @@ abstract class Form extends BaseForm
 {
     use AuthorizesRequests;
 
-    abstract public function submit(): void;
+    abstract public function submit(): mixed;
 
     abstract protected function handle(): void;
 }
