@@ -8,12 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\View\View;
 use Laravel\Scout\Builder as ScoutBuilder;
 use Livewire\Component;
-use Livewire\WithPagination;
 
 abstract class QueryBuilder extends Component
 {
-    use WithPagination;
-
     protected static string $model;
 
     public function boot(): void

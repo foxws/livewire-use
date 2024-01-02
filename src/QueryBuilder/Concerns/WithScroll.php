@@ -4,9 +4,12 @@ namespace Foxws\LivewireUse\QueryBuilder\Concerns;
 
 use Illuminate\Support\Sleep;
 use Livewire\Attributes\Locked;
+use Livewire\WithPagination;
 
 trait WithScroll
 {
+    use WithPagination;
+
     #[Locked]
     public array $items = [];
 
