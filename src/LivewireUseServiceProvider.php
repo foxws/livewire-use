@@ -27,7 +27,7 @@ class LivewireUseServiceProvider extends PackageServiceProvider
 
     protected function registerComponents(): static
     {
-        if (config('livewire-use.register_components', true) === false) {
+        if (config('livewire-use.component_registration') === false) {
             return $this;
         }
 
