@@ -8,9 +8,7 @@ trait WithSession
 {
     public function mountWithSession(): void
     {
-        $forms = collect($this->getFormObjects());
-
-        $forms
+        collect($this->getFormObjects())
             ->filter(fn (Form $form) => method_exists($form, 'restore'))
             ->each(fn (Form $form) => $form->restore());
     }
