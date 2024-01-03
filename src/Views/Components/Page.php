@@ -10,8 +10,8 @@ use Livewire\Component;
 
 abstract class Page extends Component
 {
-    use WithAuthorization;
     use WithAuthentication;
+    use WithAuthorization;
     use WithSeo;
 
     abstract public function render(): View;

@@ -4,7 +4,6 @@ namespace Foxws\LivewireUse\Ui\Components;
 
 use Foxws\LivewireUse\Views\Components\Component;
 use Illuminate\Contracts\Support\Htmlable;
-use Illuminate\View\View;
 
 class Navbar extends Component
 {

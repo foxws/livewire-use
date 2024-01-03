@@ -3,7 +3,6 @@
 namespace Foxws\LivewireUse\Views\Forms;
 
 use Foxws\LivewireUse\Forms\Components\Form as BaseForm;
-use Foxws\LivewireUse\Views\Concerns\WithAuthorization;
 use Illuminate\Database\Eloquent\Model;
 use Livewire\Attributes\Locked;
 
