@@ -11,7 +11,7 @@ abstract class Form extends BaseForm
     use WithAuthorization;
     use WithSession;
 
-    protected static bool $recoverable = true;
+    protected static bool $recoverable = false;
 
     public function submit(): void
     {
