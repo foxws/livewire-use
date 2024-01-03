@@ -34,4 +34,14 @@ abstract class Form extends BaseForm
             report: false
         );
     }
+
+    protected function has(string $name): bool
+    {
+        return $this->hasProperty($name);
+    }
+
+    protected function get(string $name, mixed $default = null): mixed
+    {
+        return $this->getPropertyValue($name) ?? $default;
+    }
 }
