@@ -8,4 +8,9 @@ use Livewire\Form as BaseForm;
 abstract class Form extends BaseForm
 {
     use WithSession;
+
+    public function submit(): void
+    {
+        //
+    }
 }

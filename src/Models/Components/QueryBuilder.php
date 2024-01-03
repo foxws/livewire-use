@@ -1,7 +1,8 @@
 <?php
 
-namespace Foxws\LivewireUse\QueryBuilder\Components;
+namespace Foxws\LivewireUse\Models\Components;
 
+use Foxws\LivewireUse\Views\Concerns\WithAuthorization;
 use Foxws\LivewireUse\Views\Concerns\WithForms;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Builder;
@@ -12,6 +13,7 @@ use Livewire\Component;
 
 abstract class QueryBuilder extends Component
 {
+    use WithAuthorization;
     use WithForms;
 
     protected static string $model;
@@ -20,7 +22,7 @@ abstract class QueryBuilder extends Component
     {
         throw_if(! is_subclass_of(static::$model, Model::class));
 
-        $this->authorize('viewAny', static::$model);
+        $this->canViewAny(static::$model);
     }
 
     abstract public function render(): View;

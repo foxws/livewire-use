@@ -1,16 +1,13 @@
 <?php
 
-namespace Foxws\LivewireUse\Models\Concerns;
+namespace Foxws\LivewireUse\Views\Concerns;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 trait WithAuthorization
 {
-    use AuthorizesRequests {
-        authorizeForUser as protected;
-        authorizeResource as protected;
-    }
+    use AuthorizesRequests;
 
     protected function can(string $ability, mixed $arguments): void
     {
