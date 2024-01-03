@@ -1,6 +1,6 @@
 <?php
 
-namespace Foxws\LivewireUse\QueryBuilder\Concerns;
+namespace Foxws\LivewireUse\Forms\Concerns;
 
 use Livewire\Attributes\Validate;
 
