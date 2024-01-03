@@ -3,13 +3,9 @@
 namespace Foxws\LivewireUse\Models\Forms;
 
 use Illuminate\Database\Eloquent\Model;
-use Livewire\Attributes\Locked;
 
 class UpdateForm extends Form
 {
-    #[Locked]
-    public ?Model $model = null;
-
     public function submit(): void
     {
         if (! $this->model) {
@@ -34,7 +30,7 @@ class UpdateForm extends Form
         $this->model->delete();
     }
 
-    public function set(Model $model): void
+    protected function set(Model $model): void
     {
         $this->canUpdate($model);
 

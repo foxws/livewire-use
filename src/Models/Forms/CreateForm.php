@@ -2,25 +2,31 @@
 
 namespace Foxws\LivewireUse\Models\Forms;
 
-use Livewire\Attributes\Locked;
-
 abstract class CreateForm extends Form
 {
-    #[Locked]
-    public ?string $model = null;
-
     public function submit(): void
     {
-        $this->canCreate($this->model);
+        if (! $this->modelClass) {
+            return;
+        }
+
+        $this->canCreate($this->modelClass);
 
         $this->validate();
 
         $this->handle();
     }
 
+    protected function set(string $class): void
+    {
+        $this->canCreate($class);
+
+        $this->modelClass = $class;
+    }
+
     protected function handle(): void
     {
-        app(static::$model)::create(
+        app(static::$modelClass)::create(
             $this->all()
         );
     }
