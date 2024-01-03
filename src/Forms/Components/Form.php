@@ -11,6 +11,6 @@ abstract class Form extends BaseForm
 
     public function submit(): void
     {
-        //
+        $this->validate();
     }
 }
