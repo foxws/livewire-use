@@ -10,9 +10,13 @@ use Spatie\StructureDiscoverer\StructureScout;
 
 class ComponentScout extends StructureScout
 {
+    public ?string $path = null;
+
+    public ?string $prefix = null;
+
     protected function definition(): Discover
     {
-        return Discover::in(__DIR__.'/../..')
+        return Discover::in($this->path)
             ->extending(Component::class)
             ->full();
     }
@@ -20,7 +24,21 @@ class ComponentScout extends StructureScout
     public function cacheDriver(): DiscoverCacheDriver
     {
         return new LaravelDiscoverCacheDriver(
-            prefix: 'livewire-use',
+            prefix: $this->prefix,
         );
+    }
+
+    public function path(string $path): static
+    {
+        $this->path = $path;
+
+        return $this;
+    }
+
+    public function prefix(string $prefix): static
+    {
+        $this->prefix = $prefix;
+
+        return $this;
     }
 }

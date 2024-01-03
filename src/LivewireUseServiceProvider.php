@@ -31,7 +31,10 @@ class LivewireUseServiceProvider extends PackageServiceProvider
             return $this;
         }
 
-        $components = ComponentScout::create()->get();
+        $components = ComponentScout::create()
+            ->path(__DIR__)
+            ->prefix('livewire-use')
+            ->get();
 
         collect($components)
             ->each(function (DiscoveredClass $class) {
