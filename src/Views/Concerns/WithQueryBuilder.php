@@ -5,15 +5,16 @@ namespace Foxws\LivewireUse\Views\Concerns;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property string $model
+ */
 trait WithQueryBuilder
 {
-    protected static string $model;
-
     public function bootWithQueryBuilder(): void
     {
         throw_if(! is_subclass_of(static::$model, Model::class));
 
-        $this->authorize(static::$model, 'viewAny');
+        $this->authorize('viewAny', static::$model);
     }
 
     protected function getModel(): Model
