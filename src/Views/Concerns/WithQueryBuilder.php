@@ -4,6 +4,7 @@ namespace Foxws\LivewireUse\Views\Concerns;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Builder as ScoutBuilder;
 
 /**
  * @property string $model
@@ -27,6 +28,12 @@ trait WithQueryBuilder
     {
         return $this->getModel()
             ->query();
+    }
+
+    protected function getScout(string $value = '*'): ScoutBuilder
+    {
+        return $this->getModel()
+            ->search($value);
     }
 
     protected function getLimit(): int
