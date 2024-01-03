@@ -6,16 +6,16 @@ trait WithHash
 {
     public function hash(): string
     {
-        $crc32 = crc32(serialize($this));
+        $crc32 = sprintf('%u', crc32(serialize($this)));
 
-        return printf('%u', $crc32);
+        return base_convert($crc32, 10, 36);
     }
 
-    public function fingerprint(): string
+    public function classHash(): string
     {
         $class = str_split(static::class);
 
-        $crc32 = crc32(serialize($class));
+        $crc32 = sprintf('%u', crc32(serialize($class)));
 
         return base_convert($crc32, 10, 36);
     }

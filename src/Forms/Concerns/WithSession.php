@@ -36,19 +36,19 @@ trait WithSession
 
         $data = $this->prepareStore();
 
-        session()->put($this->fingerprint(), $data);
+        session()->put($this->classHash(), $data);
     }
 
     public function resetStore(): void
     {
-        session()->pull($this->fingerprint());
+        session()->pull($this->classHash());
 
         $this->reset();
     }
 
     protected function getStore(): ?array
     {
-        return session()->get($this->fingerprint());
+        return session()->get($this->classHash());
     }
 
     protected function prepareStore(): array
