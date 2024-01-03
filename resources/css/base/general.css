@@ -1,6 +1,6 @@
 @layer base {
     .link {
-        @apply hover:text-primary-400;
+        @apply hover:text-primary-400 cursor-pointer;
 
         &-active {
             @apply text-primary-400 hover:text-primary-300;
