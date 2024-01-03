@@ -16,6 +16,7 @@ class Link extends Component
         public ?string $route = null,
         public ?array $parameters = null,
         public ?bool $absolute = null,
+        public ?bool $external = null,
     ) {
     }
 
@@ -32,7 +33,7 @@ class Link extends Component
             return true;
         }
 
-        return request()->fullUrlIs(
+        return ! $this->external && request()->fullUrlIs(
             $this->attributes->get('href')
         );
     }

@@ -1,6 +1,6 @@
 <a
     wire:key="{{ $hash() }}"
-    @if ($route) wire:navigate @endif
+    @if (! $external) wire:navigate @endif
     {{ $attributes
         ->merge([
             'href' => $url(),
