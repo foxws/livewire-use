@@ -7,7 +7,12 @@ use Livewire\Attributes\Validate;
 trait WithTags
 {
     #[Validate('nullable|array|max:3')]
-    public ?string $tags = null;
+    public ?array $tags = null;
+
+    public function getTags(): ?array
+    {
+        return $this->get('tags');
+    }
 
     public function resetTags(): void
     {

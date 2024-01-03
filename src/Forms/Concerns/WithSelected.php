@@ -9,6 +9,11 @@ trait WithSelected
     #[Validate('nullable|array|max:50')]
     public ?array $selected = null;
 
+    public function getSelected(): ?array
+    {
+        return $this->get('selected');
+    }
+
     public function hasSelected(): bool
     {
         return count($this->selected) > 0;

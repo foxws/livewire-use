@@ -13,6 +13,11 @@ trait WithSorts
     #[Validate('nullable|string|in:asc,desc')]
     public ?string $direction = null;
 
+    public function getSort(): ?string
+    {
+        return $this->get('sort');
+    }
+
     public function hasSort(): bool
     {
         if (property_exists(static::class, 'sorters')) {

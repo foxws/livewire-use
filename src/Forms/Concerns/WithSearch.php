@@ -10,14 +10,25 @@ trait WithSearch
     #[Validate('nullable|string|max:32')]
     public ?string $search = null;
 
+    public function getSearch(): ?string
+    {
+        return $this
+            ->prepareSearch()
+            ->value();
+    }
+
     public function hasSearch(): bool
     {
-        return $this->getSearch()->isNotEmpty();
+        return $this
+            ->prepareSearch()
+            ->isNotEmpty();
     }
 
     public function isSearch(?string $value = null): bool
     {
-        return $this->getSearch()->exactly($value);
+        return $this
+            ->prepareSearch()
+            ->exactly($value);
     }
 
     public function resetSearch(): void
@@ -25,9 +36,9 @@ trait WithSearch
         $this->reset('search');
     }
 
-    public function getSearch(): Stringable
+    protected function prepareSearch(): Stringable
     {
-        return str($this->search ?: '')
+        return str($this->get('search', ''))
             ->headline()
             ->squish();
     }
