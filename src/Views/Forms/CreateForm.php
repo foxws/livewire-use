@@ -1,6 +1,6 @@
 <?php
 
-namespace Foxws\LivewireUse\Models\Forms;
+namespace Foxws\LivewireUse\Views\Forms;
 
 abstract class CreateForm extends Form
 {

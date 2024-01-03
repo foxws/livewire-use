@@ -1,6 +1,6 @@
 <?php
 
-namespace Foxws\LivewireUse\Models\Forms;
+namespace Foxws\LivewireUse\Views\Forms;
 
 use Illuminate\Database\Eloquent\Model;
 

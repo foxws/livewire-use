@@ -1,9 +1,9 @@
 <?php
 
-namespace Foxws\LivewireUse\Models\Forms;
+namespace Foxws\LivewireUse\Views\Forms;
 
 use Foxws\LivewireUse\Forms\Components\Form as BaseForm;
-use Foxws\LivewireUse\Models\Concerns\WithAuthorization;
+use Foxws\LivewireUse\Views\Concerns\WithAuthorization;
 use Illuminate\Database\Eloquent\Model;
 use Livewire\Attributes\Locked;
 
@@ -17,7 +17,7 @@ abstract class Form extends BaseForm
     #[Locked]
     public ?string $modelClass = null;
 
-    abstract public function submit();
+    abstract public function submit(): void;
 
-    abstract protected function handle();
+    abstract protected function handle(): void;
 }
