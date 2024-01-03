@@ -18,7 +18,7 @@ abstract class Form extends BaseForm
         $this->check();
     }
 
-    protected function check(): void
+    public function check(): void
     {
         if (! static::$recoverable) {
             $this->validate();
