@@ -9,8 +9,6 @@ use Livewire\Attributes\Locked;
 
 abstract class Form extends BaseForm
 {
-    use WithAuthorization;
-
     #[Locked]
     public ?Model $model = null;
 
