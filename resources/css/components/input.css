@@ -1,0 +1,29 @@
+@layer components {
+    .label {
+        @apply block;
+    }
+
+    .input {
+        @apply w-full border-0 border-opacity-0 bg-transparent focus:border-transparent focus:ring-0;
+
+        &-group {
+            @apply flex flex-1 items-center;
+        }
+
+        &-prepend {
+            @apply rounded-l-none;
+        }
+
+        &-append {
+            @apply rounded-r-none;
+        }
+    }
+
+    .radio {
+        @apply hover:text-primary-500 inline-flex cursor-pointer items-center space-x-3 text-sm font-medium text-gray-400;
+
+        label {
+            @apply w-full;
+        }
+    }
+}
