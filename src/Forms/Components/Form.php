@@ -35,12 +35,12 @@ abstract class Form extends BaseForm
         );
     }
 
-    protected function has(string $name): bool
+    public function has(string $name): bool
     {
         return $this->hasProperty($name);
     }
 
-    protected function get(string $name, mixed $default = null): mixed
+    public function get(string $name, mixed $default = null): mixed
     {
         return $this->getPropertyValue($name) ?? $default;
     }
