@@ -7,39 +7,42 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 trait WithAuthorization
 {
-    use AuthorizesRequests;
-
-    protected function can(string $ability, mixed $model): void
-    {
-        $this->authorize($ability, $model);
+    use AuthorizesRequests {
+        authorizeForUser as protected;
+        authorizeResource as protected;
     }
 
-    protected function canViewAny(Model|string $model): void
+    protected function can(string $ability, mixed $arguments): void
     {
-        if ($model instanceof Model) {
-            $model = $model->getMorphClass();
+        $this->authorize($ability, $arguments);
+    }
+
+    protected function canViewAny(mixed $arguments): void
+    {
+        if ($arguments instanceof Model) {
+            $arguments = $arguments->getMorphClass();
         }
 
-        $this->can('viewAny', $model);
+        $this->can('viewAny', $arguments);
     }
 
-    protected function canView(Model|array $model): void
+    protected function canView(mixed $arguments): void
     {
-        $this->can('view', $model);
+        $this->can('view', $arguments);
     }
 
-    protected function canCreate(Model|array $model): void
+    protected function canCreate(mixed $arguments): void
     {
-        $this->can('create', $model);
+        $this->can('create', $arguments);
     }
 
-    protected function canUpdate(Model|array $model): void
+    protected function canUpdate(mixed $arguments): void
     {
-        $this->can('update', $model);
+        $this->can('update', $arguments);
     }
 
-    protected function canDelete(Model|array $model): void
+    protected function canDelete(mixed $arguments): void
     {
-        $this->can('delete', $model);
+        $this->can('delete', $arguments);
     }
 }
