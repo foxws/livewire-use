@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property string $model
+ * @property ?int $limit
  */
 trait WithQueryBuilder
 {
@@ -26,5 +27,10 @@ trait WithQueryBuilder
     {
         return $this->getModel()
             ->query();
+    }
+
+    protected function getLimit(): int
+    {
+        return static::$limit ?? 16;
     }
 }

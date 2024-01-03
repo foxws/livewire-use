@@ -16,6 +16,8 @@ abstract class Form extends BaseForm
     public function submit(): void
     {
         $this->check();
+
+        $this->store();
     }
 
     public function check(): void

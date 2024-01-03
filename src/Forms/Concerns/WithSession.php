@@ -20,7 +20,6 @@ trait WithSession
 
         $this->fill($this->getStore());
 
-        // Validate restored session
         rescue(
             fn () => $this->validate(),
             fn () => $this->resetStore(),
@@ -46,9 +45,9 @@ trait WithSession
         $this->reset();
     }
 
-    protected function getStore(): ?array
+    protected function getStore(): array
     {
-        return session()->get($this->classHash());
+        return session()->get($this->classHash(), []);
     }
 
     protected function prepareStore(): array
