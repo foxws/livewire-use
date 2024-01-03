@@ -2,18 +2,16 @@
 
 namespace Foxws\LivewireUse\Forms\Components;
 
-use Illuminate\Contracts\Support\Htmlable;
-use Illuminate\View\View;
+use Foxws\LivewireUse\Forms\Concerns\WithSession;
+use Foxws\LivewireUse\Models\Concerns\WithAuthorization;
+use Livewire\Form as BaseForm;
 
-class Form extends Field
+abstract class Form extends BaseForm
 {
-    public function __construct(
-        public string|Htmlable|null $actions = null,
-    ) {
-    }
+    use WithAuthorization;
+    use WithSession;
 
-    public function render(): View
-    {
-        return view('livewire-use::forms.form');
-    }
+    abstract public function submit(): void;
+
+    abstract protected function handle(): void;
 }

@@ -2,11 +2,11 @@
 
 namespace Foxws\LivewireUse\QueryBuilder\Concerns;
 
-use Livewire\Form;
+use Foxws\LivewireUse\Forms\Components\Form;
 
-trait WithSession
+trait WithForms
 {
-    public function mountWithSession(): void
+    public function mountWithForms(): void
     {
         collect($this->getFormObjects())
             ->filter(fn (Form $form) => method_exists($form, 'restore'))

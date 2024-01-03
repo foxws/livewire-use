@@ -8,9 +8,18 @@ trait WithSession
 {
     use WithHash;
 
-    protected static bool $store = true;
+    protected static bool $store = false;
 
     protected static array $storeOnly = [];
+
+    public function restore(): void
+    {
+        if (! static::$store) {
+            return;
+        }
+
+        $this->fill($this->getStore());
+    }
 
     protected function store(): void
     {
