@@ -16,7 +16,7 @@ class LivewireUseServiceProvider extends PackageServiceProvider
         $package
             ->name('livewire-use')
             ->hasConfigFile()
-            ->hasViews();
+            ->hasViews('templates');
     }
 
     public function bootingPackage(): void
@@ -27,7 +27,7 @@ class LivewireUseServiceProvider extends PackageServiceProvider
 
     protected function registerComponents(): static
     {
-        if (config('livewire-use.component_registration') === false) {
+        if (config('livewire-use.components_enabled') === false) {
             return $this;
         }
 
@@ -51,7 +51,7 @@ class LivewireUseServiceProvider extends PackageServiceProvider
             ->after('Foxws\\LivewireUse\\')
             ->match('/(.*)\\\\/')
             ->kebab()
-            ->prepend(config('livewire-use.prefix'))
+            ->prepend(config('livewire-use.components_prefix'))
             ->finish('-');
     }
 }

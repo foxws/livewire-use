@@ -8,6 +8,8 @@ use Illuminate\View\View;
 
 class Link extends Component
 {
+    protected static string $view = 'ui.link';
+
     public function __construct(
         public string|Htmlable|null $label = null,
         public string|Htmlable|null $prepend = null,
@@ -16,11 +18,6 @@ class Link extends Component
         public ?array $parameters = null,
         public ?bool $absolute = null,
     ) {
-    }
-
-    public function render(): View
-    {
-        return view('livewire-use::ui.link');
     }
 
     public function url(): ?string

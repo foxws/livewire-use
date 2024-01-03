@@ -3,14 +3,25 @@
 return [
     /*
     |--------------------------------------------------------------------------
-    | Component Registration
+    | Components
     |--------------------------------------------------------------------------
     |
-    | This controls component registration.
+    | This controls components registration.
     |
     */
 
-    'prefix' => '',
+    'components_prefix' => '',
 
-    'component_registration' => true,
+    'components_enabled' => true,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Views
+    |--------------------------------------------------------------------------
+    |
+    | This controls views registration.
+    |
+    */
+
+    'views_prefix' => 'templates::',
 ];

@@ -7,6 +7,8 @@ use Illuminate\View\View;
 
 class Label extends Field
 {
+    protected static string $view = 'forms.label';
+
     public function __construct(
         public string|Htmlable|null $label = null,
         public bool $inline = false,
@@ -15,6 +17,6 @@ class Label extends Field
 
     public function render(): View
     {
-        return view('livewire-use::forms.label');
+        return view(static::$view);
     }
 }

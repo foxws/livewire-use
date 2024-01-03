@@ -7,8 +7,5 @@ use Illuminate\View\View;
 
 class Dropdown extends Component
 {
-    public function render(): View
-    {
-        return view('livewire-use::ui.dropdown');
-    }
+    protected static string $view = 'ui.dropdown';
 }

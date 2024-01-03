@@ -7,8 +7,5 @@ use Illuminate\View\View;
 
 class Container extends Component
 {
-    public function render(): View
-    {
-        return view('livewire-use::ui.container');
-    }
+    protected static string $view = 'ui.container';
 }

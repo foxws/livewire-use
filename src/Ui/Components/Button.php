@@ -6,8 +6,5 @@ use Illuminate\View\View;
 
 class Button extends Link
 {
-    public function render(): View
-    {
-        return view('livewire-use::ui.button');
-    }
+    protected static string $view = 'ui.button';
 }
