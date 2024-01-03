@@ -5,21 +5,18 @@ namespace Foxws\LivewireUse\Models\Forms;
 use Illuminate\Database\Eloquent\Model;
 use Livewire\Attributes\Locked;
 
-class EditForm extends Form
+class UpdateForm extends Form
 {
     #[Locked]
     public ?Model $model = null;
 
-    public function set(Model $model): void
-    {
-        $this->authorize('update', $model);
-
-        $this->model = $model;
-    }
-
     public function submit(): void
     {
-        $this->authorize('update', $this->model);
+        if (! $this->model) {
+            return;
+        }
+
+        $this->canUpdate($this->model);
 
         $this->validate();
 
@@ -28,9 +25,20 @@ class EditForm extends Form
 
     public function delete(): void
     {
-        $this->authorize('delete', $this->model);
+        if (! $this->model) {
+            return;
+        }
+
+        $this->canDelete($this->model);
 
         $this->model->delete();
+    }
+
+    public function set(Model $model): void
+    {
+        $this->canUpdate($model);
+
+        $this->model = $model;
     }
 
     protected function handle(): void

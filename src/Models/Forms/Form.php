@@ -2,14 +2,14 @@
 
 namespace Foxws\LivewireUse\Models\Forms;
 
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Livewire\Form as BaseForm;
+use Foxws\LivewireUse\Forms\Components\Form as BaseForm;
+use Foxws\LivewireUse\Models\Concerns\WithAuthorization;
 
 abstract class Form extends BaseForm
 {
-    use AuthorizesRequests;
+    use WithAuthorization;
 
-    abstract public function submit(): mixed;
+    abstract public function submit();
 
-    abstract protected function handle(): void;
+    abstract protected function handle();
 }

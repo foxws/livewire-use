@@ -19,9 +19,16 @@ trait WithSession
         }
 
         $this->fill($this->getStore());
+
+        // Validate restored session
+        rescue(
+            fn () => $this->validate(),
+            fn () => $this->resetStore(),
+            report: false
+        );
     }
 
-    protected function store(): void
+    public function store(): void
     {
         if (! static::$store) {
             return;
@@ -32,7 +39,7 @@ trait WithSession
         session()->put($this->fingerprint(), $data);
     }
 
-    protected function resetStore(): void
+    public function resetStore(): void
     {
         session()->pull($this->fingerprint());
 

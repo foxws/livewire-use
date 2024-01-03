@@ -2,21 +2,16 @@
 
 namespace Foxws\LivewireUse\Models\Forms;
 
-use Illuminate\Auth\Access\AuthorizationException;
-use Illuminate\Database\Eloquent\Model;
+use Livewire\Attributes\Locked;
 
-class CreateForm extends Form
+abstract class CreateForm extends Form
 {
-    protected static string $model;
+    #[Locked]
+    public ?string $model = null;
 
     public function submit(): void
     {
-        throw_unless(
-            is_subclass_of(static::$model, Model::class),
-            AuthorizationException::class
-        );
-
-        $this->authorize('create', static::$model);
+        $this->canCreate($this->model);
 
         $this->validate();
 
