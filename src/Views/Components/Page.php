@@ -14,7 +14,6 @@ abstract class Page extends Component
     use WithAuthentication;
     use WithAuthorization;
     use WithSeo;
-    use WithState;
 
     abstract public function render(): View;
 }
