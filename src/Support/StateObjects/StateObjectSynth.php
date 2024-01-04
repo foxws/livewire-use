@@ -10,7 +10,7 @@ use function Livewire\wrap;
 
 class StateObjectSynth extends Synth
 {
-    public static $key = 'state';
+    public static $key = 'stt';
 
     public static function match($target)
     {
