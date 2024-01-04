@@ -27,6 +27,7 @@ class SupportStateObjects extends ComponentHook
             if ($property->isPublic() !== true) {
                 continue;
             }
+
             // Uninitialized properties only...
             if ($property->isInitialized($this->component)) {
                 continue;
