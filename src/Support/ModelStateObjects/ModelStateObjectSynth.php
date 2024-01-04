@@ -1,17 +1,16 @@
 <?php
 
-namespace Foxws\LivewireUse\Support\Synthesizers;
+namespace Foxws\LivewireUse\Support\ModelStateObjects;
 
 use Livewire\Mechanisms\HandleComponents\Synthesizers\Synth;
-use Spatie\ModelStates\State;
 
-class SpatieStateSynth extends Synth
+class ModelStateObjectSynth extends Synth
 {
-    public static $key = 'sta';
+    public static $key = 'mstt';
 
     public static function match($target)
     {
-        return $target instanceof State;
+        return $target instanceof \Spatie\ModelStates\State;
     }
 
     public function dehydrate($target)

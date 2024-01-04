@@ -1,17 +1,16 @@
 <?php
 
-namespace Foxws\LivewireUse\Support\Synthesizers;
+namespace Foxws\LivewireUse\Support\EnumObjects;
 
 use Livewire\Mechanisms\HandleComponents\Synthesizers\Synth;
-use Spatie\Enum\Laravel\Enum;
 
-class SpatieEnumSynth extends Synth
+class EnumObjectSynth extends Synth
 {
-    public static $key = 'enm';
+    public static $key = 'senm';
 
     public static function match($target)
     {
-        return $target instanceof Enum;
+        return $target instanceof \Spatie\Enum\Laravel\Enum;
     }
 
     public function dehydrate($target)

@@ -22,7 +22,8 @@ class LivewireUseServiceProvider extends PackageServiceProvider
     public function bootingPackage(): void
     {
         $this
-            ->registerComponents();
+            ->registerComponents()
+            ->registerFeatures();
     }
 
     protected function registerComponents(): static
@@ -44,6 +45,19 @@ class LivewireUseServiceProvider extends PackageServiceProvider
 
                 Blade::component($class->getFcqn(), $name->value());
             });
+
+        return $this;
+    }
+
+    protected function registerFeatures(): static
+    {
+        foreach ([
+            \Foxws\LivewireUse\Support\EnumObjects\SupportEnumObjects::class,
+            \Foxws\LivewireUse\Support\ModelStateObjects\SupportModelStateObjects::class,
+            \Foxws\LivewireUse\Support\StateObjects\SupportStateObjects::class,
+        ] as $feature) {
+            app('livewire')->componentHook($feature);
+        }
 
         return $this;
     }
