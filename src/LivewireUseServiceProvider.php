@@ -3,11 +3,8 @@
 namespace Foxws\LivewireUse;
 
 use Foxws\LivewireUse\Support\Discover\ComponentScout;
-use Foxws\LivewireUse\Support\Models\ModelSynth;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Stringable;
-use Livewire\ComponentHookRegistry;
-use Livewire\Livewire;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Spatie\StructureDiscoverer\Data\DiscoveredClass;
@@ -54,7 +51,7 @@ class LivewireUseServiceProvider extends PackageServiceProvider
 
     protected function registerFeatures(): static
     {
-        foreach([
+        foreach ([
             \Foxws\LivewireUse\Support\EnumObjects\SupportEnumObjects::class,
             \Foxws\LivewireUse\Support\ModelStateObjects\SupportModelStateObjects::class,
             \Foxws\LivewireUse\Support\StateObjects\SupportStateObjects::class,

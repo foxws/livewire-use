@@ -2,11 +2,9 @@
 
 namespace Foxws\LivewireUse\Support\StateObjects;
 
-use ReflectionClass;
 use Livewire\ComponentHook;
+use ReflectionClass;
 use ReflectionNamedType;
-
-use function Livewire\on;
 
 class SupportStateObjects extends ComponentHook
 {
@@ -17,7 +15,7 @@ class SupportStateObjects extends ComponentHook
         );
     }
 
-    function boot()
+    public function boot()
     {
         $this->initializeStateObjects();
     }
@@ -26,18 +24,26 @@ class SupportStateObjects extends ComponentHook
     {
         foreach ((new ReflectionClass($this->component))->getProperties() as $property) {
             // Public properties only...
-            if ($property->isPublic() !== true) continue;
+            if ($property->isPublic() !== true) {
+                continue;
+            }
             // Uninitialized properties only...
-            if ($property->isInitialized($this->component)) continue;
+            if ($property->isInitialized($this->component)) {
+                continue;
+            }
 
             $type = $property->getType();
 
-            if (! $type instanceof ReflectionNamedType) continue;
+            if (! $type instanceof ReflectionNamedType) {
+                continue;
+            }
 
             $typeName = $type->getName();
 
             // "State" object property types only...
-            if (! is_subclass_of($typeName, State::class)) continue;
+            if (! is_subclass_of($typeName, State::class)) {
+                continue;
+            }
 
             $state = new $typeName(
                 $this->component,

@@ -3,20 +3,21 @@
 namespace Foxws\LivewireUse\Support\StateObjects;
 
 use Livewire\Drawer\Utils;
-use Livewire\Mechanisms\HandleComponents\Synthesizers\Synth;
 use Livewire\Features\SupportAttributes\AttributeCollection;
+use Livewire\Mechanisms\HandleComponents\Synthesizers\Synth;
 
 use function Livewire\wrap;
 
-class StateObjectSynth extends Synth {
+class StateObjectSynth extends Synth
+{
     public static $key = 'state';
 
-    static function match($target)
+    public static function match($target)
     {
         return $target instanceof State;
     }
 
-    function dehydrate($target, $dehydrateChild)
+    public function dehydrate($target, $dehydrateChild)
     {
         $data = $target->toArray();
 
@@ -27,7 +28,7 @@ class StateObjectSynth extends Synth {
         return [$data, ['class' => get_class($target)]];
     }
 
-    function hydrate($data, $meta, $hydrateChild)
+    public function hydrate($data, $meta, $hydrateChild)
     {
         $state = new $meta['class']($this->context->component, $this->path);
 
@@ -46,7 +47,7 @@ class StateObjectSynth extends Synth {
         return $state;
     }
 
-    function set(&$target, $key, $value)
+    public function set(&$target, $key, $value)
     {
         if ($value === null && Utils::propertyIsTyped($target, $key)) {
             unset($target->$key);
@@ -58,7 +59,7 @@ class StateObjectSynth extends Synth {
     public static function bootStateObject($component, $state, $path)
     {
         $component->mergeOutsideAttributes(
-            AttributeCollection::fromComponent($component, $state, $path . '.')
+            AttributeCollection::fromComponent($component, $state, $path.'.')
         );
 
         return function () use ($state) {
@@ -66,4 +67,3 @@ class StateObjectSynth extends Synth {
         };
     }
 }
-

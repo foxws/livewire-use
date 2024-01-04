@@ -4,18 +4,26 @@ namespace Foxws\LivewireUse\Support\StateObjects;
 
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Database\Eloquent\Model;
-use Livewire\Drawer\Utils;
 use Livewire\Component;
+use Livewire\Drawer\Utils;
 
 class State implements Arrayable
 {
-    function __construct(
+    public function __construct(
         protected Component $component,
         protected $propertyName
-    ) {}
+    ) {
+    }
 
-    public function getComponent() { return $this->component; }
-    public function getPropertyName() { return $this->propertyName; }
+    public function getComponent()
+    {
+        return $this->component;
+    }
+
+    public function getPropertyName()
+    {
+        return $this->propertyName;
+    }
 
     public function all()
     {
@@ -77,7 +85,9 @@ class State implements Arrayable
             ? $properties[0]
             : $properties;
 
-        if (empty($properties)) $properties = array_keys($this->all());
+        if (empty($properties)) {
+            $properties = array_keys($this->all());
+        }
 
         $freshInstance = new static($this->getComponent(), $this->getPropertyName());
 
