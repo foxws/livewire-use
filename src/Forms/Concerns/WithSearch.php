@@ -10,7 +10,7 @@ trait WithSearch
     #[Validate('nullable|string|max:32')]
     public ?string $search = null;
 
-    public function getSearch(): ?string
+    public function getSearch(): string
     {
         return $this
             ->prepareSearch()

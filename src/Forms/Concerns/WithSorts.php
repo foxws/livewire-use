@@ -12,7 +12,7 @@ trait WithSorts
     #[Validate('nullable|string|in:asc,desc')]
     public ?string $direction = null;
 
-    public function getSort(): ?string
+    public function getSort(): string
     {
         return $this->get('sort');
     }

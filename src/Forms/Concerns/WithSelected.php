@@ -9,9 +9,9 @@ trait WithSelected
     #[Validate('nullable|array|max:50')]
     public ?array $selected = null;
 
-    public function getSelected(): ?array
+    public function getSelected(): array
     {
-        return $this->get('selected');
+        return $this->get('selected', []);
     }
 
     public function hasSelected(): bool
@@ -19,9 +19,11 @@ trait WithSelected
         return count($this->selected) > 0;
     }
 
-    public function isSelected(string|int|null $value = null): bool
+    public function isSelected(...$item): bool
     {
-        return in_array($value, $this->selected);
+        return collect($item)
+            ->filter(fn ($item) => in_array($item, $this->getSelected()))
+            ->isNotEmpty();
     }
 
     public function resetSelected(): void
