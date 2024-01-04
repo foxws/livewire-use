@@ -3,6 +3,7 @@
 namespace Foxws\LivewireUse\Support\ModelStateObjects;
 
 use Livewire\Mechanisms\HandleComponents\Synthesizers\Synth;
+use Spatie\ModelStates\State;
 
 class ModelStateObjectSynth extends Synth
 {
@@ -10,7 +11,7 @@ class ModelStateObjectSynth extends Synth
 
     public static function match($target)
     {
-        return $target instanceof \Spatie\ModelStates\State;
+        return $target instanceof State;
     }
 
     public function dehydrate($target)

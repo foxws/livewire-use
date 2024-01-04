@@ -3,6 +3,7 @@
 namespace Foxws\LivewireUse\Support\EnumObjects;
 
 use Livewire\Mechanisms\HandleComponents\Synthesizers\Synth;
+use Spatie\Enum\Laravel\Enum;
 
 class EnumObjectSynth extends Synth
 {
@@ -10,7 +11,7 @@ class EnumObjectSynth extends Synth
 
     public static function match($target)
     {
-        return $target instanceof \Spatie\Enum\Laravel\Enum;
+        return $target instanceof Enum;
     }
 
     public function dehydrate($target)
