@@ -20,6 +20,8 @@
         "artesaos/seotools": "^1.2",
         "illuminate/contracts": "^10.0",
         "livewire/livewire": "^3.3.3",
+        "spatie/laravel-enum": "^3.0",
+        "spatie/laravel-model-states": "^2.6",
         "spatie/laravel-package-tools": "^1.16.1",
         "spatie/php-structure-discoverer": "^2.0.0"
     },
