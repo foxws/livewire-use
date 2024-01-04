@@ -1,9 +1,10 @@
 {
     "name": "foxws/livewire-use",
-    "description": "Collection of essential Livewire",
+    "description": "Collection of essential Livewire utilities",
     "keywords": [
         "foxws",
         "laravel",
+        "livewire",
         "livewire-use"
     ],
     "homepage": "https://github.com/foxws/livewire-use",
