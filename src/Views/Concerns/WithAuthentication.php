@@ -16,7 +16,7 @@ trait WithAuthentication
         return auth()->user();
     }
 
-    protected function getAuthId(): ?string
+    protected function getAuthId(): int|string|null
     {
         return auth()->id();
     }
