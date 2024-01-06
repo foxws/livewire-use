@@ -39,7 +39,6 @@ abstract class Form extends BaseForm
         rescue(
             fn () => $this->validate(),
             fn () => $this->reset(),
-            report: false
         );
     }
 
