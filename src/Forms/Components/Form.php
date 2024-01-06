@@ -24,6 +24,8 @@ abstract class Form extends BaseForm
         $this->callHook('afterValidate');
 
         $this->store();
+
+        $this->callHook('afterSubmit');
     }
 
     public function check(): void
