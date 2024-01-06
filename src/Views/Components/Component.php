@@ -13,11 +13,14 @@ abstract class Component extends \Illuminate\View\Component
 
     public function render(): View
     {
-        $name = str(static::$view)
+        return view($this->getView());
+    }
+
+    protected function getView(): string
+    {
+        return str(static::$view)
             ->kebab()
             ->prepend(config('livewire-use.views_prefix'))
             ->value();
-
-        return view($name);
     }
 }
