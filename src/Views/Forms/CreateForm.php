@@ -6,6 +6,8 @@ abstract class CreateForm extends Form
 {
     public function submit(): void
     {
+        $this->canCreate($this->modelClass);
+
         parent::submit();
 
         $this->callHook('beforeHandle');
@@ -13,11 +15,6 @@ abstract class CreateForm extends Form
         $this->handle();
 
         $this->callHook('afterHandle');
-    }
-
-    protected function beforeValidate(): void
-    {
-        $this->canCreate($this->modelClass);
     }
 
     protected function set(string $class): void

@@ -8,6 +8,8 @@ class UpdateForm extends Form
 {
     public function submit(): void
     {
+        $this->canUpdate($this->model);
+
         parent::submit();
 
         $this->callHook('beforeHandle');
@@ -19,16 +21,9 @@ class UpdateForm extends Form
 
     public function delete(): void
     {
-        throw_if(! $this->model);
-
         $this->canDelete($this->model);
 
         $this->model->delete();
-    }
-
-    protected function beforeValidate(): void
-    {
-        $this->canUpdate($this->model);
     }
 
     protected function set(Model $model): void
