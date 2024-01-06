@@ -50,6 +50,11 @@ abstract class Form extends BaseForm
 
     public function get(string $name, mixed $default = null): mixed
     {
-        return $this->getPropertyValue($name) ?? $default;
+        return $this->getPropertyValue($name) ?: $default;
+    }
+
+    public function filled(string $name): bool
+    {
+        return filled($this->get($name));
     }
 }
