@@ -14,7 +14,5 @@ abstract class Form extends BaseForm
     #[Locked]
     public ?string $modelClass = null;
 
-    abstract public function submit(): void;
-
     abstract protected function handle(): void;
 }

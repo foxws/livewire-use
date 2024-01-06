@@ -8,26 +8,27 @@ class UpdateForm extends Form
 {
     public function submit(): void
     {
-        if (! $this->model) {
-            return;
-        }
+        parent::submit();
 
-        $this->canUpdate($this->model);
-
-        $this->validate();
+        $this->callHook('beforeHandle');
 
         $this->handle();
+
+        $this->callHook('afterHandle');
     }
 
     public function delete(): void
     {
-        if (! $this->model) {
-            return;
-        }
+        throw_if(! $this->model);
 
         $this->canDelete($this->model);
 
         $this->model->delete();
+    }
+
+    protected function beforeValidate(): void
+    {
+        $this->canUpdate($this->model);
     }
 
     protected function set(Model $model): void
