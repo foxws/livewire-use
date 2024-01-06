@@ -20,4 +20,9 @@ trait WithAuthentication
     {
         return auth()->id();
     }
+
+    protected function getAuthKey(): int|string|null
+    {
+        return $this->getAuthUser()?->getRouteKey();
+    }
 }
