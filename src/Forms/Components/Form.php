@@ -4,18 +4,24 @@ namespace Foxws\LivewireUse\Forms\Components;
 
 use Foxws\LivewireUse\Forms\Concerns\WithSession;
 use Foxws\LivewireUse\Views\Concerns\WithAuthorization;
+use Foxws\LivewireUse\Views\Concerns\WithHooks;
 use Livewire\Form as BaseForm;
 
 abstract class Form extends BaseForm
 {
     use WithAuthorization;
+    use WithHooks;
     use WithSession;
 
     protected static bool $recoverable = false;
 
     public function submit(): void
     {
+        $this->callHook('beforeValidate');
+
         $this->check();
+
+        $this->callHook('afterValidate');
 
         $this->store();
     }
