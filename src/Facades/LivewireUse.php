@@ -3,6 +3,7 @@
 namespace Foxws\LivewireUse\Facades;
 
 use Foxws\LivewireUse\Auth\Controllers\LoginController;
+use Foxws\LivewireUse\Auth\Controllers\LogoutController;
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,7 @@ class LivewireUse extends Facade
     {
         Route::name('auth.')->group(function () {
             Route::get('/login', LoginController::class)->name('login');
+            Route::get('/logout', LogoutController::class)->name('logout');
         });
     }
 }

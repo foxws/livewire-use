@@ -23,6 +23,6 @@ trait WithAuthentication
 
     protected static function getAuthKey(): int|string|null
     {
-        return $this->getAuthUser()?->getRouteKey();
+        return static::getAuthUser()?->getRouteKey();
     }
 }
