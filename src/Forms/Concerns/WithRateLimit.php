@@ -3,6 +3,7 @@
 namespace Foxws\LivewireUse\Forms\Concerns;
 
 use Foxws\LivewireUse\Exceptions\TooManyRequestsException;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\RateLimiter;
 
 trait WithRateLimit
@@ -10,8 +11,6 @@ trait WithRateLimit
     protected static int $maxAttempts = 0;
 
     protected static int $decaySeconds = 60;
-
-    protected static string $throttledModel = 'throttled';
 
     protected function rateLimit(): void
     {
@@ -39,6 +38,13 @@ trait WithRateLimit
     protected function clearRateLimiter(): void
     {
         RateLimiter::clear(static::getRateLimitKey());
+    }
+
+    protected function getRateLimitModel(): string
+    {
+        $fields = array_keys($this->all());
+
+        return $fields[0] ?? 'throttled';
     }
 
     protected static function getRateLimitKey(): string

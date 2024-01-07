@@ -35,9 +35,11 @@ abstract class Form extends BaseForm
 
             $this->callHook('afterHandle');
         } catch (TooManyRequestsException $e) {
-            $this->resetErrorBag(static::$throttledModel);
+            $field = $this->getRateLimitModel();
 
-            $this->addError(static::$throttledModel, __('Please retry in :seconds seconds', [
+            $this->resetErrorBag($field);
+
+            $this->addError($field, __('Please retry in :seconds seconds', [
                 'seconds' => $e->secondsUntilAvailable ?? 0
             ]));
         }
