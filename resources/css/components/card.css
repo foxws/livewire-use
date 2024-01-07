@@ -1,0 +1,5 @@
+@layer components {
+    .card {
+        @apply w-full bg-white px-6 py-12 shadow-sm sm:max-w-lg sm:rounded-xl sm:px-12 dark:bg-gray-900;
+    }
+}

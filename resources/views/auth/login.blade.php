@@ -1,6 +1,6 @@
-<x-ui-container class="flex h-screen items-center justify-center">
+<x-ui-container class="flex flex-col gap-y-6 h-screen items-center justify-center">
     <x-ui-card>
-        <form wire:submit="submit">
+        <form class="form" wire:submit="submit">
             <x-forms-input
                 wire:model="form.email"
                 type="email"
@@ -16,7 +16,7 @@
                 required
             />
 
-            <x-ui-button type="submit">
+            <x-ui-button class="btn-primary" type="submit">
                 {{ __('Sign In') }}
             </x-ui-button>
         </form>

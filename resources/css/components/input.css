@@ -1,17 +1,9 @@
 @layer components {
-    .field {
-        @apply w-full;
-    }
-
-    .label {
-        @apply block;
-    }
-
     .input {
-        @apply w-full focus:border-transparent focus:ring-0;
+        @apply w-full rounded-lg py-1.5 focus:border-transparent focus:ring-0;
 
         &-group {
-            @apply flex flex-1 items-center;
+            @apply flex flex-1 items-center border-0 bg-transparent px-0;
         }
 
         &-prepend {
