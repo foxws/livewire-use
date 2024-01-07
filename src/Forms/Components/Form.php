@@ -3,8 +3,8 @@
 namespace Foxws\LivewireUse\Forms\Components;
 
 use Foxws\LivewireUse\Exceptions\TooManyRequestsException;
-use Foxws\LivewireUse\Forms\Concerns\WithRateLimit;
 use Foxws\LivewireUse\Forms\Concerns\WithSession;
+use Foxws\LivewireUse\Forms\Concerns\WithThrottle;
 use Foxws\LivewireUse\Forms\Concerns\WithValidation;
 use Foxws\LivewireUse\Views\Concerns\WithAuthorization;
 use Foxws\LivewireUse\Views\Concerns\WithHooks;
@@ -14,8 +14,8 @@ abstract class Form extends BaseForm
 {
     use WithAuthorization;
     use WithHooks;
-    use WithRateLimit;
     use WithSession;
+    use WithThrottle;
     use WithValidation;
 
     public function submit(): void
@@ -35,13 +35,7 @@ abstract class Form extends BaseForm
 
             $this->callHook('afterHandle');
         } catch (TooManyRequestsException $e) {
-            $field = $this->getRateLimitModel();
-
-            $this->resetErrorBag($field);
-
-            $this->addError($field, __('Please retry in :seconds seconds', [
-                'seconds' => $e->secondsUntilAvailable ?? 0
-            ]));
+            $this->handleThrottle($e);
         }
     }
 
