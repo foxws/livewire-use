@@ -18,7 +18,5 @@ class LoginController extends Page
         if (static::isAuthenticated()) {
             redirect()->intended();
         }
-
-        // $this->form->fill();
     }
 }
