@@ -16,7 +16,7 @@ trait WithThrottle
         $this->resetErrorBag($field);
 
         $this->addError($field, __('Please retry in :seconds seconds', [
-            'seconds' => $e->secondsUntilAvailable ?? 0
+            'seconds' => $e->secondsUntilAvailable ?? 0,
         ]));
     }
 
