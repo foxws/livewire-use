@@ -14,6 +14,7 @@ class LoginController extends Page
     public function mount(): void
     {
         $this->seo()->setTitle(__('Login'));
+        $this->seo()->setDescription(__('Account Login'));
 
         if (static::isAuthenticated()) {
             redirect()->intended();
