@@ -8,7 +8,7 @@ trait WithView
 {
     protected static string $view;
 
-    protected static ?array $viewData = null;
+    protected static array $viewData = [];
 
     public function render(): View
     {
@@ -28,6 +28,6 @@ trait WithView
 
     protected static function getViewData(): array
     {
-        return static::$viewData ?? [];
+        return static::$viewData;
     }
 }
