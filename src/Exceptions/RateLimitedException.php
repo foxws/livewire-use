@@ -6,7 +6,7 @@ use Exception;
 
 class RateLimitedException extends Exception
 {
-    public $minutesUntilAvailable;
+    public int $minutesUntilAvailable = 0;
 
     public function __construct(
         public string $ip,
