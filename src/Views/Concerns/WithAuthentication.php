@@ -6,22 +6,22 @@ use Illuminate\Foundation\Auth\User;
 
 trait WithAuthentication
 {
-    protected function isAuthenticated(): bool
+    protected static function isAuthenticated(): bool
     {
         return auth()->check();
     }
 
-    protected function getAuthUser(): ?User
+    protected static function getAuthUser(): ?User
     {
         return auth()->user();
     }
 
-    protected function getAuthId(): int|string|null
+    protected static function getAuthId(): int|string|null
     {
         return auth()->id();
     }
 
-    protected function getAuthKey(): int|string|null
+    protected static function getAuthKey(): int|string|null
     {
         return $this->getAuthUser()?->getRouteKey();
     }

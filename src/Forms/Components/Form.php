@@ -3,17 +3,19 @@
 namespace Foxws\LivewireUse\Forms\Components;
 
 use Foxws\LivewireUse\Forms\Concerns\WithSession;
+use Foxws\LivewireUse\Forms\Concerns\WithValidation;
 use Foxws\LivewireUse\Views\Concerns\WithAuthorization;
 use Foxws\LivewireUse\Views\Concerns\WithHooks;
+use Foxws\LivewireUse\Views\Concerns\WithRateLimit;
 use Livewire\Form as BaseForm;
 
 abstract class Form extends BaseForm
 {
     use WithAuthorization;
     use WithHooks;
+    use WithRateLimit;
     use WithSession;
-
-    protected static bool $recoverable = false;
+    use WithValidation;
 
     public function submit(): void
     {
@@ -25,21 +27,9 @@ abstract class Form extends BaseForm
 
         $this->store();
 
-        $this->callHook('afterSubmit');
-    }
+        $this->handle();
 
-    public function check(): void
-    {
-        if (! static::$recoverable) {
-            $this->validate();
-
-            return;
-        }
-
-        rescue(
-            fn () => $this->validate(),
-            fn () => $this->reset(),
-        );
+        $this->callHook('afterHandle');
     }
 
     public function has(string $name): bool
@@ -55,5 +45,10 @@ abstract class Form extends BaseForm
     public function filled(string $name): bool
     {
         return filled($this->get($name));
+    }
+
+    protected function handle(): mixed
+    {
+        //
     }
 }
