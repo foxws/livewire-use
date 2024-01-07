@@ -1,4 +1,4 @@
-<x-ui-container class="h-screen flex items-center justify-center">
+<x-ui-container class="flex h-screen items-center justify-center">
     <x-ui-card>
         <form wire:submit="submit">
             <x-forms-input
