@@ -3,7 +3,6 @@
 namespace Foxws\LivewireUse\Views\Components;
 
 use Foxws\LivewireUse\Views\Concerns;
-use Illuminate\View\View;
 use Livewire\Component;
 
 abstract class Page extends Component
@@ -13,6 +12,5 @@ abstract class Page extends Component
     use Concerns\WithHooks;
     use Concerns\WithSeo;
     use Concerns\WithStates;
-
-    abstract public function render(): View;
+    use Concerns\WithView;
 }
