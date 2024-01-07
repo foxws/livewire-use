@@ -2,12 +2,12 @@
 
 namespace Foxws\LivewireUse\Views\Components;
 
-use Foxws\LivewireUse\Views\Concerns\WithHash;
+use Foxws\LivewireUse\Views\Concerns;
 use Illuminate\View\View;
 
 abstract class Component extends \Illuminate\View\Component
 {
-    use WithHash;
+    use Concerns\WithHash;
 
     protected static string $view;
 
