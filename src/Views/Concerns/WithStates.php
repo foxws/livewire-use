@@ -6,7 +6,7 @@ use Foxws\LivewireUse\Support\Livewire\StateObjects\State;
 
 trait WithStates
 {
-    public function getStateObjects(): array
+    protected function getStateObjects(): array
     {
         $states = [];
 
