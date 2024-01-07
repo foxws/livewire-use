@@ -17,7 +17,7 @@
             />
 
             <x-ui-button type="submit">
-                {{ __('Login') }}
+                {{ __('Sign In') }}
             </x-ui-button>
         </form>
     </x-ui-card>
