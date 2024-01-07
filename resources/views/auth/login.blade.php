@@ -1,16 +1,16 @@
 <x-ui-container class="h-screen flex items-center justify-center">
     <x-ui-card>
         <form wire:submit="submit">
-            <x-form-input
+            <x-forms-input
                 type="email"
                 label="{{ __('Email') }}"
-                wire:model="email"
+                wire:model="form.email"
             />
 
-            <x-form-input
-                type="email"
-                label="{{ __('Email') }}"
-                wire:model="email"
+            <x-forms-input
+                type="password"
+                label="{{ __('Password') }}"
+                wire:model="form.password"
             />
 
             <x-ui-button type="submit">

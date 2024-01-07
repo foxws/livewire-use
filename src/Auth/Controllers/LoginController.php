@@ -1,10 +1,12 @@
 <?php
 
-namespace Foxws\LivewireUse\Controllers;
+namespace Foxws\LivewireUse\Auth\Controllers;
 
 use Foxws\LivewireUse\Auth\Forms\LoginForm;
 use Foxws\LivewireUse\Views\Components\Page;
+use Livewire\Attributes\Layout;
 
+#[Layout('components.layouts.auth')]
 class LoginController extends Page
 {
     protected static string $view = 'auth.login';
@@ -21,7 +23,7 @@ class LoginController extends Page
         }
     }
 
-    public function submit(): mixed
+    public function submit(): void
     {
         $this->form->submit();
     }

@@ -1,9 +1,9 @@
 <div
     wire:key="{{ $hash() }}"
-    class="w-full"
+    class="field"
 >
     @if ($label)
-        <x-forms-label
+        <label
             for="{{ $id() }}"
             :$label
         />

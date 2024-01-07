@@ -1,10 +1,14 @@
 @layer components {
+    .field {
+        @apply w-full;
+    }
+
     .label {
         @apply block;
     }
 
     .input {
-        @apply w-full border-0 border-opacity-0 bg-transparent focus:border-transparent focus:ring-0;
+        @apply w-full focus:border-transparent focus:ring-0;
 
         &-group {
             @apply flex flex-1 items-center;
@@ -16,6 +20,10 @@
 
         &-append {
             @apply rounded-r-none;
+        }
+
+        &-ghost {
+            @apply border-0 border-opacity-0 bg-transparent;
         }
     }
 
