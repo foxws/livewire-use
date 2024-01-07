@@ -1,6 +1,6 @@
 <?php
 
-namespace Foxws\LivewireUse\Support\StateObjects;
+namespace Foxws\LivewireUse\Support\Livewire\StateObjects;
 
 use Foxws\LivewireUse\Views\Concerns\WithAuthorization;
 use Illuminate\Contracts\Support\Arrayable;

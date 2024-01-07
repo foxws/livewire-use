@@ -1,6 +1,6 @@
 <?php
 
-namespace Foxws\LivewireUse\Support\StateObjects;
+namespace Foxws\LivewireUse\Support\Livewire\StateObjects;
 
 use Livewire\Drawer\Utils;
 use Livewire\Features\SupportAttributes\AttributeCollection;

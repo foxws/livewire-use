@@ -52,9 +52,9 @@ class LivewireUseServiceProvider extends PackageServiceProvider
     protected function registerFeatures(): static
     {
         foreach ([
-            \Foxws\LivewireUse\Support\EnumObjects\SupportEnumObjects::class,
-            \Foxws\LivewireUse\Support\ModelStateObjects\SupportModelStateObjects::class,
-            \Foxws\LivewireUse\Support\StateObjects\SupportStateObjects::class,
+            \Foxws\LivewireUse\Support\Livewire\EnumObjects\SupportEnumObjects::class,
+            \Foxws\LivewireUse\Support\Livewire\ModelStateObjects\SupportModelStateObjects::class,
+            \Foxws\LivewireUse\Support\Livewire\StateObjects\SupportStateObjects::class,
         ] as $feature) {
             app('livewire')->componentHook($feature);
         }

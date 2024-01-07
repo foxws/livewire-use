@@ -1,6 +1,8 @@
 <?php
 
-namespace Foxws\LivewireUse\Support\StateObjects;
+namespace Foxws\LivewireUse\Views\Concerns;
+
+use Foxws\LivewireUse\Support\Livewire\StateObjects\State;
 
 trait WithStates
 {

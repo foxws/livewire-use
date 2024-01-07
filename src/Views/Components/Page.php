@@ -2,11 +2,11 @@
 
 namespace Foxws\LivewireUse\Views\Components;
 
-use Foxws\LivewireUse\Support\StateObjects\WithStates;
 use Foxws\LivewireUse\Views\Concerns\WithAuthentication;
 use Foxws\LivewireUse\Views\Concerns\WithAuthorization;
 use Foxws\LivewireUse\Views\Concerns\WithHooks;
 use Foxws\LivewireUse\Views\Concerns\WithSeo;
+use Foxws\LivewireUse\Views\Concerns\WithStates;
 use Illuminate\View\View;
 use Livewire\Component;
 
