@@ -3,7 +3,8 @@
     class="field"
 >
     @if ($label)
-        <label
+        <x-forms-label
+            {{ $attributes->only('required') }}
             for="{{ $id() }}"
             :$label
         />

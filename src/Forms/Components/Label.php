@@ -3,7 +3,6 @@
 namespace Foxws\LivewireUse\Forms\Components;
 
 use Illuminate\Contracts\Support\Htmlable;
-use Illuminate\View\View;
 
 class Label extends Field
 {
@@ -11,12 +10,8 @@ class Label extends Field
 
     public function __construct(
         public string|Htmlable|null $label = null,
+        public bool $required = false,
         public bool $inline = false,
     ) {
-    }
-
-    public function render(): View
-    {
-        return view(static::$view);
     }
 }

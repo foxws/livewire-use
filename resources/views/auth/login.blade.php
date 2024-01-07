@@ -2,15 +2,17 @@
     <x-ui-card>
         <form wire:submit="submit">
             <x-forms-input
+                wire:model="form.email"
                 type="email"
                 label="{{ __('Email') }}"
-                wire:model="form.email"
+                required
             />
 
             <x-forms-input
+                wire:model="form.password"
                 type="password"
                 label="{{ __('Password') }}"
-                wire:model="form.password"
+                required
             />
 
             <x-ui-button type="submit">
