@@ -2,7 +2,10 @@
 
 namespace Foxws\LivewireUse\Forms\Components;
 
+use Foxws\LivewireUse\Exceptions\RateLimitedException;
 use Foxws\LivewireUse\Forms\Concerns\WithSession;
+use Foxws\LivewireUse\Forms\Concerns\WithThrottle;
+use Foxws\LivewireUse\Forms\Concerns\WithValidation;
 use Foxws\LivewireUse\Views\Concerns\WithAuthorization;
 use Foxws\LivewireUse\Views\Concerns\WithHooks;
 use Livewire\Form as BaseForm;
@@ -12,35 +15,33 @@ abstract class Form extends BaseForm
     use WithAuthorization;
     use WithHooks;
     use WithSession;
-
-    protected static bool $recoverable = false;
+    use WithThrottle;
+    use WithValidation;
 
     public function submit(): void
     {
-        $this->callHook('beforeValidate');
+        try {
+            $this->rateLimit();
 
-        $this->check();
+            $this->callHook('beforeValidate');
 
-        $this->callHook('afterValidate');
+            $this->check();
 
-        $this->store();
+            $this->callHook('afterValidate');
 
-        $this->callHook('afterSubmit');
+            $this->store();
+
+            $this->handle();
+
+            $this->callHook('afterHandle');
+        } catch (RateLimitedException $e) {
+            $this->handleThrottle($e);
+        }
     }
 
-    public function check(): void
+    protected function handle()
     {
-        if (! static::$recoverable) {
-            $this->validate();
-
-            return;
-        }
-
-        rescue(
-            fn () => $this->validate(),
-            fn () => $this->reset(),
-            report: false
-        );
+        //
     }
 
     public function has(string $name): bool
@@ -50,6 +51,11 @@ abstract class Form extends BaseForm
 
     public function get(string $name, mixed $default = null): mixed
     {
-        return $this->getPropertyValue($name) ?? $default;
+        return $this->getPropertyValue($name) ?: $default;
+    }
+
+    public function filled(string $name): bool
+    {
+        return filled($this->get($name));
     }
 }

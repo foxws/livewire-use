@@ -4,9 +4,9 @@ namespace Foxws\LivewireUse\Forms\Components;
 
 use Illuminate\Contracts\Support\Htmlable;
 
-class TextInput extends Field
+class Input extends Field
 {
-    protected static string $view = 'forms.text-input';
+    protected static string $view = 'forms.input';
 
     public function __construct(
         public string|Htmlable|null $label = null,

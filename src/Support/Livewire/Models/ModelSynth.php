@@ -1,6 +1,6 @@
 <?php
 
-namespace Foxws\LivewireUse\Support\Models;
+namespace Foxws\LivewireUse\Support\Livewire\Models;
 
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Livewire\Features\SupportModels\ModelSynth as Synth;

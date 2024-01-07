@@ -5,12 +5,13 @@ namespace Foxws\LivewireUse\Ui\Components;
 use Foxws\LivewireUse\Views\Components\Component;
 use Illuminate\Contracts\Support\Htmlable;
 
-class Dropdown extends Component
+class Card extends Component
 {
-    protected static string $view = 'ui.dropdown';
+    protected static string $view = 'ui.card';
 
     public function __construct(
-        public string|Htmlable|null $content = null,
+        public string|Htmlable|null $title = null,
+        public string|Htmlable|null $actions = null,
     ) {
     }
 }

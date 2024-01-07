@@ -1,9 +1,10 @@
 <div
     wire:key="{{ $hash() }}"
-    class="w-full"
+    class="field"
 >
     @if ($label)
         <x-forms-label
+            {{ $attributes->only('required') }}
             for="{{ $id() }}"
             :$label
         />

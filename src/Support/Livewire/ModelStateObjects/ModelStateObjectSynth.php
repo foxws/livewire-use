@@ -1,6 +1,6 @@
 <?php
 
-namespace Foxws\LivewireUse\Support\ModelStateObjects;
+namespace Foxws\LivewireUse\Support\Livewire\ModelStateObjects;
 
 use Livewire\Mechanisms\HandleComponents\Synthesizers\Synth;
 use Spatie\ModelStates\State;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Foxws\LivewireUse\Support\EnumObjects;
+namespace Foxws\LivewireUse\Support\Livewire\EnumObjects;
 
 use Livewire\Mechanisms\HandleComponents\Synthesizers\Synth;
 use Spatie\Enum\Laravel\Enum;
