@@ -2,21 +2,17 @@
 
 namespace Foxws\LivewireUse\Views\Components;
 
-use Foxws\LivewireUse\Views\Concerns\WithAuthentication;
-use Foxws\LivewireUse\Views\Concerns\WithAuthorization;
-use Foxws\LivewireUse\Views\Concerns\WithHooks;
-use Foxws\LivewireUse\Views\Concerns\WithSeo;
-use Foxws\LivewireUse\Views\Concerns\WithStates;
+use Foxws\LivewireUse\Views\Concerns;
 use Illuminate\View\View;
 use Livewire\Component;
 
 abstract class Page extends Component
 {
-    use WithAuthentication;
-    use WithAuthorization;
-    use WithHooks;
-    use WithSeo;
-    use WithStates;
+    use Concerns\WithAuthentication;
+    use Concerns\WithAuthorization;
+    use Concerns\WithHooks;
+    use Concerns\WithSeo;
+    use Concerns\WithStates;
 
     abstract public function render(): View;
 }
