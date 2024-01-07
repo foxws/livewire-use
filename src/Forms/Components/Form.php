@@ -47,7 +47,7 @@ abstract class Form extends BaseForm
         return filled($this->get($name));
     }
 
-    protected function handle(): mixed
+    protected function handle()
     {
         //
     }

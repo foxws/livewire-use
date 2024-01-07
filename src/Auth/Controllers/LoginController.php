@@ -20,4 +20,9 @@ class LoginController extends Page
             redirect()->intended();
         }
     }
+
+    public function submit(): mixed
+    {
+        $this->form->submit();
+    }
 }
