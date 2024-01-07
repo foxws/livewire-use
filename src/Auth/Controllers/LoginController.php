@@ -15,12 +15,12 @@ class LoginController extends Page
 
     public function mount(): void
     {
+        $this->seo()->setTitle(__('Login'));
+        $this->seo()->setDescription(__('Login to Account'));
+
         if (static::isAuthenticated()) {
             redirect()->intended();
         }
-
-        $this->seo()->setTitle(__('Login'));
-        $this->seo()->setDescription(__('Login to Account'));
     }
 
     public function submit(): void
