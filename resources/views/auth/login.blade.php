@@ -6,6 +6,7 @@
                 type="email"
                 label="{{ __('Email') }}"
                 required
+                autofocus
             />
 
             <x-forms-input

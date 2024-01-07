@@ -2,11 +2,12 @@
 
 namespace Foxws\LivewireUse\Forms\Components;
 
+use Foxws\LivewireUse\Exceptions\TooManyRequestsException;
+use Foxws\LivewireUse\Forms\Concerns\WithRateLimit;
 use Foxws\LivewireUse\Forms\Concerns\WithSession;
 use Foxws\LivewireUse\Forms\Concerns\WithValidation;
 use Foxws\LivewireUse\Views\Concerns\WithAuthorization;
 use Foxws\LivewireUse\Views\Concerns\WithHooks;
-use Foxws\LivewireUse\Views\Concerns\WithRateLimit;
 use Livewire\Form as BaseForm;
 
 abstract class Form extends BaseForm
@@ -19,17 +20,32 @@ abstract class Form extends BaseForm
 
     public function submit(): void
     {
-        $this->callHook('beforeValidate');
+        try {
+            $this->rateLimit();
 
-        $this->check();
+            $this->callHook('beforeValidate');
 
-        $this->callHook('afterValidate');
+            $this->check();
 
-        $this->store();
+            $this->callHook('afterValidate');
 
-        $this->handle();
+            $this->store();
 
-        $this->callHook('afterHandle');
+            $this->handle();
+
+            $this->callHook('afterHandle');
+        } catch (TooManyRequestsException $e) {
+            $this->resetErrorBag(static::$throttledModel);
+
+            $this->addError(static::$throttledModel, __('Please retry in :seconds seconds', [
+                'seconds' => $e->secondsUntilAvailable ?? 0
+            ]));
+        }
+    }
+
+    protected function handle()
+    {
+        //
     }
 
     public function has(string $name): bool
@@ -45,10 +61,5 @@ abstract class Form extends BaseForm
     public function filled(string $name): bool
     {
         return filled($this->get($name));
-    }
-
-    protected function handle()
-    {
-        //
     }
 }

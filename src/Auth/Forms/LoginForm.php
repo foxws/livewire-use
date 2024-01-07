@@ -2,6 +2,7 @@
 
 namespace Foxws\LivewireUse\Auth\Forms;
 
+use Foxws\LivewireUse\Exceptions\TooManyRequestsException;
 use Foxws\LivewireUse\Forms\Components\Form;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Password;
@@ -9,6 +10,10 @@ use Livewire\Attributes\Validate;
 
 class LoginForm extends Form
 {
+    protected static int $maxAttempts = 5;
+
+    protected static string $throttleModel = 'email';
+
     #[Validate]
     public ?string $email = null;
 
