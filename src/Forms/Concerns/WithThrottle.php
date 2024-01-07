@@ -2,14 +2,14 @@
 
 namespace Foxws\LivewireUse\Forms\Concerns;
 
-use Foxws\LivewireUse\Exceptions\TooManyRequestsException;
+use Foxws\LivewireUse\Exceptions\RateLimitedException;
 use Foxws\LivewireUse\Views\Concerns\WithRateLimiting;
 
 trait WithThrottle
 {
     use WithRateLimiting;
 
-    protected function handleThrottle(TooManyRequestsException $e): void
+    protected function handleThrottle(RateLimitedException $e): void
     {
         $field = $this->getThrottleModel();
 

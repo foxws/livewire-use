@@ -2,7 +2,7 @@
 
 namespace Foxws\LivewireUse\Forms\Components;
 
-use Foxws\LivewireUse\Exceptions\TooManyRequestsException;
+use Foxws\LivewireUse\Exceptions\RateLimitedException;
 use Foxws\LivewireUse\Forms\Concerns\WithSession;
 use Foxws\LivewireUse\Forms\Concerns\WithThrottle;
 use Foxws\LivewireUse\Forms\Concerns\WithValidation;
@@ -34,7 +34,7 @@ abstract class Form extends BaseForm
             $this->handle();
 
             $this->callHook('afterHandle');
-        } catch (TooManyRequestsException $e) {
+        } catch (RateLimitedException $e) {
             $this->handleThrottle($e);
         }
     }

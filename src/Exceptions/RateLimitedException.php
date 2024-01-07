@@ -4,7 +4,7 @@ namespace Foxws\LivewireUse\Exceptions;
 
 use Exception;
 
-class TooManyRequestsException extends Exception
+class RateLimitedException extends Exception
 {
     public $minutesUntilAvailable;
 

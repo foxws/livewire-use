@@ -2,7 +2,7 @@
 
 namespace Foxws\LivewireUse\Views\Concerns;
 
-use Foxws\LivewireUse\Exceptions\TooManyRequestsException;
+use Foxws\LivewireUse\Exceptions\RateLimitedException;
 use Illuminate\Support\Facades\RateLimiter;
 
 trait WithRateLimiting
@@ -20,7 +20,7 @@ trait WithRateLimiting
         $key = $this->getRateLimitKey();
 
         if (RateLimiter::tooManyAttempts($key, static::$maxAttempts)) {
-            throw new TooManyRequestsException(
+            throw new RateLimitedException(
                 request()->ip(),
                 RateLimiter::availableIn($key)
             );
