@@ -1,0 +1,13 @@
+@layer components {
+    .form {
+        @apply flex flex-col gap-6;
+    }
+
+    .field {
+        @apply w-full;
+    }
+
+    .label {
+        @apply block w-full text-sm font-medium leading-6 text-gray-950 dark:text-white;
+    }
+}

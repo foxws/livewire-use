@@ -31,6 +31,8 @@ abstract class Form extends BaseForm
 
             $this->store();
 
+            $this->callHook('beforeHandle');
+
             $this->handle();
 
             $this->callHook('afterHandle');

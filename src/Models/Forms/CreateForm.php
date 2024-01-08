@@ -2,31 +2,29 @@
 
 namespace Foxws\LivewireUse\Models\Forms;
 
+use Foxws\LivewireUse\Forms\Components\Form;
+
 abstract class CreateForm extends Form
 {
+    protected ?string $model = null;
+
     public function submit(): void
     {
-        $this->canCreate($this->modelClass);
+        $this->canCreate($this->model);
 
         parent::submit();
-
-        $this->callHook('beforeHandle');
-
-        $this->handle();
-
-        $this->callHook('afterHandle');
     }
 
     protected function set(string $class): void
     {
         $this->canCreate($class);
 
-        $this->modelClass = $class;
+        $this->model = $class;
     }
 
     protected function handle(): void
     {
-        app(static::$modelClass)::create(
+        app(static::$model)::create(
             $this->all()
         );
     }

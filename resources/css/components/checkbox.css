@@ -1,0 +1,7 @@
+@layer components {
+    .checkbox {
+        &-group {
+            @apply flex flex-1 items-center gap-1.5;
+        }
+    }
+}

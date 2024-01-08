@@ -4,4 +4,5 @@ namespace Foxws\LivewireUse;
 
 class LivewireUse
 {
+    //
 }

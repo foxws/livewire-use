@@ -10,8 +10,8 @@ class Label extends Field
 
     public function __construct(
         public string|Htmlable|null $label = null,
-        public bool $required = false,
-        public bool $inline = false,
+        public bool|null $required = null,
+        public bool|null $inline = null,
     ) {
     }
 }

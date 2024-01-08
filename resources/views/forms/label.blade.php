@@ -1,7 +1,7 @@
-<label class="label">
+<label class="label" {{ $attributes }}>
     <span>{{ $label }}</span>
 
     @if ($required)
-        <span class="text-error">*</span>
+        <span class="text-primary-400">*</span>
     @endif
 </label>

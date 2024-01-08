@@ -23,5 +23,5 @@ return [
     |
     */
 
-    'views_prefix' => 'templates::',
+    'views_prefix' => 'app::',
 ];

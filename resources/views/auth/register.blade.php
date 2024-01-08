@@ -16,16 +16,18 @@
                 required
             />
 
-            <x-forms-checkbox
-                wire:model="form.remember"
-                label="{{ __('Remember me') }}"
+            <x-forms-input
+                wire:model="form.password_confirmation"
+                type="password"
+                label="{{ __('Confirm Password') }}"
+                required
             />
 
             <x-ui-button
                 class="btn-primary"
                 type="submit"
             >
-                {{ __('Sign In') }}
+                {{ __('Sign Up') }}
             </x-ui-button>
         </form>
     </x-ui-card>
