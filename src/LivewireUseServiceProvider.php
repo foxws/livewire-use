@@ -18,7 +18,7 @@ class LivewireUseServiceProvider extends PackageServiceProvider
         $package
             ->name('livewire-use')
             ->hasConfigFile()
-            ->hasViews('templates');
+            ->hasViews('app');
     }
 
     public function bootingPackage(): void
