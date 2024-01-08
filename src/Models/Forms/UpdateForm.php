@@ -6,7 +6,7 @@ use Foxws\LivewireUse\Forms\Components\Form;
 use Illuminate\Database\Eloquent\Model;
 use Livewire\Attributes\Locked;
 
-class UpdateForm extends Form
+abstract class UpdateForm extends Form
 {
     #[Locked]
     public ?Model $model = null;
