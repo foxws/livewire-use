@@ -16,7 +16,10 @@
                 required
             />
 
-            <x-ui-button class="btn-primary" type="submit">
+            <x-ui-button
+                class="btn-primary"
+                type="submit"
+            >
                 {{ __('Sign In') }}
             </x-ui-button>
         </form>
