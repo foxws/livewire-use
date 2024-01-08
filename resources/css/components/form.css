@@ -8,6 +8,6 @@
     }
 
     .label {
-        @apply block text-sm font-medium leading-6 text-gray-950 dark:text-white;
+        @apply block w-full text-sm font-medium leading-6 text-gray-950 dark:text-white;
     }
 }

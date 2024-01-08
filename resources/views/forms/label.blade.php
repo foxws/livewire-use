@@ -1,4 +1,4 @@
-<label class="label">
+<label class="label" {{ $attributes }}>
     <span>{{ $label }}</span>
 
     @if ($required)

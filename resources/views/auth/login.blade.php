@@ -16,6 +16,11 @@
                 required
             />
 
+            <x-forms-checkbox
+                wire:model="form.remember"
+                label="{{ __('Remember me') }}"
+            />
+
             <x-ui-button
                 class="btn-primary"
                 type="submit"
