@@ -17,10 +17,14 @@ class LoginForm extends Form
     #[Validate]
     public ?string $password = null;
 
+    #[Validate]
+    public ?bool $remember = null;
+
     public function rules(): array
     {
         return [
             'email' => 'required|email',
+            'remember' => 'nullable|boolean',
             'password' => [
                 'required',
                 Password::defaults(),
@@ -30,7 +34,7 @@ class LoginForm extends Form
 
     protected function handle()
     {
-        if (Auth::attempt($this->all())) {
+        if (Auth::attempt($this->only('email', 'password'), $this->remember)) {
             session()->regenerate();
 
             return redirect()->intended();
