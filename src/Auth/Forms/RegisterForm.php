@@ -23,7 +23,7 @@ class RegisterForm extends Form
     public function rules(): array
     {
         return [
-            'email' => 'required|email|unique:users,email',
+            'email' => 'required|email|unique:users',
             'password' => [
                 'required',
                 'confirmed',
