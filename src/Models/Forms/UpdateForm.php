@@ -16,12 +16,6 @@ class UpdateForm extends Form
         $this->canUpdate($this->model);
 
         parent::submit();
-
-        $this->callHook('beforeHandle');
-
-        $this->handle();
-
-        $this->callHook('afterHandle');
     }
 
     public function delete(): void

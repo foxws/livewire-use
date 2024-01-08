@@ -15,12 +15,6 @@ abstract class CreateForm extends Form
         $this->canCreate($this->model);
 
         parent::submit();
-
-        $this->callHook('beforeHandle');
-
-        $this->handle();
-
-        $this->callHook('afterHandle');
     }
 
     protected function set(string $class): void
