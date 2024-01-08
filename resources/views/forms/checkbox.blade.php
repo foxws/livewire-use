@@ -8,6 +8,14 @@
     ]) }}>
         {{ $prepend }}
 
+        @if ($label && $left)
+            <x-forms-label
+                {{ $attributes->only('required') }}
+                for="{{ $id() }}"
+                :$label
+            />
+        @endif
+
         <input
             {{ $attributes
                 ->merge([
@@ -23,7 +31,7 @@
             }}
         />
 
-        @if ($label)
+        @if ($label && ! $left)
             <x-forms-label
                 {{ $attributes->only('required') }}
                 for="{{ $id() }}"
