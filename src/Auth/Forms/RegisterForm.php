@@ -3,13 +3,16 @@
 namespace Foxws\LivewireUse\Auth\Forms;
 
 use Foxws\LivewireUse\Forms\Components\Form;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
 use Livewire\Attributes\Validate;
 
 class RegisterForm extends Form
 {
-    protected static int $maxAttempts = 5;
+    protected static int $maxAttempts = 3;
 
     #[Validate]
     public ?string $email = null;
@@ -18,7 +21,7 @@ class RegisterForm extends Form
     public ?string $password = null;
 
     #[Validate]
-    public ?string $passwordConfirmation = null;
+    public ?string $password_confirmation = null;
 
     public function rules(): array
     {
@@ -38,12 +41,23 @@ class RegisterForm extends Form
 
     protected function handle()
     {
-        if (Auth::attempt($this->all())) {
-            session()->regenerate();
+        $data = $this->only('email', 'password');
 
-            return redirect()->intended();
-        }
+        $data['password'] = Hash::make($data['password']);
 
-        $this->addError('email', __('These credentials do not match our records'));
+        $user = $this->getUserModel()::create($data);
+
+        request()->session()->regenerate();
+
+        auth()->login($user);
+
+        event(new Registered($user));
+
+        redirect()->to('/');
+    }
+
+    protected function getUserModel(): User
+    {
+        return app(config('auth.providers.users.model'));
     }
 }
