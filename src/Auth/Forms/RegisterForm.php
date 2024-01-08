@@ -5,7 +5,6 @@ namespace Foxws\LivewireUse\Auth\Forms;
 use Foxws\LivewireUse\Forms\Components\Form;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\User;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
 use Livewire\Attributes\Validate;
@@ -39,25 +38,35 @@ class RegisterForm extends Form
         ];
     }
 
-    protected function handle()
+    protected function handle(): void
     {
-        $data = $this->only('email', 'password');
-
-        $data['password'] = Hash::make($data['password']);
-
-        $user = $this->getUserModel()::create($data);
+        $user = $this->getUserModel()::create(
+            $this->getUserData()
+        );
 
         request()->session()->regenerate();
 
         auth()->login($user);
 
         event(new Registered($user));
+    }
 
-        redirect()->to('/');
+    protected function afterHandle(): mixed
+    {
+        return redirect()->to('/');
     }
 
     protected function getUserModel(): User
     {
         return app(config('auth.providers.users.model'));
+    }
+
+    protected function getUserData(): array
+    {
+        $data = $this->only('email', 'password');
+
+        $data['password'] = Hash::make($data['password']);
+
+        return $data;
     }
 }

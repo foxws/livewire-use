@@ -41,7 +41,7 @@ abstract class Form extends BaseForm
         }
     }
 
-    protected function handle()
+    protected function handle(): void
     {
         //
     }
