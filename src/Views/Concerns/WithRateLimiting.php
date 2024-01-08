@@ -42,7 +42,7 @@ trait WithRateLimiting
     protected static function getRateLimitKey(): string
     {
         return sha1(
-            implode('|', [get_called_class(), request()->ip()])
+            implode(':', [get_called_class(), request()->ip()])
         );
     }
 }

@@ -17,11 +17,19 @@ class RegisterForm extends Form
     #[Validate]
     public ?string $password = null;
 
+    #[Validate]
+    public ?string $passwordConfirmation = null;
+
     public function rules(): array
     {
         return [
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users,email',
             'password' => [
+                'required',
+                'confirmed',
+                Password::defaults(),
+            ],
+            'password_confirmation' => [
                 'required',
                 Password::defaults(),
             ],
