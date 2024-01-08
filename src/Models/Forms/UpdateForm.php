@@ -2,10 +2,15 @@
 
 namespace Foxws\LivewireUse\Models\Forms;
 
+use Foxws\LivewireUse\Forms\Components\Form;
 use Illuminate\Database\Eloquent\Model;
+use Livewire\Attributes\Locked;
 
 class UpdateForm extends Form
 {
+    #[Locked]
+    public ?Model $model = null;
+
     public function submit(): void
     {
         $this->canUpdate($this->model);
