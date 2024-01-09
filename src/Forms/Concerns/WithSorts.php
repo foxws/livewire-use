@@ -19,7 +19,7 @@ trait WithSorts
 
     public function isSort(?string $value = null): bool
     {
-        return $this->getSort() === $value;
+        return $this->getSort() == $value;
     }
 
     public function resetSort(): void
