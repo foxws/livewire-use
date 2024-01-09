@@ -7,7 +7,7 @@ use Livewire\Attributes\Validate;
 trait WithFeatures
 {
     #[Validate('nullable|array|max:5')]
-    public ?array $features = null;
+    public array $features = [];
 
     public function getFeatures(): array
     {

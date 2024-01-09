@@ -8,7 +8,7 @@ use Livewire\Attributes\Validate;
 trait WithTags
 {
     #[Validate('nullable|array|max:5')]
-    public ?array $tags = [];
+    public array $tags = [];
 
     public function getTags(): array
     {

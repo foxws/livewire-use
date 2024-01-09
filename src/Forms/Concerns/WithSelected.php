@@ -7,7 +7,7 @@ use Livewire\Attributes\Validate;
 trait WithSelected
 {
     #[Validate('nullable|array|max:50')]
-    public ?array $selected = null;
+    public array $selected = [];
 
     public function getSelected(): array
     {
