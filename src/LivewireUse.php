@@ -25,7 +25,11 @@ class LivewireUse
         });
     }
 
-    public static function registerComponents(string $path, ?string $prefix = null): void
+    public static function registerComponents(
+        string $path,
+        string $namespace = 'App\\',
+        ?string $prefix = null
+    ): void
     {
         $components = ComponentScout::create()
             ->path($path)
@@ -33,14 +37,18 @@ class LivewireUse
             ->get();
 
         collect($components)
-            ->each(function (DiscoveredClass $class) {
-                $name = static::componentName($class);
+            ->each(function (DiscoveredClass $class) use ($namespace) {
+                $name = static::componentName($class, $namespace);
 
                 Blade::component($class->getFcqn(), $name->value());
             });
     }
 
-    public static function registerLivewireComponents(string $path, ?string $prefix = null): void
+    public static function registerLivewireComponents(
+        string $path,
+        string $namespace = 'App\\',
+        ?string $prefix = null
+    ): void
     {
         $components = LivewireScout::create()
             ->path($path)
@@ -48,26 +56,26 @@ class LivewireUse
             ->get();
 
         collect($components)
-            ->each(function (DiscoveredClass $class) {
-                $name = static::componentName($class);
+            ->each(function (DiscoveredClass $class) use ($namespace) {
+                $name = static::componentName($class, $namespace);
 
                 Livewire::component($name->value(), $class->getFcqn());
             });
     }
 
-    public static function componentPrefix(DiscoveredClass $class, string $app = 'App\\'): Stringable
-    {
-        return str($class->namespace)
-            ->after($app)
-            ->match('/(.*)\\\\/')
-            ->kebab()
-            ->finish('-');
-    }
-
-    public static function componentName(DiscoveredClass $class): Stringable
+    public static function componentName(DiscoveredClass $class, string $namespace): Stringable
     {
         return str($class->name)
             ->kebab()
-            ->prepend(static::componentPrefix($class));
+            ->prepend(static::componentPrefix($class, $namespace));
+    }
+
+    public static function componentPrefix(DiscoveredClass $class, string $namespace): Stringable
+    {
+        return str($class->namespace)
+            ->after($namespace)
+            ->match('/(.*)\\\\/')
+            ->kebab()
+            ->finish('-');
     }
 }
