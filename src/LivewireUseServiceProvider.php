@@ -2,14 +2,8 @@
 
 namespace Foxws\LivewireUse;
 
-use Foxws\LivewireUse\Support\Discover\ComponentScout;
-use Foxws\LivewireUse\Support\Discover\LivewireScout;
-use Illuminate\Support\Facades\Blade;
-use Illuminate\Support\Stringable;
-use Livewire\Livewire;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Spatie\StructureDiscoverer\Data\DiscoveredClass;
 
 class LivewireUseServiceProvider extends PackageServiceProvider
 {
@@ -24,32 +18,9 @@ class LivewireUseServiceProvider extends PackageServiceProvider
     public function bootingPackage(): void
     {
         $this
-            ->registerComponents()
             ->registerFeatures()
+            ->registerComponents()
             ->registerLivewire();
-    }
-
-    protected function registerComponents(): static
-    {
-        if (config('livewire-use.components_enabled') === false) {
-            return $this;
-        }
-
-        $components = ComponentScout::create()
-            ->path(__DIR__)
-            ->prefix('lw-use-blade')
-            ->get();
-
-        collect($components)
-            ->each(function (DiscoveredClass $class) {
-                $name = str($class->name)
-                    ->kebab()
-                    ->prepend(static::getComponentPrefix($class));
-
-                Blade::component($class->getFcqn(), $name->value());
-            });
-
-        return $this;
     }
 
     protected function registerFeatures(): static
@@ -65,32 +36,30 @@ class LivewireUseServiceProvider extends PackageServiceProvider
         return $this;
     }
 
-    protected function registerLivewire(): static
+
+    protected function registerComponents(): static
     {
-        $components = LivewireScout::create()
-            ->path(__DIR__)
-            ->prefix('lw-use-livewire')
-            ->get();
+        if (config('livewire-use.components_enabled') === false) {
+            return $this;
+        }
 
-        collect($components)
-            ->each(function (DiscoveredClass $class) {
-                $name = str($class->name)
-                    ->kebab()
-                    ->prepend(static::getComponentPrefix($class));
-
-                Livewire::component($name->value(), $class->getFcqn());
-            });
+        LivewireUse::registerComponents(
+            path: __DIR__,
+            namespace: 'Foxws\\LivewireUse\\',
+            prefix: 'lw-components'
+        );
 
         return $this;
     }
 
-    protected static function getComponentPrefix(DiscoveredClass $class): Stringable
+    protected function registerLivewire(): static
     {
-        return str($class->namespace)
-            ->after('Foxws\\LivewireUse\\')
-            ->match('/(.*)\\\\/')
-            ->kebab()
-            ->prepend(config('livewire-use.components_prefix'))
-            ->finish('-');
+        LivewireUse::registerLivewireComponents(
+            path: __DIR__,
+            namespace: 'Foxws\\LivewireUse\\',
+            prefix: 'lw-livewire'
+        );
+
+        return $this;
     }
 }

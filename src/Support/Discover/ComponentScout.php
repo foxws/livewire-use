@@ -2,9 +2,11 @@
 
 namespace Foxws\LivewireUse\Support\Discover;
 
+use Illuminate\Support\Stringable;
 use Illuminate\View\Component;
 use Spatie\StructureDiscoverer\Cache\DiscoverCacheDriver;
 use Spatie\StructureDiscoverer\Cache\LaravelDiscoverCacheDriver;
+use Spatie\StructureDiscoverer\Data\DiscoveredClass;
 use Spatie\StructureDiscoverer\Discover;
 use Spatie\StructureDiscoverer\StructureScout;
 
@@ -28,16 +30,17 @@ class ComponentScout extends StructureScout
         );
     }
 
-    public function path(string $path): static
-    {
-        $this->path = $path;
-
-        return $this;
-    }
 
     public function prefix(string $prefix): static
     {
         $this->prefix = $prefix;
+
+        return $this;
+    }
+
+    public function path(string $path): static
+    {
+        $this->path = $path;
 
         return $this;
     }

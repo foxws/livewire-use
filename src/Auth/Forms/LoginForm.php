@@ -32,14 +32,19 @@ class LoginForm extends Form
         ];
     }
 
-    protected function handle()
+    protected function handle(): void
     {
-        if (Auth::attempt($this->only('email', 'password'), $this->remember)) {
-            session()->regenerate();
+        if (! Auth::attempt($this->only('email', 'password'), $this->remember)) {
+            $this->addError('email', __('These credentials do not match our records'));
 
-            return redirect()->intended();
+            return;
         }
 
-        $this->addError('email', __('These credentials do not match our records'));
+        session()->regenerate();
+    }
+
+    protected function afterHandle(): mixed
+    {
+        return redirect()->intended();
     }
 }
