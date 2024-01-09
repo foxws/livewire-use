@@ -18,10 +18,8 @@ trait WithSession
             return;
         }
 
-        $this->fill($this->getStore());
-
         rescue(
-            fn () => $this->validate(),
+            fn () => $this->fill($this->getStore()) && $this->validate(),
             fn () => $this->resetStore(),
             report: false
         );

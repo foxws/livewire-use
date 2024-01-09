@@ -7,10 +7,10 @@ use Livewire\Attributes\Validate;
 trait WithSorts
 {
     #[Validate('nullable|string|max:255')]
-    public ?string $sort = null;
+    public string $sort = '';
 
     #[Validate('nullable|string|in:asc,desc')]
-    public ?string $direction = null;
+    public string $direction = '';
 
     public function getSort(): ?string
     {
