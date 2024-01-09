@@ -59,6 +59,18 @@ abstract class Form extends BaseForm
     public function filled(...$properties): bool
     {
         return collect($this->only($properties))
+            ->filter()
             ->isNotEmpty();
+    }
+
+    public function clear(bool $submit = true): void
+    {
+        $keys = array_keys($this->all());
+
+        $this->reset($keys);
+
+        if ($submit) {
+            $this->submit();
+        }
     }
 }

@@ -17,7 +17,7 @@
         }
 
         &-secondary {
-            @apply bg-transparent;
+            @apply bg-gray-700;
         }
 
         &-outline {
