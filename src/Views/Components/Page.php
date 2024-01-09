@@ -15,5 +15,5 @@ abstract class Page extends Component
     use Concerns\WithStates;
     use Concerns\WithView;
 
-    abstract public function view(): View;
+    abstract public function render(): View;
 }
