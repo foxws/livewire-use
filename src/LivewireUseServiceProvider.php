@@ -2,10 +2,8 @@
 
 namespace Foxws\LivewireUse;
 
-use Illuminate\Support\Stringable;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Spatie\StructureDiscoverer\Data\DiscoveredClass;
 
 class LivewireUseServiceProvider extends PackageServiceProvider
 {
