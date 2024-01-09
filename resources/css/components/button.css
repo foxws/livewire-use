@@ -1,6 +1,6 @@
 @layer components {
     .btn {
-        @apply inline-flex w-full shrink-0 cursor-pointer select-none flex-wrap items-center justify-center gap-1 border-transparent py-2.5 text-sm font-medium;
+        @apply inline-flex w-full shrink-0 cursor-pointer select-none flex-wrap items-center justify-center gap-1.5 border-transparent py-2.5 text-sm font-medium;
 
         &-disabled,
         &[disabled],
