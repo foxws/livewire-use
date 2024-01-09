@@ -24,8 +24,8 @@
             @apply border bg-transparent;
         }
 
-        &-sm {
-            @apply h-6 max-h-[1.5rem] text-sm;
+        &-ghost {
+            @apply bg-transparent;
         }
 
         &-rounded {
