@@ -44,13 +44,4 @@ class ComponentScout extends StructureScout
 
         return $this;
     }
-
-    public static function componentPrefix(DiscoveredClass $class, string $app = 'App\\'): Stringable
-    {
-        return str($class->namespace)
-            ->after($app)
-            ->match('/(.*)\\\\/')
-            ->kebab()
-            ->finish('-');
-    }
 }
