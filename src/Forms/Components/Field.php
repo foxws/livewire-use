@@ -10,9 +10,4 @@ abstract class Field extends Component
     {
         return $this->wireModel() ?? $this->hash();
     }
-
-    public function wireModel(): ?string
-    {
-        return $this->attributes->whereStartsWith('wire:model')->first();
-    }
 }
