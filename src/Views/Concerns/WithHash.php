@@ -13,9 +13,7 @@ trait WithHash
 
     public function classHash(): string
     {
-        $class = str_split(static::class);
-
-        $crc32 = sprintf('%u', crc32(serialize($class)));
+        $crc32 = sprintf('%u', crc32(serialize(static::class)));
 
         return base_convert($crc32, 10, 36);
     }
