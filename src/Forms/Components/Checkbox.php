@@ -13,7 +13,7 @@ class Checkbox extends Field
         public string|Htmlable|null $hint = null,
         public string|Htmlable|null $prepend = null,
         public string|Htmlable|null $append = null,
-        public bool|null $left = null,
+        public ?bool $left = null,
     ) {
     }
 }
