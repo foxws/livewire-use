@@ -8,10 +8,11 @@ use Laravel\Scout\Builder as ScoutBuilder;
 
 /**
  * @property string $model
- * @property ?int $limit
  */
 trait WithQueryBuilder
 {
+    protected static int $limit = 16;
+
     public function bootWithQueryBuilder(): void
     {
         throw_if(! is_subclass_of(static::$model, Model::class));
@@ -38,6 +39,6 @@ trait WithQueryBuilder
 
     protected function getLimit(): int
     {
-        return static::$limit ?? 16;
+        return static::$limit;
     }
 }
