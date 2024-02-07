@@ -2,11 +2,9 @@
 
 namespace Foxws\LivewireUse\Support\Discover;
 
-use Illuminate\Support\Stringable;
 use Illuminate\View\Component;
 use Spatie\StructureDiscoverer\Cache\DiscoverCacheDriver;
 use Spatie\StructureDiscoverer\Cache\LaravelDiscoverCacheDriver;
-use Spatie\StructureDiscoverer\Data\DiscoveredClass;
 use Spatie\StructureDiscoverer\Discover;
 use Spatie\StructureDiscoverer\StructureScout;
 
@@ -29,7 +27,6 @@ class ComponentScout extends StructureScout
             prefix: $this->prefix,
         );
     }
-
 
     public function prefix(string $prefix): static
     {

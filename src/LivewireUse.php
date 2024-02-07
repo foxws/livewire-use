@@ -13,7 +13,6 @@ use Illuminate\Support\Stringable;
 use Livewire\Livewire;
 use Spatie\StructureDiscoverer\Data\DiscoveredClass;
 
-
 class LivewireUse
 {
     public static function routes(): void
@@ -29,8 +28,7 @@ class LivewireUse
         string $path,
         string $namespace = 'App\\',
         ?string $prefix = null
-    ): void
-    {
+    ): void {
         $components = ComponentScout::create()
             ->path($path)
             ->prefix($prefix)
@@ -48,8 +46,7 @@ class LivewireUse
         string $path,
         string $namespace = 'App\\',
         ?string $prefix = null
-    ): void
-    {
+    ): void {
         $components = LivewireScout::create()
             ->path($path)
             ->prefix($prefix)

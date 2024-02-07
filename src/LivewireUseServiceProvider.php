@@ -36,7 +36,6 @@ class LivewireUseServiceProvider extends PackageServiceProvider
         return $this;
     }
 
-
     protected function registerComponents(): static
     {
         if (config('livewire-use.components_enabled') === false) {

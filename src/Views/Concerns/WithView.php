@@ -18,6 +18,11 @@ trait WithView
         );
     }
 
+    public function wireModel(): ?string
+    {
+        return $this->attributes->whereStartsWith('wire:model')->first();
+    }
+
     protected static function getView(): string
     {
         return str(static::$view)
