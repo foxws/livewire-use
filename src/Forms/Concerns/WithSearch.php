@@ -7,7 +7,7 @@ use Livewire\Attributes\Validate;
 
 trait WithSearch
 {
-    #[Validate('nullable|string|max:192')]
+    #[Validate('nullable|string|max:255')]
     public string $search = '';
 
     public function getSearch(): ?string

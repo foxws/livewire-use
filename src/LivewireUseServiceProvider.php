@@ -53,6 +53,10 @@ class LivewireUseServiceProvider extends PackageServiceProvider
 
     protected function registerLivewire(): static
     {
+        if (config('livewire-use.components_enabled') === false) {
+            return $this;
+        }
+
         LivewireUse::registerLivewireComponents(
             path: __DIR__,
             namespace: 'Foxws\\LivewireUse\\',

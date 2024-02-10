@@ -3,7 +3,7 @@
 namespace Foxws\LivewireUse\Forms\Concerns;
 
 use Foxws\LivewireUse\Exceptions\RateLimitedException;
-use Foxws\LivewireUse\Views\Concerns\WithRateLimiting;
+use Foxws\LivewireUse\Support\Concerns\WithRateLimiting;
 
 trait WithThrottle
 {

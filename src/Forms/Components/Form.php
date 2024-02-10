@@ -2,12 +2,12 @@
 
 namespace Foxws\LivewireUse\Forms\Components;
 
+use Foxws\LivewireUse\Auth\Concerns\WithAuthorization;
 use Foxws\LivewireUse\Exceptions\RateLimitedException;
 use Foxws\LivewireUse\Forms\Concerns\WithSession;
 use Foxws\LivewireUse\Forms\Concerns\WithThrottle;
 use Foxws\LivewireUse\Forms\Concerns\WithValidation;
-use Foxws\LivewireUse\Views\Concerns\WithAuthorization;
-use Foxws\LivewireUse\Views\Concerns\WithHooks;
+use Foxws\LivewireUse\Support\Concerns\WithHooks;
 use Livewire\Form as BaseForm;
 
 abstract class Form extends BaseForm

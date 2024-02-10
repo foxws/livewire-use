@@ -2,7 +2,7 @@
 
 namespace Foxws\LivewireUse\Support\Livewire\StateObjects;
 
-use Foxws\LivewireUse\Views\Concerns\WithAuthorization;
+use Foxws\LivewireUse\Auth\Concerns\WithAuthorization;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Database\Eloquent\Model;
 use Livewire\Component;
@@ -14,7 +14,7 @@ class State implements Arrayable
 
     public function __construct(
         protected Component $component,
-        protected $propertyName
+        protected $propertyName,
     ) {
     }
 

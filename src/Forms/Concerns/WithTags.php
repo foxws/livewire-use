@@ -15,9 +15,9 @@ trait WithTags
         return $this->get('tags', []);
     }
 
-    public function hasTags(...$item): bool
+    public function hasTags(...$items): bool
     {
-        return collect($item)
+        return collect($items)
             ->map(fn ($item) => $item instanceof Model
                 ? $item->getRouteKey()
                 : $item

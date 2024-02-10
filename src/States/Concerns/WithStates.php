@@ -1,6 +1,6 @@
 <?php
 
-namespace Foxws\LivewireUse\Views\Concerns;
+namespace Foxws\LivewireUse\States\Concerns;
 
 use Foxws\LivewireUse\Support\Livewire\StateObjects\State;
 

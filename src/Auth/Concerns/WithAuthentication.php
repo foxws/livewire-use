@@ -1,6 +1,6 @@
 <?php
 
-namespace Foxws\LivewireUse\Views\Concerns;
+namespace Foxws\LivewireUse\Auth\Concerns;
 
 use Illuminate\Foundation\Auth\User;
 
