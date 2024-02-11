@@ -6,15 +6,11 @@ trait WithHash
 {
     public function hash(): string
     {
-        $crc32 = sprintf('%u', crc32(serialize($this)));
-
-        return base_convert($crc32, 10, 36);
+        return hash('crc32c', serialize($this));
     }
 
     public function classHash(): string
     {
-        $crc32 = sprintf('%u', crc32(serialize(static::class)));
-
-        return base_convert($crc32, 10, 36);
+        return hash('crc32c', serialize(static::class));
     }
 }
