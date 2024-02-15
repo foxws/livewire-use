@@ -17,6 +17,7 @@ class ComponentScout extends StructureScout
     protected function definition(): Discover
     {
         return Discover::in($this->path)
+            ->parallel()
             ->extending(Component::class)
             ->full();
     }
