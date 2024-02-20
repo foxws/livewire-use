@@ -21,7 +21,6 @@
         class="dropdown-content"
 
     >
-    {{ $wireModel()}}
         {{ $slot }}
     </div>
 
