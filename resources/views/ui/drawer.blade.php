@@ -1,26 +1,25 @@
-<div
+<aside
     wire:key="{{ $hash() }}"
     x-data="{ open: false }"
-    x-ref="dropdown"
+    x-ref="drawer"
     x-on:click="open = ! open"
     x-on:click.outside="open = false"
     x-trap.inert.noscroll="open"
     @keyup.escape.window="open = false"
-    {{ $attributes
-        ->class([
-            'dropdown',
-            'dropdown-end' => $right,
+    {{ $attributes->class([
+            'drawer',
+            'drawer-end' => $right,
         ])
     }}
 >
     <div
         x-cloak
         x-show="open"
-        class="dropdown-content"
-
+        class="drawer-content"
     >
         {{ $slot }}
     </div>
 
-    {{ $actions }}
-</div>
+
+    <x-ui.actions :$actions />
+</aside>

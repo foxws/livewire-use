@@ -1,3 +1,3 @@
 <div>
-    {{-- nothing will be displayed here --}}
+    {{-- redirecting --}}
 </div>

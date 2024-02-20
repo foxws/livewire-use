@@ -18,21 +18,21 @@ trait WithView
         );
     }
 
-    public function wireModel(): ?string
-    {
-        return $this->attributes->whereStartsWith('wire:model')->first();
-    }
-
     protected static function getView(): string
     {
         return str(static::$view)
             ->kebab()
-            ->prepend(config('livewire-use.views_prefix'))
+            ->prepend(static::getViewPrefix())
             ->value();
     }
 
     protected static function getViewData(): array
     {
         return static::$viewData;
+    }
+
+    protected static function getViewPrefix(): ?string
+    {
+        return config('livewire-use.views_prefix');
     }
 }

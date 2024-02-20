@@ -11,7 +11,6 @@ class Card extends Component
 
     public function __construct(
         public string|Htmlable|null $title = null,
-        public string|Htmlable|null $actions = null,
     ) {
     }
 }
