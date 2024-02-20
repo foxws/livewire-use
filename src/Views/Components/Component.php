@@ -9,6 +9,5 @@ abstract class Component extends \Illuminate\View\Component
     use Concerns\WithActions;
     use Concerns\WithHash;
     use Concerns\WithId;
-    use Concerns\WithSlots;
     use Concerns\WithView;
 }
