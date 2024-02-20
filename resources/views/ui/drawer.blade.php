@@ -1,12 +1,15 @@
 <aside
     wire:key="{{ $hash() }}"
-    x-data="{ open: false }"
+    x-data="{
+        open: @if ($wireModel()) @entangle($wireModel()) @else false @endif,
+    }"
     x-ref="drawer"
     x-on:click="open = ! open"
     x-on:click.outside="open = false"
     x-trap.inert.noscroll="open"
     @keyup.escape.window="open = false"
-    {{ $attributes->class([
+    {{ $attributes
+        ->class([
             'drawer',
             'drawer-end' => $right,
         ])
@@ -20,6 +23,5 @@
         {{ $slot }}
     </div>
 
-
-    <x-ui.actions :$actions />
+    {{ $actions }}
 </aside>

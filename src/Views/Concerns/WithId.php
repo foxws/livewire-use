@@ -13,6 +13,6 @@ trait WithId
 
     public function wireModel(): ?string
     {
-        return $this->attributes?->wire('model')->value();
+        return $this->attributes->whereStartsWith('wire:model')->first();
     }
 }
