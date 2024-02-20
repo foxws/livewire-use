@@ -9,10 +9,10 @@ class Link extends Component
     protected static string $view = 'ui.link';
 
     public function __construct(
-        public string|null $route = null,
+        public ?string $route = null,
         public mixed $parameters = null,
-        public bool|null $absolute = null,
-        public bool|null $external = null,
+        public ?bool $absolute = null,
+        public ?bool $external = null,
     ) {
     }
 
