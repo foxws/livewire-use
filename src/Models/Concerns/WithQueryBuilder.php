@@ -2,42 +2,48 @@
 
 namespace Foxws\LivewireUse\Models\Concerns;
 
+use Closure;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Builder as ScoutBuilder;
 
 /**
- * @property string $model
+ * @property ?string $model
  */
 trait WithQueryBuilder
 {
-    protected static int $limit = 16;
+    protected static ?int $limit = 16;
 
     public function bootWithQueryBuilder(): void
     {
-        throw_if(! is_subclass_of(static::$model, Model::class));
+        throw_if(! is_subclass_of($this->getModelClass(), Model::class));
 
-        $this->authorize('viewAny', static::$model);
+        $this->authorize('viewAny', $this->getModelClass());
     }
 
-    protected function getModel(): Model
+    protected static function getModelClass(): ?string
     {
-        return app(static::$model);
+        return static::$model;
     }
 
-    protected function getQuery(): Builder
+    protected static function getModel(): Model
     {
-        return $this->getModel()
-            ->query();
+        return app(static::getModelClass());
     }
 
-    protected function getScout(string $value = '*'): ScoutBuilder
+    protected static function getQuery(): Builder
     {
-        return $this->getModel()
-            ->search($value);
+        return static::getModel()
+            ->newQuery();
     }
 
-    protected function getLimit(): int
+    protected static function getScout(string $query = '*', Closure $callback = null): ScoutBuilder
+    {
+        return static::getModel()
+            ->search($query, $callback);
+    }
+
+    protected static function getLimit(): ?int
     {
         return static::$limit;
     }
