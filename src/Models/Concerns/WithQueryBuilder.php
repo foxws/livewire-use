@@ -37,7 +37,7 @@ trait WithQueryBuilder
             ->newQuery();
     }
 
-    protected static function getScout(string $query = '*', Closure $callback = null): ScoutBuilder
+    protected static function getScout(string $query = '*', ?Closure $callback = null): ScoutBuilder
     {
         return static::getModel()
             ->search($query, $callback);
