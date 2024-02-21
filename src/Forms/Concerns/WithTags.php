@@ -10,9 +10,9 @@ trait WithTags
     #[Validate('nullable|array|max:5')]
     public array $tags = [];
 
-    public function getTags(): ?array
+    public function getTags(): array
     {
-        return $this->get('tags');
+        return $this->get('tags', []);
     }
 
     public function hasTags(...$items): bool
