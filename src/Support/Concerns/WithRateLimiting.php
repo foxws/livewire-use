@@ -41,8 +41,8 @@ trait WithRateLimiting
 
     protected static function getRateLimitKey(): string
     {
-        return sha1(
-            implode(':', [get_called_class(), request()->ip()])
-        );
+        return hash('crc32c', serialize([
+            get_called_class(), request()->ip()
+        ]));
     }
 }
