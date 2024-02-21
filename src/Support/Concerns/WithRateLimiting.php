@@ -42,7 +42,7 @@ trait WithRateLimiting
     protected static function getRateLimitKey(): string
     {
         return hash('crc32c', serialize([
-            get_called_class(), request()->ip()
+            get_called_class(), request()->ip(),
         ]));
     }
 }
