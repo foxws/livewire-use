@@ -3,19 +3,13 @@
 namespace Foxws\LivewireUse\States\Concerns;
 
 use Foxws\LivewireUse\Support\Livewire\StateObjects\State;
+use Illuminate\Support\Collection;
 
 trait WithStates
 {
-    protected function getStateObjects(): array
+    protected function getStateObjects(): Collection
     {
-        $states = [];
-
-        foreach ($this->all() as $key => $value) {
-            if ($value instanceof State) {
-                $states[] = $value;
-            }
-        }
-
-        return $states;
+        return collect($this->all())
+            ->filter(fn (mixed $value) => $value instanceof State);
     }
 }
