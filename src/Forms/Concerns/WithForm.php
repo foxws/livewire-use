@@ -23,6 +23,13 @@ trait WithForm
             ->isNotEmpty();
     }
 
+    public function blank(...$properties): bool
+    {
+        return collect($this->only($properties))
+            ->filter()
+            ->isEmpty();
+    }
+
     public function clear(bool $submit = true): void
     {
         $keys = array_keys($this->all());
