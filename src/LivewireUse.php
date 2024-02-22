@@ -29,12 +29,15 @@ class LivewireUse
         string $namespace = 'App\\',
         ?string $prefix = null
     ): void {
-        $components = ComponentScout::create()
+        $scout = ComponentScout::create()
             ->path($path)
-            ->prefix($prefix)
-            ->get();
+            ->prefix($prefix);
 
-        collect($components)
+        $structure = $scout->isCached()
+            ? $scout->get()
+            : $scout->cache();
+
+        collect($structure)
             ->each(function (DiscoveredClass $class) use ($namespace) {
                 $name = static::componentName($class, $namespace);
 
@@ -47,12 +50,15 @@ class LivewireUse
         string $namespace = 'App\\',
         ?string $prefix = null
     ): void {
-        $components = LivewireScout::create()
+        $scout = LivewireScout::create()
             ->path($path)
-            ->prefix($prefix)
-            ->get();
+            ->prefix($prefix);
 
-        collect($components)
+        $structure = $scout->isCached()
+            ? $scout->get()
+            : $scout->cache();
+
+        collect($structure)
             ->each(function (DiscoveredClass $class) use ($namespace) {
                 $name = static::componentName($class, $namespace);
 
