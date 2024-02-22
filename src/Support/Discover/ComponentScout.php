@@ -46,4 +46,11 @@ class ComponentScout extends StructureScout
 
         return $this;
     }
+
+    public function all(): array
+    {
+        return $this->isCached()
+            ? $this->get()
+            : $this->cache();
+    }
 }

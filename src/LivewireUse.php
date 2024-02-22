@@ -31,13 +31,10 @@ class LivewireUse
     ): void {
         $scout = ComponentScout::create()
             ->path($path)
-            ->prefix($prefix);
+            ->prefix($prefix)
+            ->all();
 
-        $structure = $scout->isCached()
-            ? $scout->get()
-            : $scout->cache();
-
-        collect($structure)
+        collect($scout)
             ->each(function (DiscoveredClass $class) use ($namespace) {
                 $name = static::componentName($class, $namespace);
 
@@ -52,13 +49,10 @@ class LivewireUse
     ): void {
         $scout = LivewireScout::create()
             ->path($path)
-            ->prefix($prefix);
+            ->prefix($prefix)
+            ->all();
 
-        $structure = $scout->isCached()
-            ? $scout->get()
-            : $scout->cache();
-
-        collect($structure)
+        collect($scout)
             ->each(function (DiscoveredClass $class) use ($namespace) {
                 $name = static::componentName($class, $namespace);
 
