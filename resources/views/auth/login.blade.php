@@ -5,6 +5,7 @@
                 wire:model="form.email"
                 type="email"
                 label="{{ __('Email') }}"
+                autocomplete="email"
                 required
                 autofocus
             />
@@ -13,6 +14,7 @@
                 wire:model="form.password"
                 type="password"
                 label="{{ __('Password') }}"
+                autocomplete="current-password"
                 required
             />
 
