@@ -3,7 +3,6 @@
 namespace Foxws\LivewireUse\Support\Discover;
 
 use Illuminate\View\Component;
-use Spatie\StructureDiscoverer\Cache\DiscoverCacheDriver;
 use Spatie\StructureDiscoverer\Cache\LaravelDiscoverCacheDriver;
 use Spatie\StructureDiscoverer\Discover;
 use Spatie\StructureDiscoverer\StructureScout;
@@ -22,10 +21,15 @@ class ComponentScout extends StructureScout
             ->full();
     }
 
-    public function cacheDriver(): DiscoverCacheDriver
+    public function identifier(): string
+    {
+        return $this->prefix ?? static::class;
+    }
+
+    public function cacheDriver(): LaravelDiscoverCacheDriver
     {
         return new LaravelDiscoverCacheDriver(
-            prefix: $this->prefix,
+            prefix: $this->identifier(),
         );
     }
 
@@ -41,5 +45,12 @@ class ComponentScout extends StructureScout
         $this->path = $path;
 
         return $this;
+    }
+
+    public function all(): array
+    {
+        return $this->isCached()
+            ? $this->get()
+            : $this->cache();
     }
 }

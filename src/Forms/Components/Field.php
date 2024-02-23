@@ -3,11 +3,15 @@
 namespace Foxws\LivewireUse\Forms\Components;
 
 use Foxws\LivewireUse\Views\Components\Component;
+use Illuminate\Contracts\Support\Htmlable;
 
 abstract class Field extends Component
 {
-    public function id(): string
-    {
-        return $this->wireModel() ?? $this->hash();
-    }
+    public string|Htmlable|null $label = null;
+
+    public string|Htmlable|null $hint = null;
+
+    public string|Htmlable|null $prepend = null;
+
+    public string|Htmlable|null $append = null;
 }
