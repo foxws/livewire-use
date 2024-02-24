@@ -2,6 +2,8 @@
 
 namespace Foxws\LivewireUse\Forms\Concerns;
 
+use Illuminate\Validation\ValidationException;
+
 trait WithForm
 {
     public function get(string $property, mixed $default = null): mixed
@@ -39,5 +41,16 @@ trait WithForm
         if ($submit) {
             $this->submit();
         }
+    }
+
+    public function fails($rules = null, $messages = [], $attributes = []): bool
+    {
+        try {
+            $this->parentValidate($rules, $messages, $attributes);
+        } catch (ValidationException $e) {
+            return invade($e->validator)->fails();
+        }
+
+        return false;
     }
 }
