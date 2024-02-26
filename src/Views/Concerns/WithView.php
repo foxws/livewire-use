@@ -2,6 +2,7 @@
 
 namespace Foxws\LivewireUse\Views\Concerns;
 
+use Closure;
 use Illuminate\View\View;
 
 trait WithView
@@ -10,7 +11,7 @@ trait WithView
 
     protected static array $viewData = [];
 
-    public function render(): View
+    public function render(): View|Closure|string
     {
         return view(
             view: static::getView(),
