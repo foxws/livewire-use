@@ -2,6 +2,7 @@
 
 namespace Foxws\LivewireUse;
 
+use Closure;
 use Foxws\LivewireUse\Auth\Controllers\LoginController;
 use Foxws\LivewireUse\Auth\Controllers\LogoutController;
 use Foxws\LivewireUse\Auth\Controllers\RegisterController;
@@ -27,7 +28,8 @@ class LivewireUse
     public static function registerComponents(
         string $path,
         string $namespace = 'App\\',
-        ?string $prefix = null
+        ?string $prefix = null,
+        ?Closure $callback = null,
     ): void {
         $scout = ComponentScout::create()
             ->path($path)
@@ -35,8 +37,10 @@ class LivewireUse
             ->all();
 
         collect($scout)
-            ->each(function (DiscoveredClass $class) use ($namespace) {
-                $name = static::componentName($class, $namespace);
+            ->each(function (DiscoveredClass $class) use ($namespace, $callback) {
+                $name = $callback instanceof Closure
+                    ? $callback($class, $namespace)
+                    : static::componentName($class, $namespace);
 
                 Blade::component($class->getFcqn(), $name->value());
             });
@@ -45,7 +49,8 @@ class LivewireUse
     public static function registerLivewireComponents(
         string $path,
         string $namespace = 'App\\',
-        ?string $prefix = null
+        ?string $prefix = null,
+        ?Closure $callback = null,
     ): void {
         $scout = LivewireScout::create()
             ->path($path)
@@ -53,8 +58,10 @@ class LivewireUse
             ->all();
 
         collect($scout)
-            ->each(function (DiscoveredClass $class) use ($namespace) {
-                $name = static::componentName($class, $namespace);
+            ->each(function (DiscoveredClass $class) use ($namespace, $callback) {
+                $name = $callback instanceof Closure
+                    ? $callback($class, $namespace)
+                    : static::componentName($class, $namespace);
 
                 Livewire::component($name->value(), $class->getFcqn());
             });
