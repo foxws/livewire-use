@@ -2,6 +2,7 @@
 
 namespace Foxws\LivewireUse;
 
+use Foxws\LivewireUse\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -12,6 +13,9 @@ class LivewireUseServiceProvider extends PackageServiceProvider
         $package
             ->name('livewire-use')
             ->hasConfigFile()
+            ->hasCommands([
+                InstallCommand::class,
+            ])
             ->hasViews('app');
     }
 
