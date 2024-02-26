@@ -12,13 +12,13 @@ class LoginForm extends Form
     protected static int $maxAttempts = 5;
 
     #[Validate]
-    public ?string $email = null;
+    public string $email = '';
 
     #[Validate]
-    public ?string $password = null;
+    public string $password = '';
 
     #[Validate]
-    public ?bool $remember = null;
+    public bool $remember = false;
 
     public function rules(): array
     {

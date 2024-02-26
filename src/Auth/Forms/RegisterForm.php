@@ -14,13 +14,13 @@ class RegisterForm extends Form
     protected static int $maxAttempts = 3;
 
     #[Validate]
-    public ?string $email = null;
+    public string $email = '';
 
     #[Validate]
-    public ?string $password = null;
+    public string $password = '';
 
     #[Validate]
-    public ?string $password_confirmation = null;
+    public string $password_confirmation = '';
 
     public function rules(): array
     {
