@@ -6,7 +6,7 @@ trait WithId
 {
     public ?string $id = null;
 
-    public function id(): string
+    public function id(): ?string
     {
         return $this->id ?? $this->wireModel();
     }
