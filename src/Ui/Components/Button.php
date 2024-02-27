@@ -13,6 +13,6 @@ class Button extends Component
         public string|Htmlable|null $label = null,
         public string|Htmlable|null $prepend = null,
         public string|Htmlable|null $append = null,
-    )
-    {}
+    ) {
+    }
 }
