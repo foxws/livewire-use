@@ -11,6 +11,10 @@ class EnumObjectSynth extends Synth
 
     public static function match($target)
     {
+        if (! class_exists('Spatie\Enum\Laravel\Enum', false)) {
+            return false;
+        }
+
         return $target instanceof Enum;
     }
 
