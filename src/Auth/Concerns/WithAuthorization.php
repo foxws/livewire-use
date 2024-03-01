@@ -9,9 +9,14 @@ trait WithAuthorization
 {
     use AuthorizesRequests;
 
-    protected function can(string $ability, mixed $arguments): void
+    public function bootWithAuthorization(): void
     {
-        $this->authorize($ability, $arguments);
+        $this->canAccess();
+    }
+
+    protected function canAccess(): void
+    {
+        return;
     }
 
     protected function canViewAny(mixed $arguments): void
@@ -41,5 +46,10 @@ trait WithAuthorization
     protected function canDelete(mixed $arguments): void
     {
         $this->can('delete', $arguments);
+    }
+
+    protected function can(string $ability, mixed $arguments): void
+    {
+        $this->authorize($ability, $arguments);
     }
 }
