@@ -16,7 +16,7 @@ trait WithAuthorization
 
     protected function canAccess(): void
     {
-        return;
+
     }
 
     protected function canViewAny(mixed $arguments): void
