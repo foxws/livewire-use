@@ -11,10 +11,10 @@ trait WithAuthorization
 
     public function bootWithAuthorization(): void
     {
-        $this->canAccess();
+        $this->authorizeAccess();
     }
 
-    protected function canAccess(): void
+    protected function authorizeAccess(): void
     {
 
     }
