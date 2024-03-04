@@ -3,7 +3,6 @@
 namespace Foxws\LivewireUse;
 
 use Foxws\LivewireUse\Commands\InstallCommand;
-use Foxws\LivewireUse\Support\Tailwind\Tailwindable;
 use Illuminate\View\ComponentAttributeBag;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
