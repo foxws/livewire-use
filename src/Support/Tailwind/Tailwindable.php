@@ -18,8 +18,8 @@ class Tailwindable
     public static function sortClasses(string $value = ''): string
     {
         return str($value)
-            ->split('/[\s,]+/')
             ->squish()
+            ->split('/[\s,]+/')
             ->sortBy(fn (string $value) => str($value)->startsWith('!'))
             ->values()
             ->join(' ');
