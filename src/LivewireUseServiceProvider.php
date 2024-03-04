@@ -21,21 +21,14 @@ class LivewireUseServiceProvider extends PackageServiceProvider
             ->hasViews('app');
     }
 
-    public function packageRegistered(): void
-    {
-        $this->app->singleton(
-            Tailwindable::class,
-            fn () => new Tailwindable()
-        );
-    }
-
     public function bootingPackage(): void
     {
         $this
             ->registerFeatures()
             ->registerComponents()
             ->registerLivewire()
-            ->registerAttributesBagMacros();
+            ->registerBladeMacros()
+            ->registerBladeDirectives();
     }
 
     protected function registerFeatures(): static
@@ -81,7 +74,7 @@ class LivewireUseServiceProvider extends PackageServiceProvider
         return $this;
     }
 
-    protected function registerAttributesBagMacros(): static
+    protected function registerBladeMacros(): static
     {
         ComponentAttributeBag::macro('twClass', function (array $values = []): ComponentAttributeBag {
             /** @var ComponentAttributeBag $this */
@@ -94,7 +87,7 @@ class LivewireUseServiceProvider extends PackageServiceProvider
 
         ComponentAttributeBag::macro('twMerge', function (array $values = []): ComponentAttributeBag {
             /** @var ComponentAttributeBag $this */
-            $keys = collect($values)
+            $classList = collect($values)
                 ->map(function (mixed $value, int|string $key) {
                     $key = is_numeric($key) ? $value : $key;
 
@@ -104,12 +97,25 @@ class LivewireUseServiceProvider extends PackageServiceProvider
 
                     return $this->get("class:{$key}");
                 })
-                ->merge($this->get('class', []))
+                ->merge($this->get('class', ''))
                 ->join(' ');
 
-            $this->offsetSet('class', $keys);
+            $this->offsetSet('class', $classList);
 
-            return $this->twMergeWithout();
+            return $this
+                ->twSort()
+                ->twMergeWithout();
+        });
+
+        ComponentAttributeBag::macro('twSort', function (): ComponentAttributeBag {
+            /** @var ComponentAttributeBag $this */
+            $this->offsetSet('class', str($this->get('class'))
+                ->squish()
+                ->split('/[\s,]+/')
+                ->sort(fn (string $value) => str($value)->startsWith('!'))
+                ->join(' '));
+
+            return $this;
         });
 
         ComponentAttributeBag::macro('twMergeWithout', function (): ComponentAttributeBag {
@@ -117,23 +123,12 @@ class LivewireUseServiceProvider extends PackageServiceProvider
             return $this->whereDoesntStartWith('class:');
         });
 
-        ComponentAttributeBag::macro('twHas', function (...$keys): bool {
-            /** @var ComponentAttributeBag $this */
-            $keys = collect($keys)
-                ->transform(fn (string $key) => "class:{$key}")
-                ->all();
+        return $this;
+    }
 
-            return $this->has($keys);
-        });
-
-        ComponentAttributeBag::macro('twHasAny', function (...$keys): bool {
-            /** @var ComponentAttributeBag $this */
-            $keys = collect($keys)
-                ->transform(fn (string $key) => "class:{$key}")
-                ->all();
-
-            return $this->hasAny($keys);
-        });
+    protected function registerBladeDirectives(): static
+    {
+        //
 
         return $this;
     }
