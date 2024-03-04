@@ -2,11 +2,8 @@
 
 namespace Foxws\LivewireUse;
 
-use Closure;
 use Foxws\LivewireUse\Commands\InstallCommand;
 use Foxws\LivewireUse\Support\Tailwind\Tailwindable;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Collection;
 use Illuminate\View\ComponentAttributeBag;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -88,7 +85,6 @@ class LivewireUseServiceProvider extends PackageServiceProvider
     {
         ComponentAttributeBag::macro('twClass', function (array $values = []): ComponentAttributeBag {
             /** @var ComponentAttributeBag $this */
-
             foreach ($values as $key => $value) {
                 $this->offsetSet("class:{$key}", $value);
             }
@@ -98,7 +94,6 @@ class LivewireUseServiceProvider extends PackageServiceProvider
 
         ComponentAttributeBag::macro('twMerge', function (array $values = []): ComponentAttributeBag {
             /** @var ComponentAttributeBag $this */
-
             $keys = collect($values)
                 ->map(function (mixed $value, int|string $key) {
                     $key = is_numeric($key) ? $value : $key;
