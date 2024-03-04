@@ -1,7 +1,5 @@
 @layer components {
     .btn {
-        @apply inline-flex w-full shrink-0 cursor-pointer select-none flex-wrap items-center justify-center;
-
         &-disabled,
         &[disabled],
         &:disabled {
