@@ -4,7 +4,6 @@ namespace Foxws\LivewireUse;
 
 use Foxws\LivewireUse\Commands\InstallCommand;
 use Foxws\LivewireUse\Support\Tailwind\Tailwindable;
-use Illuminate\Support\Arr;
 use Illuminate\View\ComponentAttributeBag;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -102,7 +101,6 @@ class LivewireUseServiceProvider extends PackageServiceProvider
 
         ComponentAttributeBag::macro('twHas', function (...$keys): bool {
             /** @var ComponentAttributeBag $this */
-
             $keys = collect($keys)
                 ->transform(fn (string $key) => "class:{$key}")
                 ->all();
