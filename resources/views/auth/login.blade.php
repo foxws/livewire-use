@@ -24,8 +24,8 @@
             />
 
             <x-ui-button
-                class:color="bg-green-500"
-                {{-- class:base="!boo bar" --}}
+                class:base="!boo bar"
+                class="bg-green-500 gap-1.5 rounded border-transparent py-2.5 text-sm font-medium"
                 {{-- class:hover="bg-primary" --}}
                 {{-- disabled --}}
                 {{-- type="submit" --}}
