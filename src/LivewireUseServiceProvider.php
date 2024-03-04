@@ -2,8 +2,11 @@
 
 namespace Foxws\LivewireUse;
 
+use Closure;
 use Foxws\LivewireUse\Commands\InstallCommand;
 use Foxws\LivewireUse\Support\Tailwind\Tailwindable;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
 use Illuminate\View\ComponentAttributeBag;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -83,18 +86,33 @@ class LivewireUseServiceProvider extends PackageServiceProvider
 
     protected function registerAttributesBagMacros(): static
     {
-        ComponentAttributeBag::macro('twMerge', function (...$keys): ComponentAttributeBag {
+        ComponentAttributeBag::macro('twClass', function (array $values = []): ComponentAttributeBag {
             /** @var ComponentAttributeBag $this */
-            $instance = app(Tailwindable::class);
 
-            // Append to existing classes
-            $attributes = $instance->classAttributes($this)
-                ->only($keys)
-                ->merge($this->get('class', ''))
-                ->flatten()
+            foreach ($values as $key => $value) {
+                $this->offsetSet("class:{$key}", $value);
+            }
+
+            return $this;
+        });
+
+        ComponentAttributeBag::macro('twMerge', function (array $values = []): ComponentAttributeBag {
+            /** @var ComponentAttributeBag $this */
+
+            $keys = collect($values)
+                ->map(function (mixed $value, int|string $key) {
+                    $key = is_numeric($key) ? $value : $key;
+
+                    if (is_bool($value) && $value === false) {
+                        return;
+                    }
+
+                    return $this->get("class:{$key}");
+                })
+                ->merge($this->get('class', []))
                 ->join(' ');
 
-            $this->offsetSet('class', $instance->sortClasses($attributes));
+            $this->offsetSet('class', $keys);
 
             return $this->twMergeWithout();
         });
