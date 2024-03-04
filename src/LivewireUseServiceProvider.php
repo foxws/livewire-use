@@ -108,6 +108,15 @@ class LivewireUseServiceProvider extends PackageServiceProvider
             return $this->has($keys);
         });
 
+        ComponentAttributeBag::macro('twHasAny', function (...$keys): bool {
+            /** @var ComponentAttributeBag $this */
+            $keys = collect($keys)
+                ->transform(fn (string $key) => "class:{$key}")
+                ->all();
+
+            return $this->hasAny($keys);
+        });
+
         return $this;
     }
 }
