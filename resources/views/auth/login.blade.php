@@ -28,8 +28,8 @@
 
             <x-ui-button
                 {{-- class:layer="!boo bar" --}}
-                class="gap-1.5 rounded border-transparent bg-green-500 py-2.5 text-sm font-medium"
-                {{-- class:hover="bg-primary" --}}
+                {{-- class="gap-1.5 rounded border-transparent bg-green-500 py-2.5 text-sm font-medium" --}}
+                class:disabled="bg-primary"
                 disabled
                 type="submit"
             >
