@@ -2,7 +2,6 @@
 
 namespace Foxws\LivewireUse\Support\Tailwind;
 
-use ArrayAccess;
 use Illuminate\Support\Collection;
 use Illuminate\View\ComponentAttributeBag;
 
