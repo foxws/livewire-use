@@ -96,6 +96,11 @@ class LivewireUseServiceProvider extends PackageServiceProvider
 
             $this->offsetSet('class', $instance->sortClasses($attributes));
 
+            return $this->twMergeWithout();
+        });
+
+        ComponentAttributeBag::macro('twMergeWithout', function (): ComponentAttributeBag {
+            /** @var ComponentAttributeBag $this */
             return $this->whereDoesntStartWith('class:');
         });
 
