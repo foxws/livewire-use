@@ -20,7 +20,7 @@ trait WithClass
     {
         return collect($this->attributes->whereStartsWith('class:'))
             ->mapWithKeys(fn (mixed $value, string $key) => [
-                str($key)->after('class:')->value() => (string) $value
+                str($key)->after('class:')->value() => (string) $value,
             ]);
     }
 
