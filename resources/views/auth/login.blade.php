@@ -24,12 +24,11 @@
             />
 
             <x-ui-button
-                {{-- class:color="bg-green-500" --}}
-                class:disabled="lol"
+                class:color="bg-green-500"
                 {{-- class:base="!boo bar" --}}
                 {{-- class:hover="bg-primary" --}}
-                disabled
-                type="submit"
+                {{-- disabled --}}
+                {{-- type="submit" --}}
             >
                 {{ __('Sign In') }}
             </x-ui-button>
