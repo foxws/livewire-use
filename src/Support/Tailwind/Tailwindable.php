@@ -16,11 +16,13 @@ class Tailwindable
             ]);
     }
 
-    public static function buildClass(ComponentAttributeBag $attributes, string|array|ArrayAccess $only = []): string
+    public static function sortClasses(string $value = ''): string
     {
-        return static::classAttributes($attributes)
-            ->only($only)
-            ->flatten()
+        return str($value)
+            ->squish()
+            ->split('/[\s,]+/')
+            ->sortBy(fn (string $value) => str($value)->startsWith('!'))
+            ->values()
             ->join(' ');
     }
 }

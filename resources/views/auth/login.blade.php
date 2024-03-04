@@ -1,6 +1,9 @@
-<x-ui-container class="flex flex-col gap-y-6 h-screen items-center justify-center">
+<x-ui-container class="flex h-screen flex-col items-center justify-center gap-y-6">
     <x-ui-card>
-        <form class="form" wire:submit="submit">
+        <form
+            class="form"
+            wire:submit="submit"
+        >
             <x-forms-input
                 wire:model="form.email"
                 type="email"
@@ -24,8 +27,8 @@
             />
 
             <x-ui-button
-                class:base="!boo bar"
-                class="bg-green-500 gap-1.5 rounded border-transparent py-2.5 text-sm font-medium"
+                class:layer="!boo bar"
+                class="gap-1.5 rounded border-transparent bg-green-500 py-2.5 text-sm font-medium"
                 {{-- class:hover="bg-primary" --}}
                 {{-- disabled --}}
                 {{-- type="submit" --}}

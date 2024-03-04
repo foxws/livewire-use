@@ -94,7 +94,7 @@ class LivewireUseServiceProvider extends PackageServiceProvider
                 ->flatten()
                 ->join(' ');
 
-            $this->offsetSet('class', $attributes);
+            $this->offsetSet('class', $instance->sortClasses($attributes));
 
             return $this->whereDoesntStartWith('class:');
         });
