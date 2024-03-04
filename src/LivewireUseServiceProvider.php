@@ -3,6 +3,8 @@
 namespace Foxws\LivewireUse;
 
 use Foxws\LivewireUse\Commands\InstallCommand;
+use Foxws\LivewireUse\Support\Tailwind\Tailwindable;
+use Illuminate\View\ComponentAttributeBag;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -19,12 +21,21 @@ class LivewireUseServiceProvider extends PackageServiceProvider
             ->hasViews('app');
     }
 
+    public function packageRegistered(): void
+    {
+        $this->app->singleton(
+            Tailwindable::class,
+            fn () => new Tailwindable()
+        );
+    }
+
     public function bootingPackage(): void
     {
         $this
             ->registerFeatures()
             ->registerComponents()
-            ->registerLivewire();
+            ->registerLivewire()
+            ->registerAttributesBagMacros();
     }
 
     protected function registerFeatures(): static
@@ -66,6 +77,42 @@ class LivewireUseServiceProvider extends PackageServiceProvider
             namespace: 'Foxws\\LivewireUse\\',
             prefix: 'lw-livewire'
         );
+
+        return $this;
+    }
+
+    protected function registerAttributesBagMacros(): static
+    {
+        ComponentAttributeBag::macro('twMergeFor', function (string $key, ?string $default = null): ComponentAttributeBag {
+            /** @var ComponentAttributeBag $this */
+            $instance = app(Tailwindable::class);
+
+            $attributes = $instance->buildClass($this, $key, $default);
+
+            return $this
+                ->class($attributes)
+                ->whereDoesntStartWith('class:');
+        });
+
+        ComponentAttributeBag::macro('twMerge', function (...$keys): ComponentAttributeBag {
+            /** @var ComponentAttributeBag $this */
+            $instance = app(Tailwindable::class);
+
+            $attributes = $instance->classAttributes($this)
+                ->prepend($this->get('class', ''))
+                ->flatten()
+                ->join(' ');
+
+            $this->offsetSet('class', $attributes);
+
+            return $this->whereDoesntStartWith('class:');
+        });
+
+        ComponentAttributeBag::macro('twHas', function (string $key): bool {
+            /** @var ComponentAttributeBag $this */
+
+            return $this->has("class:{$key}");
+        });
 
         return $this;
     }

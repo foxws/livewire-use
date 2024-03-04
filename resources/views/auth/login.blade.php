@@ -24,7 +24,7 @@
             />
 
             <x-ui-button
-                class:color="bg-green-500"
+                {{-- class:color="bg-green-500" --}}
                 class:disabled="lol"
                 {{-- class:base="!boo bar" --}}
                 {{-- class:hover="bg-primary" --}}
