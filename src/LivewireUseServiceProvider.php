@@ -98,6 +98,7 @@ class LivewireUseServiceProvider extends PackageServiceProvider
             /** @var ComponentAttributeBag $this */
             $instance = app(Tailwindable::class);
 
+            // Append to existing classes
             $attributes = $instance->classAttributes($this)
                 ->prepend($this->get('class', ''))
                 ->flatten()
