@@ -31,7 +31,7 @@
                 class="gap-1.5 rounded border-transparent bg-green-500 py-2.5 text-sm font-medium"
                 {{-- class:hover="bg-primary" --}}
                 {{-- disabled --}}
-                {{-- type="submit" --}}
+                type="submit"
             >
                 {{ __('Sign In') }}
             </x-ui-button>
