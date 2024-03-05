@@ -1,7 +1,7 @@
 <x-ui-container class="flex h-screen flex-col items-center justify-center gap-y-6">
     <x-ui-card>
         <form
-            class="form"
+            class="flex flex-col gap-6"
             wire:submit="submit"
         >
             <x-forms-input

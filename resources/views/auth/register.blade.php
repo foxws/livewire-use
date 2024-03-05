@@ -1,6 +1,6 @@
 <x-ui-container class="flex flex-col gap-y-6 h-screen items-center justify-center">
     <x-ui-card>
-        <form class="form" wire:submit="submit">
+        <form class="flex flex-col gap-6" wire:submit="submit">
             <x-forms-input
                 wire:model="form.email"
                 type="email"

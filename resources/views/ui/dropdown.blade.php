@@ -9,17 +9,17 @@
     x-trap.inert.noscroll="open"
     @keyup.escape.window="open = false"
     {{ $attributes
-        ->class([
-            'dropdown',
-            'dropdown-end' => $right,
+        ->twClass([
+            'base' => 'relative',
+            'layer' => 'absolute z-50',
         ])
+        ->twMerge(['base'])
     }}
 >
     <div
         x-cloak
         x-show="open"
-        class="dropdown-content"
-
+        {{ $attributes->twFor('layer') }}
     >
         {{ $slot }}
     </div>

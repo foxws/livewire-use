@@ -1,9 +1,0 @@
-@layer components {
-    .radio {
-        @apply hover:text-primary-500 inline-flex cursor-pointer items-center space-x-3 text-sm font-medium text-gray-400;
-
-        label {
-            @apply w-full;
-        }
-    }
-}

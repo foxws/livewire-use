@@ -1,6 +1,18 @@
 <div
     wire:key="{{ $hash() }}"
-    class="field"
+    {{ $attributes
+        ->twClass([
+            'base' => 'w-full',
+            'layer' => 'w-full focus:border-transparent focus:ring-0',
+            'group' => 'flex flex-1 items-center',
+            'disabled' => '!bg-gray-300 pointer-events-none opacity-50',
+            'error' => 'border-red-500',
+            'prepend' => 'rounded-l-none',
+            'append' => 'rounded-r-none',
+        ])
+        ->twMergeWithout()
+        ->only('class')
+    }}
 >
     @if ($label)
         <x-forms-label
@@ -10,23 +22,29 @@
         />
     @endif
 
-    <div {{ $attributes->class([
-        'input-group' => filled($prepend || $append),
-        'input-error' => $errors->has($id()),
-    ]) }}>
+    <div
+        {{ $attributes
+            ->twMerge([
+                'base',
+                'group' => filled($prepend || $append),
+                'error' => $errors->has($id()),
+            ])
+        }}
+    >
         {{ $prepend }}
 
         <input
             {{ $attributes
+                ->twMerge([
+                    'layer',
+                    'disabled' => $attributes->has('disabled'),
+                    'prepend' => filled($prepend),
+                    'append' => filled($append),
+                    'error' => $errors->has($id())
+                ])
                 ->merge([
                     'id' => $id(),
                     'type' => 'text',
-                ])
-                ->class([
-                    'input peer',
-                    'input-prepend' => filled($prepend),
-                    'input-append' => filled($append),
-                    'input-error' => $errors->has($id())
                 ])
             }}
         />
@@ -35,7 +53,7 @@
     </div>
 
     @error($id())
-        <div class="input-error">
+        <div {{ $attributes->twFor('error') }}>
             <span>{{ $message }}</span>
         </div>
     @enderror
