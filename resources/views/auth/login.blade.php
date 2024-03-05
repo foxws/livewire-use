@@ -27,9 +27,7 @@
             />
 
             <x-ui-button
-                {{-- class="gap-1.5 rounded border-transparent bg-green-500 py-2.5 text-sm font-medium" --}}
-                {{-- class:disabled="bg-primary" --}}
-                {{-- disabled --}}
+                class="bg-primary-500"
                 type="submit"
             >
                 {{ __('Sign In') }}
