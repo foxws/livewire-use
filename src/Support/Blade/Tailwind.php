@@ -2,18 +2,14 @@
 
 namespace Foxws\LivewireUse\Support\Blade;
 
-use Illuminate\Support\Arr;
-
 class Tailwind
 {
-    public static function classAttributes(array|string $values = []): array
+    public static function classAttributes(string $value = ''): string
     {
-        $values = Arr::wrap($values);
-
-        return collect($values)
+        return str($value)
+            ->matchAll('/class:(\w+)=/')
             ->sortBy(fn (string $value, string $key) => $key)
-            ->unique()
-            ->all();
+            ->join(' ');
     }
 
     public static function classSort(array|string $value = ''): string

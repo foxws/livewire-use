@@ -1,6 +1,11 @@
 <nav
     wire:key="{{ $hash() }}"
-    {{ $attributes->class(['navbar']) }}
+    {{ $attributes
+        ->twClass([
+            'foo' => 'py-6',
+        ])
+        ->twMerge()
+    }}
 >
     <div class="navbar-start">
         {{ $start }}
