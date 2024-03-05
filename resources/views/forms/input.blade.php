@@ -2,8 +2,8 @@
     wire:key="{{ $hash() }}"
     {{ $attributes
         ->twClass([
-            'base' => 'w-full',
-            'layer' => 'w-full focus:border-transparent focus:ring-0',
+            'base' => 'block w-full',
+            'layer' => 'w-full bg-transparent border-0 focus:border-transparent focus:ring-0',
             'group' => 'flex flex-1 items-center',
             'disabled' => '!bg-gray-300 pointer-events-none opacity-50',
             'error' => 'border-red-500',
@@ -29,12 +29,14 @@
                 'group' => filled($prepend || $append),
                 'error' => $errors->has($id()),
             ])
+            ->only('class')
         }}
     >
         {{ $prepend }}
 
         <input
             {{ $attributes
+                ->except('class')
                 ->twMerge([
                     'layer',
                     'disabled' => $attributes->has('disabled'),

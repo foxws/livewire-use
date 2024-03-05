@@ -100,7 +100,7 @@ class LivewireUseServiceProvider extends PackageServiceProvider
             return $this;
         });
 
-        ComponentAttributeBag::macro('twFor', function (string $key, ?string $default = null): ComponentAttributeBag {
+        ComponentAttributeBag::macro('twFor', function (string $key, string $default = ''): ComponentAttributeBag {
             /** @var ComponentAttributeBag $this */
             $instance = app(Tailwind::class);
 
