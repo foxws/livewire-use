@@ -18,8 +18,6 @@
 >
     {{ $prepend }}
 
-    <span {{ $attributes->twFor('disabled') }}>icon</span>
-
     {{ $label }}
 
     {{ $slot }}
