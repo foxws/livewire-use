@@ -95,7 +95,6 @@ class LivewireUseServiceProvider extends PackageServiceProvider
 
         ComponentAttributeBag::macro('twFor', function (string $key, ?string $default = null): ComponentAttributeBag {
             /** @var ComponentAttributeBag $this */
-
             $key = str($key)->startsWith('class:') ? $key : "class:{$key}";
 
             $value = $this->get($key, $default);
@@ -109,7 +108,6 @@ class LivewireUseServiceProvider extends PackageServiceProvider
 
         ComponentAttributeBag::macro('twMerge', function (array|string $values = []): ComponentAttributeBag {
             /** @var ComponentAttributeBag $this */
-
             $values = Arr::wrap($values);
 
             // Use class keys in given order
