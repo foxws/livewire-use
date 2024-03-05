@@ -77,6 +77,7 @@ class LivewireUseServiceProvider extends PackageServiceProvider
     {
         ComponentAttributeBag::macro('twClass', function (array $values = []): ComponentAttributeBag {
             /** @var ComponentAttributeBag $this */
+
             foreach ($values as $key => $value) {
                 if ($this->has("class:{$key}")) {
                     continue;
@@ -90,15 +91,26 @@ class LivewireUseServiceProvider extends PackageServiceProvider
 
         ComponentAttributeBag::macro('twMerge', function (array $values = []): ComponentAttributeBag {
             /** @var ComponentAttributeBag $this */
+
+            // Use class keys in given order
+            if (blank($values)) {
+                $values = collect($this->whereStartsWith('class:'))
+                    ->sortBy(fn (string $value, string $key) => $key)
+                    ->unique()
+                    ->all();
+            }
+
             $classList = collect($values)
                 ->map(function (mixed $value, int|string $key) {
-                    $key = is_numeric($key) ? $value : $key;
-
                     if (is_bool($value) && $value === false) {
                         return;
                     }
 
-                    return $this->get("class:{$key}");
+                    $key = is_numeric($key) ? $value : $key;
+
+                    $key = str($key)->startsWith('class:') ? $key : "class:{$key}";
+
+                    return $this->get($key);
                 })
                 ->merge($this->get('class', ''))
                 ->join(' ');
