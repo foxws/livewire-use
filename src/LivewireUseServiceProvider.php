@@ -84,7 +84,6 @@ class LivewireUseServiceProvider extends PackageServiceProvider
     {
         ComponentAttributeBag::macro('twClass', function (array|string $values = []): ComponentAttributeBag {
             /** @var ComponentAttributeBag $this */
-
             $values = Arr::wrap($values);
 
             $instance = app(Tailwind::class);
@@ -104,7 +103,6 @@ class LivewireUseServiceProvider extends PackageServiceProvider
 
         ComponentAttributeBag::macro('twFor', function (string $key, ?string $default = null): ComponentAttributeBag {
             /** @var ComponentAttributeBag $this */
-
             $instance = app(Tailwind::class);
 
             $value = $this->get($instance->classKey($key), $default);
@@ -118,7 +116,6 @@ class LivewireUseServiceProvider extends PackageServiceProvider
 
         ComponentAttributeBag::macro('twMerge', function (array|string|null $values = null): ComponentAttributeBag {
             /** @var ComponentAttributeBag $this */
-
             $instance = app(Tailwind::class);
 
             $values ??= $instance->classAttributes($this->whereStartsWith('class:'));
@@ -149,7 +146,6 @@ class LivewireUseServiceProvider extends PackageServiceProvider
 
         ComponentAttributeBag::macro('twSort', function (): ComponentAttributeBag {
             /** @var ComponentAttributeBag $this */
-
             $this->offsetSet('class', app(Tailwind::class)->classSort(
                 $this->get('class')
             ));
