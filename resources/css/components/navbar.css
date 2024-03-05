@@ -1,7 +1,5 @@
 @layer components {
     .navbar {
-        @apply flex items-center justify-between;
-
         * {
             @apply inline-flex;
         }

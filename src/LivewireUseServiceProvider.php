@@ -119,8 +119,6 @@ class LivewireUseServiceProvider extends PackageServiceProvider
 
             $values ??= $instance->classAttributes($this->whereStartsWith('class:'));
 
-            $values = Arr::wrap($values);
-
             $classList = collect($values)
                 ->map(function (mixed $value, int|string $key) use ($instance) {
                     if (is_bool($value) && $value === false) {

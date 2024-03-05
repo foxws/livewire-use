@@ -2,7 +2,8 @@
     wire:key="{{ $hash() }}"
     {{ $attributes
         ->twClass([
-            'foo' => 'py-6',
+            'foo' => 'flex items-center justify-between',
+            'layer' => 'py-6',
         ])
         ->twMerge()
     }}

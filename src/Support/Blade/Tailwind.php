@@ -4,15 +4,15 @@ namespace Foxws\LivewireUse\Support\Blade;
 
 class Tailwind
 {
-    public static function classAttributes(string $value = ''): string
+    public static function classAttributes(string|array $value = [])
     {
+        logger($value);
         return str($value)
-            ->matchAll('/class:(\w+)=/')
-            ->sortBy(fn (string $value, string $key) => $key)
-            ->join(' ');
+            ->matchAll('/:(.*?)\=/s');
+            // ->sortBy(fn (string $value, string $key) => $key);
     }
 
-    public static function classSort(array|string $value = ''): string
+    public static function classSort(string|array $value = []): string
     {
         return str((string) $value)
             ->squish()
