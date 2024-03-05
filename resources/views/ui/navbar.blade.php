@@ -2,21 +2,24 @@
     wire:key="{{ $hash() }}"
     {{ $attributes
         ->twClass([
-            'foo' => 'flex items-center justify-between',
+            'base' => 'flex flex-nowrap items-center justify-between',
             'layer' => 'py-6',
+            'start' => 'inline-flex w-2/4 items-center justify-start',
+            'center' => 'inline-flex shrink-0 items-center',
+            'end' => 'inline-flex w-2/4 items-center justify-end',
         ])
-        ->twMerge()
+        ->twMerge('base', 'layer')
     }}
 >
-    <div class="navbar-start">
+    <div {{ $attributes->twFor('start') }}>
         {{ $start }}
     </div>
 
-    <div class="navbar-center">
+    <div {{ $attributes->twFor('center') }}>
         {{ $slot }}
     </div>
 
-    <div class="navbar-end">
+    <div {{ $attributes->twFor('end') }}>
         {{ $end }}
     </div>
 </<nav>
