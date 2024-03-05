@@ -86,10 +86,8 @@ class LivewireUseServiceProvider extends PackageServiceProvider
             /** @var ComponentAttributeBag $this */
             $values = Arr::wrap($values);
 
-            $instance = app(Tailwind::class);
-
             foreach ($values as $key => $value) {
-                $key = $instance->classKey($key);
+                $key = app(Tailwind::class)->classKey($key);
 
                 if ($this->has($key)) {
                     continue;
@@ -134,7 +132,7 @@ class LivewireUseServiceProvider extends PackageServiceProvider
 
                     return $this->get($key, '');
                 })
-                ->merge($this->get('class', ''))
+                ->merge($this->get('class'))
                 ->join(' ');
 
             $this->offsetSet('class', $classList);
