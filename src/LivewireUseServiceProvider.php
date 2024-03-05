@@ -17,7 +17,7 @@ class LivewireUseServiceProvider extends PackageServiceProvider
             ->name('livewire-use')
             ->hasConfigFile()
             ->hasViews('app')
-            ->hasInstallCommand(function(InstallCommand $command) {
+            ->hasInstallCommand(function (InstallCommand $command) {
                 $command
                     ->publishConfigFile();
             });
