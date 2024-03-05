@@ -3,6 +3,7 @@
 namespace Foxws\LivewireUse;
 
 use Foxws\LivewireUse\Commands\InstallCommand;
+use Illuminate\Support\Arr;
 use Illuminate\View\ComponentAttributeBag;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -75,21 +76,41 @@ class LivewireUseServiceProvider extends PackageServiceProvider
 
     protected function registerBladeMacros(): static
     {
-        ComponentAttributeBag::macro('twClass', function (array $values = []): ComponentAttributeBag {
+        ComponentAttributeBag::macro('twClass', function (array|string $values = []): ComponentAttributeBag {
+            $values = Arr::wrap($values);
+
             /** @var ComponentAttributeBag $this */
             foreach ($values as $key => $value) {
-                if ($this->has("class:{$key}")) {
+                $key = str($key)->startsWith('class:') ? $key : "class:{$key}";
+
+                if ($this->has($key)) {
                     continue;
                 }
 
-                $this->offsetSet("class:{$key}", $value);
+                $this->offsetSet($key, $value);
             }
 
             return $this;
         });
 
-        ComponentAttributeBag::macro('twMerge', function (array $values = []): ComponentAttributeBag {
+        ComponentAttributeBag::macro('twFor', function (string $key, ?string $default = null): ComponentAttributeBag {
             /** @var ComponentAttributeBag $this */
+
+            $key = str($key)->startsWith('class:') ? $key : "class:{$key}";
+
+            $value = $this->get($key, $default);
+
+            $this->offsetSet('class', $value);
+
+            return $this
+                ->twSort()
+                ->twMergeWithout();
+        });
+
+        ComponentAttributeBag::macro('twMerge', function (array|string $values = []): ComponentAttributeBag {
+            /** @var ComponentAttributeBag $this */
+
+            $values = Arr::wrap($values);
 
             // Use class keys in given order
             if (blank($values)) {
