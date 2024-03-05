@@ -3,6 +3,7 @@
 namespace Foxws\LivewireUse;
 
 use Foxws\LivewireUse\Commands\InstallCommand;
+use Foxws\LivewireUse\Support\Blade\Tailwind;
 use Illuminate\Support\Arr;
 use Illuminate\View\ComponentAttributeBag;
 use Spatie\LaravelPackageTools\Package;
@@ -19,6 +20,11 @@ class LivewireUseServiceProvider extends PackageServiceProvider
                 InstallCommand::class,
             ])
             ->hasViews('app');
+    }
+
+    public function packageRegistered()
+    {
+        $this->app->singleton(Tailwind::class);
     }
 
     public function bootingPackage(): void
@@ -77,11 +83,14 @@ class LivewireUseServiceProvider extends PackageServiceProvider
     protected function registerBladeMacros(): static
     {
         ComponentAttributeBag::macro('twClass', function (array|string $values = []): ComponentAttributeBag {
+            /** @var ComponentAttributeBag $this */
+
             $values = Arr::wrap($values);
 
-            /** @var ComponentAttributeBag $this */
+            $instance = app(Tailwind::class);
+
             foreach ($values as $key => $value) {
-                $key = str($key)->startsWith('class:') ? $key : "class:{$key}";
+                $key = $instance->classKey($key);
 
                 if ($this->has($key)) {
                     continue;
@@ -95,9 +104,10 @@ class LivewireUseServiceProvider extends PackageServiceProvider
 
         ComponentAttributeBag::macro('twFor', function (string $key, ?string $default = null): ComponentAttributeBag {
             /** @var ComponentAttributeBag $this */
-            $key = str($key)->startsWith('class:') ? $key : "class:{$key}";
 
-            $value = $this->get($key, $default);
+            $instance = app(Tailwind::class);
+
+            $value = $this->get($instance->classKey($key), $default);
 
             $this->offsetSet('class', $value);
 
@@ -106,29 +116,26 @@ class LivewireUseServiceProvider extends PackageServiceProvider
                 ->twMergeWithout();
         });
 
-        ComponentAttributeBag::macro('twMerge', function (array|string $values = []): ComponentAttributeBag {
+        ComponentAttributeBag::macro('twMerge', function (array|string|null $values = null): ComponentAttributeBag {
             /** @var ComponentAttributeBag $this */
+
+            $instance = app(Tailwind::class);
+
+            $values ??= $instance->classAttributes($this->whereStartsWith('class:'));
+
             $values = Arr::wrap($values);
 
-            // Use class keys in given order
-            if (blank($values)) {
-                $values = collect($this->whereStartsWith('class:'))
-                    ->sortBy(fn (string $value, string $key) => $key)
-                    ->unique()
-                    ->all();
-            }
-
             $classList = collect($values)
-                ->map(function (mixed $value, int|string $key) {
+                ->map(function (mixed $value, int|string $key) use ($instance) {
                     if (is_bool($value) && $value === false) {
                         return;
                     }
 
                     $key = is_numeric($key) ? $value : $key;
 
-                    $key = str($key)->startsWith('class:') ? $key : "class:{$key}";
+                    $key = $instance->classKey($key);
 
-                    return $this->get($key);
+                    return $this->get($key, '');
                 })
                 ->merge($this->get('class', ''))
                 ->join(' ');
@@ -142,11 +149,10 @@ class LivewireUseServiceProvider extends PackageServiceProvider
 
         ComponentAttributeBag::macro('twSort', function (): ComponentAttributeBag {
             /** @var ComponentAttributeBag $this */
-            $this->offsetSet('class', str($this->get('class'))
-                ->squish()
-                ->split('/[\s,]+/')
-                ->sort(fn (string $value) => str($value)->startsWith('!'))
-                ->join(' '));
+
+            $this->offsetSet('class', app(Tailwind::class)->classSort(
+                $this->get('class')
+            ));
 
             return $this;
         });
