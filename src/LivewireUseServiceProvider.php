@@ -77,7 +77,6 @@ class LivewireUseServiceProvider extends PackageServiceProvider
     {
         ComponentAttributeBag::macro('twClass', function (array $values = []): ComponentAttributeBag {
             /** @var ComponentAttributeBag $this */
-
             foreach ($values as $key => $value) {
                 if ($this->has("class:{$key}")) {
                     continue;
