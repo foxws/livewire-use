@@ -7,9 +7,10 @@ class Tailwind
     public static function classAttributes(string|array $value = [])
     {
         logger($value);
+
         return str($value)
             ->matchAll('/:(.*?)\=/s');
-            // ->sortBy(fn (string $value, string $key) => $key);
+        // ->sortBy(fn (string $value, string $key) => $key);
     }
 
     public static function classSort(string|array $value = []): string
