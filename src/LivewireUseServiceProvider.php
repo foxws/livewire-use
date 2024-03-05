@@ -113,7 +113,7 @@ class LivewireUseServiceProvider extends PackageServiceProvider
                 ->twMergeWithout();
         });
 
-        ComponentAttributeBag::macro('twMerge', function (array|string|null $values = null): ComponentAttributeBag {
+        ComponentAttributeBag::macro('twMerge', function (?array $values = null): ComponentAttributeBag {
             /** @var ComponentAttributeBag $this */
             $instance = app(Tailwind::class);
 

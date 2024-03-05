@@ -8,7 +8,7 @@
             'center' => 'inline-flex shrink-0 items-center',
             'end' => 'inline-flex w-2/4 items-center justify-end',
         ])
-        ->twMerge('base', 'layer')
+        ->twMerge(['base', 'layer'])
     }}
 >
     <div {{ $attributes->twFor('start') }}>
