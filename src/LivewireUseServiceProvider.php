@@ -115,7 +115,6 @@ class LivewireUseServiceProvider extends PackageServiceProvider
 
         ComponentAttributeBag::macro('twMerge', function (array|string|null $values = null): ComponentAttributeBag {
             /** @var ComponentAttributeBag $this */
-
             $instance = app(Tailwind::class);
 
             $values ??= $instance->classAttributes($this->whereStartsWith('class:'));
