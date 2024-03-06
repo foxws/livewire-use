@@ -2,7 +2,7 @@
 
 namespace Foxws\LivewireUse\Auth\Forms;
 
-use Foxws\LivewireUse\Forms\Components\Form;
+use Foxws\LivewireUse\Forms\Support\Form;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Hash;

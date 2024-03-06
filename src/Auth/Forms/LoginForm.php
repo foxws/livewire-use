@@ -2,7 +2,7 @@
 
 namespace Foxws\LivewireUse\Auth\Forms;
 
-use Foxws\LivewireUse\Forms\Components\Form;
+use Foxws\LivewireUse\Forms\Support\Form;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Password;
 use Livewire\Attributes\Validate;

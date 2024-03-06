@@ -1,6 +1,6 @@
 <?php
 
-namespace Foxws\LivewireUse\Forms\Components;
+namespace Foxws\LivewireUse\Forms\Support;
 
 use Foxws\LivewireUse\Auth\Concerns\WithAuthorization;
 use Foxws\LivewireUse\Exceptions\RateLimitedException;
