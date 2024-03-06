@@ -23,12 +23,12 @@
                 required
             />
 
-            <x-livewire-use::actions.button
+            <x-livewire-use::actions-button
                 class="btn-primary"
                 type="submit"
             >
                 {{ __('Sign Up') }}
-            </x-livewire-use::actions.button>
+            </x-livewire-use::actions-button>
         </form>
     </x-ui-card>
 </x-livewire-use::container>

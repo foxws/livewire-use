@@ -1,7 +1,3 @@
-@props([
-    'label' => null,
-])
-
 <button {{ $attributes
     ->cssClass([
         'layer' => 'inline-flex shrink-0 cursor-pointer select-none flex-wrap items-center justify-center',

@@ -26,12 +26,12 @@
                 label="{{ __('Remember me') }}"
             />
 
-            <x-livewire-use::actions.button
+            <x-livewire-use::actions-button
                 class="bg-primary-500"
                 type="submit"
             >
                 {{ __('Sign In') }}
-            </x-livewire-use::actions.button>
+            </x-livewire-use::actions-button>
         </form>
     </x-ui-card>
 </x-livewire-use::container>

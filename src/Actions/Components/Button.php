@@ -6,15 +6,15 @@ use Foxws\LivewireUse\Views\Components\Component;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\View\View;
 
-class Dropdown extends Component
+class Button extends Component
 {
     public function __construct(
-        public string|Htmlable|null $actions = null,
+        public string|Htmlable|null $label = '',
     ) {
     }
 
     public function render(): View
     {
-        return view('livewire-use::actions.dropdown');
+        return view('livewire-use::actions.button');
     }
 }
