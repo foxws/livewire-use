@@ -13,11 +13,11 @@
     @if ($navigate) wire:navigate @endif
     {{ $attributes
         ->cssClass([
-            'base' => 'hover:text-primary-400 cursor-pointer',
+            'layer' => 'hover:text-primary-400 cursor-pointer',
             'active' => 'text-primary-400 hover:text-primary-300',
         ])
         ->classMerge([
-            'base',
+            'layer',
             'active' => $active || $isRequest || $isRoute,
         ])
         ->merge([
