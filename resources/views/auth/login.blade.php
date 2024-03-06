@@ -4,28 +4,36 @@
             class="flex flex-col gap-y-6"
             wire:submit="submit"
         >
-            <x-livewire-use::forms-label>
-                {{ __('Email') }}
-            </x-livewire-use::forms-label>
+            <x-livewire-use::layout-join class="gap-y-2" vertical>
+                <x-livewire-use::forms-label>
+                    {{ __('Email') }}
+                </x-livewire-use::forms-label>
 
-            <x-livewire-use::forms-input
-                wire:model="form.email"
-                type="email"
-                class="border-0 bg-gray-800 text-gray-300 placeholder:text-gray-500"
-                label="{{ __('Email') }}"
-                autocomplete="email"
-                required
-                autofocus
-            />
+                <x-livewire-use::forms-input
+                    wire:model="form.email"
+                    type="email"
+                    class="border-0 bg-gray-800 text-gray-300 placeholder:text-gray-500"
+                    placeholder="{{ __('Your Email') }}"
+                    autocomplete="email"
+                    required
+                    autofocus
+                />
+            </x-livewire-use::layout-join>
 
-            <x-livewire-use::forms-input
-                wire:model="form.password"
-                type="password"
-                class="border-0 bg-gray-800 text-gray-300 placeholder:text-gray-500"
-                label="{{ __('Password') }}"
-                autocomplete="current-password"
-                required
-            />
+            <x-livewire-use::layout-join class="gap-y-2" vertical>
+                <x-livewire-use::forms-label>
+                    {{ __('Password') }}
+                </x-livewire-use::forms-label>
+
+                <x-livewire-use::forms-input
+                    wire:model="form.password"
+                    type="password"
+                    class="border-0 bg-gray-800 text-gray-300 placeholder:text-gray-500"
+                    placeholder="{{ __('Your Password') }}"
+                    autocomplete="current-password"
+                    required
+                />
+            </x-livewire-use::layout-join>
 
             {{-- <x-livewire-use::forms-checkbox
                 wire:model="form.remember"

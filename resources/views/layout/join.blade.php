@@ -2,11 +2,13 @@
     wire:key="{{ $hash() }}"
     {{ $attributes
         ->cssClass([
-            'layer' => 'flex items-center',
+            'layer' => 'flex',
+            'horizontal' => 'items-center',
             'vertical' => 'flex-col',
         ])
         ->classMerge([
             'layer',
+            'horizontal' => ! $vertical,
             'vertical' => $vertical,
         ])
     }}
