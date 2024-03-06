@@ -5,12 +5,6 @@
     x-on:click.outside="open = false"
     x-trap.inert.noscroll="open"
     @keyup.escape.window="open = false"
-    {{ $attributes
-        ->cssClass([
-            'layer' => 'flex flex-col gap-y-6',
-        ])
-        ->classMerge()
-    }}
 >
     {{ $slot }}
 </div>
