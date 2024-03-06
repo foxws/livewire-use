@@ -18,7 +18,7 @@
         ])
         ->classMerge([
             'layer',
-            'active' => $active || $isRequest || $isRoute,
+            'active' => $active || $isRoute || $isRequest,
         ])
     }}
 >
