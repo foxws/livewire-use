@@ -20,9 +20,6 @@
             'layer',
             'active' => $active || $isRequest || $isRoute,
         ])
-        ->merge([
-            'href' => '/',
-        ])
     }}
 >
     {{ $slot }}
