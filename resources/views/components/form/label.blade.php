@@ -1,23 +1,30 @@
-<label
-    wire:key="{{ $hash() }}"
-    {{ $attributes
-        ->cssClass([
-            'base' => 'inline-flex w-full shrink-0 cursor-pointer flex-wrap items-center',
-            'layer' => 'gap-1.5',
-            'required' => 'text-primary-400',
-        ])
-        ->classMerge(['base', 'layer'])
-    }}
->
-    {{ $prepend }}
+@props([
+    'required' => false,
+    'hint' => null,
+    'error' => null,
+])
 
+<label {{ $attributes
+    ->cssClass([
+        'layer' => 'flex items-center cursor-pointer',
+        'error' => 'text-red-500',
+        'hint' => 'text-red-500',
+        'required' => 'text-primary-400',
+    ])
+    ->classMerge([
+        'layer',
+        'error' => filled($error) || $errors->has($attributes->wireId()),
+    ])
+}}>
     {{ $slot }}
 
     @if ($required)
-        <span {{ $attributes->twFor('required') }}>*</span>
+        <span class="{{ $attributes->classFor('required') }}">*</span>
     @endif
 
-    {{ $append }}
-
-    {{ $hint }}
+    @if ($hint)
+        <p class="{{ $attributes->classFor('hint') }}">
+            {{ $hint }}
+        </p>
+    @endif
 </label>

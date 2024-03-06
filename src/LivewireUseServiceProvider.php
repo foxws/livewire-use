@@ -96,6 +96,8 @@ class LivewireUseServiceProvider extends PackageServiceProvider
             foreach ($values as $key => $value) {
                 $key = app(Bladeable::class)->cssClassKey($key);
 
+                logger($key);
+
                 if ($this->has($key)) {
                     continue;
                 }
@@ -119,6 +121,8 @@ class LivewireUseServiceProvider extends PackageServiceProvider
                     $key = app(Bladeable::class)->cssClassKey(
                         is_numeric($key) ? $value : $key
                     );
+
+                    // logger($key);
 
                     return $this->get($key, '');
                 })

@@ -2,16 +2,16 @@
     'vertical' => false,
 ])
 
-<form {{ $attributes
+<div {{ $attributes
     ->cssClass([
-        'base' => 'inline-flex items-center',
+        'layer' => 'flex items-center',
         'vertical' => 'flex-col',
     ])
     ->classMerge([
-        'base',
+        'layer',
         'vertical' => $vertical,
     ])
 }}>
     {{ $slot }}
-</form>
+</div>
 

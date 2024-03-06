@@ -1,6 +1,7 @@
 <form {{ $attributes
     ->cssClass([
-        'layout' => 'flex flex-col gap-y-6',
+        'layer' => 'flex flex-col',
+        'layout' => 'gap-y-3'
     ])
     ->classMerge()
 }}>

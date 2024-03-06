@@ -4,7 +4,7 @@
 
 <button {{ $attributes
     ->cssClass([
-        'layer' => 'inline-flex w-full shrink-0 cursor-pointer select-none flex-wrap items-center justify-center',
+        'layer' => 'inline-flex shrink-0 cursor-pointer select-none flex-wrap items-center justify-center',
         'disabled' => '!bg-gray-300 pointer-events-none opacity-50',
     ])
     ->classMerge([
