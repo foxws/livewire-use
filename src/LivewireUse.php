@@ -42,6 +42,8 @@ class LivewireUse
                     ? $callback($class, $namespace)
                     : static::componentName($class, $namespace, $prefix);
 
+                    logger($name);
+
                 Blade::component($class->getFcqn(), $name->value());
             });
     }
@@ -62,8 +64,6 @@ class LivewireUse
                 $name = $callback instanceof Closure
                     ? $callback($class, $namespace)
                     : static::componentName($class, $namespace, $prefix);
-
-                logger($name);
 
                 Livewire::component($name->value(), $class->getFcqn());
             });
