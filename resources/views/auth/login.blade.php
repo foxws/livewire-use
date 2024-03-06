@@ -5,7 +5,7 @@
             wire:submit="submit"
         >
             <x-livewire-use::layout-join class="gap-y-2" vertical>
-                <x-livewire-use::forms-label>
+                <x-livewire-use::forms-label for="form.email">
                     {{ __('Email') }}
                 </x-livewire-use::forms-label>
 
@@ -21,7 +21,7 @@
             </x-livewire-use::layout-join>
 
             <x-livewire-use::layout-join class="gap-y-2" vertical>
-                <x-livewire-use::forms-label>
+                <x-livewire-use::forms-label for="form.password">
                     {{ __('Password') }}
                 </x-livewire-use::forms-label>
 
@@ -35,10 +35,10 @@
                 />
             </x-livewire-use::layout-join>
 
-            {{-- <x-livewire-use::forms-checkbox
+            <x-livewire-use::forms-checkbox
                 wire:model="form.remember"
                 label="{{ __('Remember me') }}"
-            /> --}}
+            />
 
             <x-livewire-use::actions-button
                 class="py-1.5 font-medium bg-primary-500"
