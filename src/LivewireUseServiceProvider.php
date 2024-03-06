@@ -74,7 +74,7 @@ class LivewireUseServiceProvider extends PackageServiceProvider
         LivewireUse::registerLivewireComponents(
             path: __DIR__,
             namespace: 'Foxws\\LivewireUse\\',
-            prefix: 'lw-livewire'
+            prefix: 'livewire-use'
         );
 
         return $this;

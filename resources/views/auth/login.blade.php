@@ -1,4 +1,4 @@
-<x-ui-container class="flex h-screen flex-col items-center justify-center gap-y-6">
+<x-livewire-use::container class="flex h-screen flex-col items-center justify-center gap-y-6">
     <x-ui-card>
         <form
             class="flex flex-col gap-y-6"
@@ -26,12 +26,12 @@
                 label="{{ __('Remember me') }}"
             />
 
-            <x-ui-button
+            <x-livewire-use::actions.button
                 class="bg-primary-500"
                 type="submit"
             >
                 {{ __('Sign In') }}
-            </x-ui-button>
+            </x-livewire-use::actions.button>
         </form>
     </x-ui-card>
-</x-ui-container>
+</x-livewire-use::container>

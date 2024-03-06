@@ -23,7 +23,7 @@ class ComponentScout extends StructureScout
 
     public function identifier(): string
     {
-        return $this->prefix ?? static::class;
+        return implode('-', [static::class, $this->prefix]);
     }
 
     public function cacheDriver(): LaravelDiscoverCacheDriver
