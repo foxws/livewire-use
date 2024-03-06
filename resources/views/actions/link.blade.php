@@ -1,6 +1,6 @@
 <a
     wire:key="{{ $hash() }}"
-    {{-- @if ($navigate) wire:navigate @endif --}}
+    @if (! $external && $navigate) wire:navigate @endif
     {{ $attributes
         ->cssClass([
             'layer' => 'hover:text-primary-400 cursor-pointer',
