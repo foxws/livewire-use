@@ -2,8 +2,8 @@
     ->cssClass([
         'layer' => 'flex items-center cursor-pointer',
         'error' => 'text-red-500',
-        'hint' => 'text-red-500',
-        'required' => 'text-primary-400',
+        'hint' => 'pt-1 text-red-500',
+        'required' => 'px-1 text-primary-400',
     ])
     ->classMerge([
         'layer',
@@ -13,11 +13,11 @@
     {{ $slot }}
 
     @if ($required)
-        <span class="{{ $attributes->classFor('required') }}">*</span>
+        <span {{ $attributes->classFor('required') }}>*</span>
     @endif
 
     @if ($hint)
-        <p class="{{ $attributes->classFor('hint') }}">
+        <p {{ $attributes->classFor('hint') }}">
             {{ $hint }}
         </p>
     @endif
