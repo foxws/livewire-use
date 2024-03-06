@@ -1,12 +1,12 @@
 <?php
 
-namespace Foxws\LivewireUse\Layout\Components;
+namespace Foxws\LivewireUse\Ui\Components;
 
 use Closure;
 use Foxws\LivewireUse\Views\Components\Component;
 use Illuminate\View\View;
 
-class Join extends Component
+class Card extends Component
 {
     public function __construct(
         public bool $vertical = false,
@@ -15,6 +15,6 @@ class Join extends Component
 
     public function render(): View|Closure|string
     {
-        return view('livewire-use::layout.join');
+        return view('livewire-use::ui.card');
     }
 }

@@ -2,15 +2,15 @@
 
 namespace Foxws\LivewireUse\Auth\Controllers;
 
+use Closure;
 use Foxws\LivewireUse\Auth\Forms\RegisterForm;
 use Foxws\LivewireUse\Views\Components\Page;
+use Illuminate\View\View;
 use Livewire\Attributes\Layout;
 
 #[Layout('components.layouts.auth')]
 class RegisterController extends Page
 {
-    protected static string $view = 'auth.register';
-
     public RegisterForm $form;
 
     public function mount(): void
@@ -21,6 +21,11 @@ class RegisterController extends Page
         if (static::isAuthenticated()) {
             redirect()->intended();
         }
+    }
+
+    public function render(): View|Closure|string
+    {
+        return view('livewire-use::auth.register');
     }
 
     public function submit(): void
