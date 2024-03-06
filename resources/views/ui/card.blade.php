@@ -1,7 +1,7 @@
 <div {{ $attributes
     ->wireId()
     ->cssClass([
-        'layer' => 'w-full sm:px-12',
+        'layer' => 'w-full',
         'padding' => 'p-8',
     ])
     ->classMerge()
