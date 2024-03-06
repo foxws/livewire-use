@@ -1,11 +1,11 @@
 <button
     wire:key="{{ $hash() }}"
     {{ $attributes
-        ->twClass([
+        ->cssClass([
             'base' => 'w-full px-6 py-12 sm:max-w-lg sm:px-12',
             'layer' => 'sm:rounded-xl',
         ])
-        ->twMerge([
+        ->classMerge([
             'base',
             'layer',
             'disabled' => $attributes->has('disabled'),

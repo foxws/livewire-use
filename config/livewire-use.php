@@ -10,9 +10,7 @@ return [
     |
     */
 
-    'components_prefix' => '',
-
-    'components_enabled' => true,
+    'register_components' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -23,5 +21,5 @@ return [
     |
     */
 
-    'views_prefix' => 'app::',
+    'views_prefix' => 'livewire-use::',
 ];

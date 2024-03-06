@@ -2,8 +2,7 @@
 
 namespace Foxws\LivewireUse;
 
-use Foxws\LivewireUse\Support\Blade\Tailwind;
-use Illuminate\Support\Arr;
+use Foxws\LivewireUse\Support\Blade\Bladeable;
 use Illuminate\View\ComponentAttributeBag;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
@@ -16,7 +15,7 @@ class LivewireUseServiceProvider extends PackageServiceProvider
         $package
             ->name('livewire-use')
             ->hasConfigFile()
-            ->hasViews('app')
+            ->hasViews()
             ->hasInstallCommand(function (InstallCommand $command) {
                 $command
                     ->publishConfigFile();
@@ -25,7 +24,7 @@ class LivewireUseServiceProvider extends PackageServiceProvider
 
     public function packageRegistered()
     {
-        $this->app->singleton(Tailwind::class);
+        $this->app->singleton(Bladeable::class);
     }
 
     public function bootingPackage(): void
@@ -60,7 +59,7 @@ class LivewireUseServiceProvider extends PackageServiceProvider
         LivewireUse::registerComponents(
             path: __DIR__,
             namespace: 'Foxws\\LivewireUse\\',
-            prefix: 'lw-components'
+            prefix: 'livewire-use'
         );
 
         return $this;
@@ -68,7 +67,7 @@ class LivewireUseServiceProvider extends PackageServiceProvider
 
     protected function registerLivewire(): static
     {
-        if (config('livewire-use.components_enabled') === false) {
+        if (config('livewire-use.register_components') === false) {
             return $this;
         }
 
@@ -83,12 +82,21 @@ class LivewireUseServiceProvider extends PackageServiceProvider
 
     protected function registerBladeMacros(): static
     {
-        ComponentAttributeBag::macro('twClass', function (array|string $values = []): ComponentAttributeBag {
+        ComponentAttributeBag::macro('wireId', function (): ComponentAttributeBag {
             /** @var ComponentAttributeBag $this */
-            $values = Arr::wrap($values);
+
+            $value = $this->get('id', $this->whereStartsWith('wire:model')->first());
+
+            $this->offsetSet('id', $value);
+
+            return $this;
+        });
+
+        ComponentAttributeBag::macro('cssClass', function (array $values = []): ComponentAttributeBag {
+            /** @var ComponentAttributeBag $this */
 
             foreach ($values as $key => $value) {
-                $key = app(Tailwind::class)->classKey($key);
+                $key = app(Bladeable::class)->cssClassKey($key);
 
                 if ($this->has($key)) {
                     continue;
@@ -100,34 +108,20 @@ class LivewireUseServiceProvider extends PackageServiceProvider
             return $this;
         });
 
-        ComponentAttributeBag::macro('twFor', function (string $key, string $default = ''): ComponentAttributeBag {
+        ComponentAttributeBag::macro('classMerge', function (?array $values = null): ComponentAttributeBag {
             /** @var ComponentAttributeBag $this */
-            $instance = app(Tailwind::class);
 
-            $value = $this->get($instance->classKey($key), $default);
-
-            $this->offsetSet('class', $value);
-
-            return $this
-                ->twSort()
-                ->twMergeWithout();
-        });
-
-        ComponentAttributeBag::macro('twMerge', function (?array $values = null): ComponentAttributeBag {
-            /** @var ComponentAttributeBag $this */
-            $instance = app(Tailwind::class);
-
-            $values ??= $instance->classAttributes($this->whereStartsWith('class:'));
+            $values ??= str($this->whereStartsWith('class:'))->matchAll('/class:(.*?)\=/s');
 
             $classList = collect($values)
-                ->map(function (mixed $value, int|string $key) use ($instance) {
+                ->map(function (mixed $value, int|string $key) {
                     if (is_bool($value) && $value === false) {
                         return;
                     }
 
-                    $key = is_numeric($key) ? $value : $key;
-
-                    $key = $instance->classKey($key);
+                    $key = app(Bladeable::class)->cssClassKey(
+                        is_numeric($key) ? $value : $key
+                    );
 
                     return $this->get($key, '');
                 })
@@ -137,21 +131,37 @@ class LivewireUseServiceProvider extends PackageServiceProvider
             $this->offsetSet('class', $classList);
 
             return $this
-                ->twSort()
-                ->twMergeWithout();
+                ->classSort()
+                ->classWithout();
         });
 
-        ComponentAttributeBag::macro('twSort', function (): ComponentAttributeBag {
+        ComponentAttributeBag::macro('classFor', function (string $key, ?string $default = null): ComponentAttributeBag {
             /** @var ComponentAttributeBag $this */
-            $this->offsetSet('class', app(Tailwind::class)->classSort(
-                $this->get('class')
-            ));
+
+            $value = $this->get(app(Bladeable::class)->cssClassKey($key), $default ?? '');
+
+            $this->offsetSet('class', $value);
+
+            return $this
+                ->classSort()
+                ->classWithout();
+        });
+
+        ComponentAttributeBag::macro('classSort', function (): ComponentAttributeBag {
+            /** @var ComponentAttributeBag $this */
+
+            $classList = app(Bladeable::class)->classSort(
+                $this->get('class', '')
+            );
+
+            $this->offsetSet('class', $classList);
 
             return $this;
         });
 
-        ComponentAttributeBag::macro('twMergeWithout', function (): ComponentAttributeBag {
+        ComponentAttributeBag::macro('classWithout', function (): ComponentAttributeBag {
             /** @var ComponentAttributeBag $this */
+
             return $this->whereDoesntStartWith('class:');
         });
 

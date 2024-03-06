@@ -1,12 +1,12 @@
 <label
     wire:key="{{ $hash() }}"
     {{ $attributes
-        ->twClass([
+        ->cssClass([
             'base' => 'inline-flex w-full shrink-0 cursor-pointer flex-wrap items-center',
             'layer' => 'gap-1.5',
             'required' => 'text-primary-400',
         ])
-        ->twMerge(['base', 'layer'])
+        ->classMerge(['base', 'layer'])
     }}
 >
     {{ $prepend }}
