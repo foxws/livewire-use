@@ -11,7 +11,7 @@ class Label extends Component
     public function __construct(
         public bool $required = false,
         public bool|string|Htmlable|null $error = null,
-        public bool|string|Htmlable|null $hint = null,
+        public string|Htmlable|null $hint = null,
     ) {
     }
 
