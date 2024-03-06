@@ -42,7 +42,7 @@ class LivewireUse
                     ? $callback($class, $namespace)
                     : static::componentName($class, $namespace, $prefix);
 
-                    logger($name);
+                logger($name);
 
                 Blade::component($class->getFcqn(), $name->value());
             });
