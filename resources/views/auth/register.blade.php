@@ -1,4 +1,4 @@
-<x-livewire-use::container class="flex flex-col gap-y-6 h-screen items-center justify-center">
+<x-livewire-use::layout-container class="flex flex-col gap-y-6 h-screen items-center justify-center">
     <x-ui-card>
         <form class="flex flex-col gap-6" wire:submit="submit">
             <x-forms-input
@@ -31,4 +31,4 @@
             </x-livewire-use::actions-button>
         </form>
     </x-ui-card>
-</x-livewire-use::container>
+</x-livewire-use::layout-container>
