@@ -1,9 +1,3 @@
-@props([
-    'required' => false,
-    'hint' => null,
-    'error' => null,
-])
-
 <label {{ $attributes
     ->cssClass([
         'layer' => 'flex items-center cursor-pointer',
