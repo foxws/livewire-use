@@ -84,23 +84,37 @@ class LivewireUseServiceProvider extends PackageServiceProvider
     {
         ComponentAttributeBag::macro('wireId', function (): ComponentAttributeBag {
             /** @var ComponentAttributeBag $this */
-            $value = $this->get('id', $this->whereStartsWith('wire:model')->first());
 
-            $this->offsetSet('id', $value);
+            if ($value = $this->get('id', $this->whereStartsWith('wire:model')->first())) {
+                $this->offsetSet('id', $value);
+            }
+
+            return $this;
+        });
+
+        ComponentAttributeBag::macro('wireKey', function (): ComponentAttributeBag {
+            /** @var ComponentAttributeBag $this */
+
+            if ($this->has('wire:key')) {
+                return $this;
+            }
+
+            if ($value = $this->whereStartsWith('wire:model')->first() ?? $this->get('id')) {
+                $this->offsetSet('wire:key', $value);
+            }
 
             return $this;
         });
 
         ComponentAttributeBag::macro('cssClass', function (array $values = []): ComponentAttributeBag {
             /** @var ComponentAttributeBag $this */
+
             foreach ($values as $key => $value) {
                 $key = app(Bladeable::class)->cssClassKey($key);
 
-                if ($this->has($key)) {
-                    continue;
+                if (! $this->has($key)) {
+                    $this->offsetSet($key, $value);
                 }
-
-                $this->offsetSet($key, $value);
             }
 
             return $this;
@@ -108,6 +122,7 @@ class LivewireUseServiceProvider extends PackageServiceProvider
 
         ComponentAttributeBag::macro('classMerge', function (?array $values = null): ComponentAttributeBag {
             /** @var ComponentAttributeBag $this */
+
             $values ??= str($this->whereStartsWith('class:'))->matchAll('/class:(.*?)\=/s');
 
             $classList = collect($values)
@@ -119,8 +134,6 @@ class LivewireUseServiceProvider extends PackageServiceProvider
                     $key = app(Bladeable::class)->cssClassKey(
                         is_numeric($key) ? $value : $key
                     );
-
-                    // logger($key);
 
                     return $this->get($key, '');
                 })
@@ -136,6 +149,7 @@ class LivewireUseServiceProvider extends PackageServiceProvider
 
         ComponentAttributeBag::macro('classFor', function (string $key, ?string $default = null): ComponentAttributeBag {
             /** @var ComponentAttributeBag $this */
+
             $value = $this->get(app(Bladeable::class)->cssClassKey($key), $default ?? '');
 
             $this->offsetSet('class', $value);
@@ -147,6 +161,7 @@ class LivewireUseServiceProvider extends PackageServiceProvider
 
         ComponentAttributeBag::macro('classSort', function (): ComponentAttributeBag {
             /** @var ComponentAttributeBag $this */
+
             $classList = app(Bladeable::class)->classSort(
                 $this->get('class', '')
             );
@@ -159,7 +174,8 @@ class LivewireUseServiceProvider extends PackageServiceProvider
         ComponentAttributeBag::macro('classWithout', function (): ComponentAttributeBag {
             /** @var ComponentAttributeBag $this */
 
-            return $this->whereDoesntStartWith('class:');
+            return $this
+                ->whereDoesntStartWith('class:');
         });
 
         return $this;

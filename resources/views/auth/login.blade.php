@@ -12,8 +12,8 @@
                     class="border-0 bg-gray-800 text-gray-300 placeholder:text-gray-500"
                     placeholder="{{ __('Your Email') }}"
                     autocomplete="email"
-                    required
                     autofocus
+                    required
                 />
             </x-livewire-use::layout-join>
 
@@ -32,10 +32,15 @@
                 />
             </x-livewire-use::layout-join>
 
-            <x-livewire-use::forms-checkbox
-                wire:model="form.remember"
-                label="{{ __('Remember me') }}"
-            />
+            <x-livewire-use::layout-join class="gap-x-2">
+                <x-livewire-use::forms-checkbox
+                    wire:model="form.remember"
+                />
+
+                <x-livewire-use::forms-label for="form.remember">
+                    {{ __('Remember me') }}
+                </x-livewire-use::forms-label>
+        </x-livewire-use::layout-join>
 
             <x-livewire-use::actions-button
                 class="py-1.5 font-medium bg-primary-500"
