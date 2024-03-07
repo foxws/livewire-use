@@ -59,7 +59,7 @@ class LivewireUseServiceProvider extends PackageServiceProvider
         LivewireUse::registerComponents(
             path: __DIR__,
             namespace: 'Foxws\\LivewireUse\\',
-            prefix: 'livewire-use'
+            prefix: config('livewire-use.view_prefix'),
         );
 
         return $this;
@@ -74,7 +74,7 @@ class LivewireUseServiceProvider extends PackageServiceProvider
         LivewireUse::registerLivewireComponents(
             path: __DIR__,
             namespace: 'Foxws\\LivewireUse\\',
-            prefix: 'livewire-use'
+            prefix: config('livewire-use.view_prefix'),
         );
 
         return $this;
@@ -95,8 +95,6 @@ class LivewireUseServiceProvider extends PackageServiceProvider
             /** @var ComponentAttributeBag $this */
             foreach ($values as $key => $value) {
                 $key = app(Bladeable::class)->cssClassKey($key);
-
-                logger($key);
 
                 if ($this->has($key)) {
                     continue;

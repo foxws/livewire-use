@@ -2,7 +2,7 @@
 
 namespace Foxws\LivewireUse\Views\Concerns;
 
-trait WithModel
+trait WithLivewire
 {
     public function wireModel(): ?string
     {

@@ -21,5 +21,5 @@ return [
     |
     */
 
-    'views_prefix' => 'livewire-use::',
+    'view_prefix' => 'livewire-use',
 ];
