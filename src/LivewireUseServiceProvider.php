@@ -52,7 +52,7 @@ class LivewireUseServiceProvider extends PackageServiceProvider
 
     protected function registerComponents(): static
     {
-        if (config('livewire-use.components_enabled') === false) {
+        if (config('livewire-use.register_components') === false) {
             return $this;
         }
 
@@ -82,6 +82,10 @@ class LivewireUseServiceProvider extends PackageServiceProvider
 
     protected function registerBladeMacros(): static
     {
+        if (config('livewire-use.register_macros') === false) {
+            return $this;
+        }
+
         ComponentAttributeBag::macro('wireId', function (): ComponentAttributeBag {
             /** @var ComponentAttributeBag $this */
             if ($value = $this->get('id', $this->whereStartsWith('wire:model')->first())) {
