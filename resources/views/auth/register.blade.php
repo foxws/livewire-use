@@ -1,6 +1,6 @@
 <x-livewire-use::layout-container class="flex flex-col gap-y-6 h-screen items-center justify-center">
     <x-ui-card>
-        <form class="flex flex-col gap-6" wire:submit="submit">
+        <x-livewire-use::forms-schema>
             <x-forms-input
                 wire:model="form.email"
                 type="email"
@@ -29,6 +29,6 @@
             >
                 {{ __('Sign Up') }}
             </x-livewire-use::actions-button>
-        </form>
+        </x-livewire-use::forms-schema>
     </x-ui-card>
 </x-livewire-use::layout-container>
