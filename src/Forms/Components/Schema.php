@@ -3,8 +3,12 @@
 namespace Foxws\LivewireUse\Forms\Components;
 
 use Foxws\LivewireUse\Views\Components\Component;
+use Illuminate\View\View;
 
 class Schema extends Component
 {
-    protected static string $view = 'forms.schema';
+    public function render(): View
+    {
+        return view('livewire-use::forms.schema');
+    }
 }

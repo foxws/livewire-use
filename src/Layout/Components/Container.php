@@ -3,8 +3,12 @@
 namespace Foxws\LivewireUse\Layout\Components;
 
 use Foxws\LivewireUse\Views\Components\Component;
+use Illuminate\View\View;
 
 class Container extends Component
 {
-    protected static string $view = 'layout.container';
+    public function render(): View
+    {
+        return view('livewire-use::layout.container');
+    }
 }
