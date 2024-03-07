@@ -84,7 +84,6 @@ class LivewireUseServiceProvider extends PackageServiceProvider
     {
         ComponentAttributeBag::macro('wireId', function (): ComponentAttributeBag {
             /** @var ComponentAttributeBag $this */
-
             if ($value = $this->get('id', $this->whereStartsWith('wire:model')->first())) {
                 $this->offsetSet('id', $value);
             }
@@ -94,7 +93,6 @@ class LivewireUseServiceProvider extends PackageServiceProvider
 
         ComponentAttributeBag::macro('wireKey', function (): ComponentAttributeBag {
             /** @var ComponentAttributeBag $this */
-
             if ($this->has('wire:key')) {
                 return $this;
             }
@@ -108,7 +106,6 @@ class LivewireUseServiceProvider extends PackageServiceProvider
 
         ComponentAttributeBag::macro('cssClass', function (array $values = []): ComponentAttributeBag {
             /** @var ComponentAttributeBag $this */
-
             foreach ($values as $key => $value) {
                 $key = app(Bladeable::class)->cssClassKey($key);
 
@@ -122,7 +119,6 @@ class LivewireUseServiceProvider extends PackageServiceProvider
 
         ComponentAttributeBag::macro('classMerge', function (?array $values = null): ComponentAttributeBag {
             /** @var ComponentAttributeBag $this */
-
             $values ??= str($this->whereStartsWith('class:'))->matchAll('/class:(.*?)\=/s');
 
             $classList = collect($values)
@@ -149,7 +145,6 @@ class LivewireUseServiceProvider extends PackageServiceProvider
 
         ComponentAttributeBag::macro('classFor', function (string $key, ?string $default = null): ComponentAttributeBag {
             /** @var ComponentAttributeBag $this */
-
             $value = $this->get(app(Bladeable::class)->cssClassKey($key), $default ?? '');
 
             $this->offsetSet('class', $value);
@@ -161,7 +156,6 @@ class LivewireUseServiceProvider extends PackageServiceProvider
 
         ComponentAttributeBag::macro('classSort', function (): ComponentAttributeBag {
             /** @var ComponentAttributeBag $this */
-
             $classList = app(Bladeable::class)->classSort(
                 $this->get('class', '')
             );
