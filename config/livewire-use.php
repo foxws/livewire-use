@@ -10,9 +10,18 @@ return [
     |
     */
 
-    'components_prefix' => '',
+    'register_components' => true,
 
-    'components_enabled' => true,
+    /*
+    |--------------------------------------------------------------------------
+    | Directives
+    |--------------------------------------------------------------------------
+    |
+    | This controls components registration.
+    |
+    */
+
+    'register_macros' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -23,5 +32,5 @@ return [
     |
     */
 
-    'views_prefix' => 'app::',
+    'view_prefix' => 'livewire-use',
 ];

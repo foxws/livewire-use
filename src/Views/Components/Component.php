@@ -2,12 +2,12 @@
 
 namespace Foxws\LivewireUse\Views\Components;
 
-use Foxws\LivewireUse\Views\Concerns;
+use Foxws\LivewireUse\Views\Concerns\WithHash;
+use Foxws\LivewireUse\Views\Concerns\WithLivewire;
+use Illuminate\View\Component as BaseComponent;
 
-abstract class Component extends \Illuminate\View\Component
+abstract class Component extends BaseComponent
 {
-    use Concerns\WithActions;
-    use Concerns\WithHash;
-    use Concerns\WithId;
-    use Concerns\WithView;
+    use WithHash;
+    use WithLivewire;
 }

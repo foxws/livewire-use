@@ -4,13 +4,12 @@ namespace Foxws\LivewireUse\Auth\Controllers;
 
 use Foxws\LivewireUse\Auth\Forms\LoginForm;
 use Foxws\LivewireUse\Views\Components\Page;
+use Illuminate\View\View;
 use Livewire\Attributes\Layout;
 
 #[Layout('components.layouts.auth')]
 class LoginController extends Page
 {
-    protected static string $view = 'auth.login';
-
     public LoginForm $form;
 
     public function mount(): void
@@ -21,6 +20,11 @@ class LoginController extends Page
         if (static::isAuthenticated()) {
             redirect()->intended();
         }
+    }
+
+    public function render(): View
+    {
+        return view('livewire-use::auth.login');
     }
 
     public function submit(): void

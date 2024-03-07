@@ -8,15 +8,15 @@ trait WithValidation
 
     public function check(): void
     {
-        if (static::$recoverable) {
-            rescue(
-                fn () => $this->validate(),
-                fn () => $this->reset(),
-            );
+        if (! static::$recoverable) {
+            $this->validate();
 
             return;
         }
 
-        $this->validate();
+        rescue(
+            fn () => $this->validate(),
+            fn () => $this->reset(),
+        );
     }
 }

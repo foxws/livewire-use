@@ -2,7 +2,7 @@
 
 namespace Foxws\LivewireUse\Models\Forms;
 
-use Foxws\LivewireUse\Forms\Components\Form;
+use Foxws\LivewireUse\Forms\Support\Form;
 use Illuminate\Database\Eloquent\Model;
 use Livewire\Attributes\Locked;
 
