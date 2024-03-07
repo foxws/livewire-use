@@ -6,5 +6,5 @@ use Foxws\LivewireUse\Views\Components\Component;
 
 class Checkbox extends Component
 {
-    protected static string $view = 'form.checkbox';
+    protected static string $view = 'forms.checkbox';
 }

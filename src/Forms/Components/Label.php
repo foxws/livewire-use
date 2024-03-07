@@ -7,7 +7,7 @@ use Illuminate\Contracts\Support\Htmlable;
 
 class Label extends Component
 {
-    protected static string $view = 'form.label';
+    protected static string $view = 'forms.label';
 
     public function __construct(
         public bool $required = false,

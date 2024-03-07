@@ -6,5 +6,5 @@ use Foxws\LivewireUse\Views\Components\Component;
 
 class Input extends Component
 {
-    protected static string $view = 'form.input';
+    protected static string $view = 'forms.input';
 }

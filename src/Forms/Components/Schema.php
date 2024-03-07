@@ -6,5 +6,5 @@ use Foxws\LivewireUse\Views\Components\Component;
 
 class Schema extends Component
 {
-    protected static string $view = 'form.schema';
+    protected static string $view = 'forms.schema';
 }
