@@ -34,7 +34,7 @@ class LivewireUse
         $scout = ComponentScout::create()
             ->path($path)
             ->prefix("laravel-components-{$prefix}")
-            ->all();
+            ->get();
 
         collect($scout)
             ->each(function (DiscoveredClass $class) use ($namespace, $prefix, $callback) {
@@ -55,7 +55,7 @@ class LivewireUse
         $scout = LivewireScout::create()
             ->path($path)
             ->prefix("livewire-components-{$prefix}")
-            ->all();
+            ->get();
 
         collect($scout)
             ->each(function (DiscoveredClass $class) use ($namespace, $prefix, $callback) {

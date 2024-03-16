@@ -11,10 +11,6 @@ class ModelStateObjectSynth extends Synth
 
     public static function match($target)
     {
-        if (! class_exists('Spatie\ModelStates\State', false)) {
-            return false;
-        }
-
         return $target instanceof State;
     }
 
