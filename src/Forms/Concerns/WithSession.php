@@ -10,8 +10,6 @@ trait WithSession
 
     protected static bool $store = false;
 
-    protected static array $storeOnly = [];
-
     public function restore(): void
     {
         if (! static::$store || ! $this->hasStore()) {
@@ -58,8 +56,6 @@ trait WithSession
 
     protected function storeWith(): array
     {
-        return filled(static::$storeOnly)
-            ? $this->only(static::$storeOnly)
-            : $this->all();
+        return $this->all();
     }
 }
