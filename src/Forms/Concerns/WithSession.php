@@ -32,7 +32,7 @@ trait WithSession
 
         $data = $this->prepareStore();
 
-        session()->put($this->classHash(), $data);
+        session()->put($this->classHash(), serialize($data));
     }
 
     public function resetStore(): void
@@ -44,7 +44,7 @@ trait WithSession
 
     protected function getStore(): array
     {
-        return session()->get($this->classHash(), []);
+        return unserialize(session()->get($this->classHash(), []));
     }
 
     protected function prepareStore(): array
