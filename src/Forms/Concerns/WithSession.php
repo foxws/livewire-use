@@ -14,7 +14,7 @@ trait WithSession
 
     public function restore(): void
     {
-        if (! static::$store) {
+        if (! static::$store || ! $this->hasStore()) {
             return;
         }
 
@@ -45,6 +45,11 @@ trait WithSession
     protected function getStore(): array
     {
         return unserialize(session()->get($this->classHash(), []));
+    }
+
+    protected function hasStore(): bool
+    {
+        return session()->has($this->classHash());
     }
 
     protected function prepareStore(): array
