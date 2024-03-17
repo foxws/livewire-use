@@ -16,7 +16,7 @@ trait WithAuthorization
 
     protected function authorizeAccess(): void
     {
-
+        // $this->can('viewAny', Todo::class);
     }
 
     protected function canViewAny(mixed $arguments): void
