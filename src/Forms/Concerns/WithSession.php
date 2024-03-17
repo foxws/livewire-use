@@ -26,13 +26,14 @@ trait WithSession
 
     public function store(): void
     {
-        if (! static::$store) {
+        if (! static::$store || ! $this->storeWhen()) {
             return;
         }
 
-        $data = $this->prepareStore();
+        // Make sure to not store any invalid data
+        $this->validate();
 
-        session()->put($this->classHash(), serialize($data));
+        session()->put($this->classHash(), serialize($this->storeWith()));
     }
 
     public function forget(): void
@@ -50,7 +51,12 @@ trait WithSession
         return session()->has($this->classHash());
     }
 
-    protected function prepareStore(): array
+    protected function storeWhen(): bool
+    {
+        return true;
+    }
+
+    protected function storeWith(): array
     {
         return filled(static::$storeOnly)
             ? $this->only(static::$storeOnly)
