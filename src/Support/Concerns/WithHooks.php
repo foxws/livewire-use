@@ -4,12 +4,12 @@ namespace Foxws\LivewireUse\Support\Concerns;
 
 trait WithHooks
 {
-    protected function callHook(string $hook): void
+    protected function callHook(string $hook, ...$args): mixed
     {
-        if (! method_exists($this, $hook)) {
-            return;
+        if (method_exists($this, $hook)) {
+            return $this->{$hook}(...$args);
         }
 
-        $this->{$hook}();
+        return value($hook, $args);
     }
 }
