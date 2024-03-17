@@ -35,11 +35,9 @@ trait WithSession
         session()->put($this->classHash(), serialize($data));
     }
 
-    public function resetStore(): void
+    public function forget(): void
     {
-        session()->pull($this->classHash());
-
-        $this->reset();
+        session()->forget($this->classHash());
     }
 
     protected function getStore(): array
