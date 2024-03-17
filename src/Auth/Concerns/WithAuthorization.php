@@ -16,7 +16,7 @@ trait WithAuthorization
 
     protected function authorizeAccess(): void
     {
-        // $this->can('viewAny', Todo::class);
+        // $this->canViewAny(Todo::class);
     }
 
     protected function canViewAny(mixed $arguments): void
@@ -25,31 +25,26 @@ trait WithAuthorization
             $arguments = $arguments->getMorphClass();
         }
 
-        $this->can('viewAny', $arguments);
+        $this->authorize('viewAny', $arguments);
     }
 
     protected function canView(mixed $arguments): void
     {
-        $this->can('view', $arguments);
+        $this->authorize('view', $arguments);
     }
 
     protected function canCreate(mixed $arguments): void
     {
-        $this->can('create', $arguments);
+        $this->authorize('create', $arguments);
     }
 
     protected function canUpdate(mixed $arguments): void
     {
-        $this->can('update', $arguments);
+        $this->authorize('update', $arguments);
     }
 
     protected function canDelete(mixed $arguments): void
     {
-        $this->can('delete', $arguments);
-    }
-
-    protected function can(string $ability, mixed $arguments): void
-    {
-        $this->authorize($ability, $arguments);
+        $this->authorize('delete', $arguments);
     }
 }
