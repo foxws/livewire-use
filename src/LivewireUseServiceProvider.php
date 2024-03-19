@@ -85,28 +85,6 @@ class LivewireUseServiceProvider extends PackageServiceProvider
             return $this;
         }
 
-        ComponentAttributeBag::macro('wireId', function (): ComponentAttributeBag {
-            /** @var ComponentAttributeBag $this */
-            if ($value = $this->get('id', $this->whereStartsWith('wire:model')->first())) {
-                $this->offsetSet('id', $value);
-            }
-
-            return $this;
-        });
-
-        ComponentAttributeBag::macro('wireKey', function (): ComponentAttributeBag {
-            /** @var ComponentAttributeBag $this */
-            if ($this->has('wire:key')) {
-                return $this;
-            }
-
-            if ($value = $this->whereStartsWith('wire:model')->first() ?? $this->get('id')) {
-                $this->offsetSet('wire:key', $value);
-            }
-
-            return $this;
-        });
-
         ComponentAttributeBag::macro('cssClass', function (array $values = []): ComponentAttributeBag {
             /** @var ComponentAttributeBag $this */
             foreach ($values as $key => $value) {

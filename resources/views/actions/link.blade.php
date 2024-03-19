@@ -1,5 +1,4 @@
 <a
-    wire:key="{{ $hash() }}"
     @if (! $external && $navigate) wire:navigate @endif
     {{ $attributes
         ->cssClass([

@@ -1,6 +1,4 @@
-<form
-    wire:key="{{ $hash() }}"
-    {{ $attributes
+<form {{ $attributes
     ->cssClass([
         'layer' => 'flex flex-col gap-y-6',
     ])

@@ -7,7 +7,7 @@
     ])
     ->classMerge([
         'layer',
-        'error' => filled($error) || $errors->has($wireModel()),
+        'error' => filled($error) || $errors->has($wireKey()),
     ])
 }}>
     {{ $slot }}

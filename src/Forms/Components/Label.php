@@ -10,7 +10,7 @@ class Label extends Component
 {
     public function __construct(
         public bool $required = false,
-        public bool|string|Htmlable|null $error = null,
+        public string|Htmlable|bool|null $error = null,
         public string|Htmlable|null $hint = null,
     ) {
     }
@@ -18,5 +18,10 @@ class Label extends Component
     public function render(): View
     {
         return view('livewire-use::forms.label');
+    }
+
+    public function wireKey(): string
+    {
+        return $this->attributes->get('for', parent::wireKey());
     }
 }

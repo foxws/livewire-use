@@ -1,16 +1,16 @@
 <input
-    wire:key="{{ $hash() }}"
+    wire:key="{{ $wireKey() }}"
     {{ $attributes
-        ->wireId()
         ->cssClass([
             'layer' => 'peer w-full focus:border-transparent focus:ring-0',
-            'error' => 'border-red-500',
+            'error' => '!border-red-500',
         ])
         ->classMerge([
             'layer',
-            'error' => $errors->has($attributes->wireId()),
+            'error' => $errors->has($wireModel()),
         ])
         ->merge([
+            'id' => $wireKey(),
             'type' => 'text',
         ])
     }}
