@@ -1,5 +1,5 @@
 <div
-    wire:key="{{ $hash }}"
+    wire:key="{{ $hash() }}"
     x-data="{ open: false }"
     x-ref="dropdown"
     x-on:click="open = ! open"

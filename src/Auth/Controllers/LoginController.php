@@ -12,14 +12,17 @@ class LoginController extends Page
 {
     public LoginForm $form;
 
+    public function boot(): void
+    {
+        if (static::isAuthenticated()) {
+            redirect()->intended();
+        }
+    }
+
     public function mount(): void
     {
         $this->seo()->setTitle(__('Login'));
         $this->seo()->setDescription(__('Login to Account'));
-
-        if (static::isAuthenticated()) {
-            redirect()->intended();
-        }
     }
 
     public function render(): View
