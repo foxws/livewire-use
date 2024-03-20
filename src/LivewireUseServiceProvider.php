@@ -33,8 +33,7 @@ class LivewireUseServiceProvider extends PackageServiceProvider
             ->registerFeatures()
             ->registerComponents()
             ->registerLivewire()
-            ->registerBladeMacros()
-            ->registerBladeDirectives();
+            ->registerBladeMacros();
     }
 
     protected function registerFeatures(): static
@@ -152,13 +151,6 @@ class LivewireUseServiceProvider extends PackageServiceProvider
             return $this
                 ->whereDoesntStartWith('class:');
         });
-
-        return $this;
-    }
-
-    protected function registerBladeDirectives(): static
-    {
-        //
 
         return $this;
     }
