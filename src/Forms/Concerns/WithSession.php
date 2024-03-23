@@ -31,22 +31,22 @@ trait WithSession
         // Make sure to not store any invalid data
         $this->validate();
 
-        session()->put($this->classHash(), serialize($this->storeWith()));
+        session()->put($this->storeId(), serialize($this->storeWith()));
     }
 
     public function forget(): void
     {
-        session()->forget($this->classHash());
+        session()->forget($this->storeId());
     }
 
     protected function getStore(): array
     {
-        return unserialize(session()->get($this->classHash(), []));
+        return unserialize(session()->get($this->storeId(), []));
     }
 
     protected function hasStore(): bool
     {
-        return session()->has($this->classHash());
+        return session()->has($this->storeId());
     }
 
     protected function storeWhen(): bool
@@ -57,5 +57,10 @@ trait WithSession
     protected function storeWith(): array
     {
         return $this->all();
+    }
+
+    protected function storeId(): string
+    {
+        return $this->classHash();
     }
 }
