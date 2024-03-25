@@ -20,8 +20,8 @@ class LivewireUse
     {
         Route::name('auth.')->group(function () {
             Route::get('/login', LoginController::class)->name('login');
-            Route::get('/logout', LogoutController::class)->name('logout');
             Route::get('/register', RegisterController::class)->name('register');
+            Route::post('/logout', LogoutController::class)->name('logout');
         });
     }
 
