@@ -3,7 +3,7 @@
 use Foxws\LivewireUse\Support\Livewire\Models\ModelSynth;
 use Foxws\LivewireUse\Tests\Models\Post;
 use Foxws\LivewireUse\Tests\TestCase;
-use Livewire\Component;
+use Foxws\LivewireUse\Tests\TestClasses\EditPost;
 use Livewire\Livewire;
 
 uses(TestCase::class);
@@ -20,16 +20,3 @@ it('can overrule model synthesizer', function () {
         ->assertStatus(200);
 });
 
-class EditPost extends Component
-{
-    public Post $post;
-
-    public function render()
-    {
-        return <<<'HTML'
-        <div>
-            {{-- wow, such a great form here --}}
-        </div>
-        HTML;
-    }
-}
