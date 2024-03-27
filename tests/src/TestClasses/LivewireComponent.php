@@ -5,7 +5,7 @@ namespace Foxws\LivewireUse\Tests\TestClasses;
 use Foxws\LivewireUse\Tests\Models\Post;
 use Livewire\Component;
 
-class EditPost extends Component
+class LivewireComponent extends Component
 {
     public Post $post;
 
