@@ -1,12 +1,9 @@
 <?php
 
-use Foxws\LivewireUse\Tests\TestCase;
 use Illuminate\Database\Eloquent\Model;
 
 expect()
     ->extend('toBeSameModel', fn (Model $model) => $this->is($model)->toBeTrue());
-
-uses(TestCase::class);
 
 beforeEach(function () {
     // Fake instances

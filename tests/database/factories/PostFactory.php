@@ -5,7 +5,6 @@ namespace Foxws\LivewireUse\Tests\Database\Factories;
 use Foxws\LivewireUse\Tests\Models\Post;
 use Foxws\LivewireUse\Tests\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
 class PostFactory extends Factory
 {
@@ -14,7 +13,7 @@ class PostFactory extends Factory
     public function definition(): array
     {
         return [
-            'uuid' => Str::uuid(),
+            'uuid' => $this->faker->uuid(),
             'author_id' => User::factory(),
             'title' => $this->faker->sentence(),
             'content' => $this->faker->paragraph(),
