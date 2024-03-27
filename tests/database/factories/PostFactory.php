@@ -14,12 +14,10 @@ class PostFactory extends Factory
     {
         return [
             'uuid' => $this->faker->uuid(),
-            'author_id' => User::factory(),
+            'user_id' => User::factory(),
             'title' => $this->faker->sentence(),
             'content' => $this->faker->paragraph(),
-            'is_published' => $this->faker->boolean(),
-            'tags' => $this->faker->words(),
-            'rating' => $this->faker->numberBetween(1, 10),
+            'published_at' => now(),
         ];
     }
 }

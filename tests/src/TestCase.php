@@ -3,13 +3,22 @@
 namespace Foxws\LivewireUse\Tests;
 
 use Foxws\LivewireUse\LivewireUseServiceProvider;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\Concerns\WithWorkbench;
 use Orchestra\Testbench\TestCase as Orchestra;
 
-class TestCase extends Orchestra
+abstract class TestCase extends Orchestra
 {
     use WithWorkbench;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->setUpDatabase($this->app);
+    }
 
     protected function getEnvironmentSetUp($app)
     {
@@ -31,5 +40,34 @@ class TestCase extends Orchestra
             LivewireServiceProvider::class,
             LivewireUseServiceProvider::class,
         ];
+    }
+
+    /**
+     * @param \Illuminate\Foundation\Application $app
+     */
+    protected function setUpDatabase($app)
+    {
+        Schema::dropAllTables();
+
+        Schema::create('users', function (Blueprint $table) {
+            $table->id();
+            $table->uuid('uuid');
+            $table->string('email')->unique();
+            $table->string('name')->nullable();
+            $table->string('password');
+            $table->rememberToken();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->timestamps();;
+        });
+
+        Schema::create('posts', function (Blueprint $table) {
+            $table->id();
+            $table->uuid('uuid');
+            $table->foreignId('user_id')->nullable()->index();
+            $table->string('title');
+            $table->text('content')->nullable();
+            $table->timestamp('published_at')->nullable();
+            $table->timestamps();
+        });
     }
 }

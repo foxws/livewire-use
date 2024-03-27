@@ -20,9 +20,9 @@ class Post extends Model
         return PostFactory::new();
     }
 
-    public function author(): BelongsTo
+    public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'author_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function getRouteKeyName(): string

@@ -12,7 +12,7 @@ beforeEach(function () {
 });
 
 it('can use model route key', function () {
-    $post = Post::factory()->makeOne();
+    $post = Post::factory()->create();
 
     Livewire::test(PostEditForm::class, compact('post'))
         ->call('getRouteKey')
