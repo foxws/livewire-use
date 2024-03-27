@@ -14,7 +14,7 @@ beforeEach(function () {
 it('can use model route key', function () {
     $post = Post::factory()->create();
 
-    Livewire::test(EditPost::class, $post)
+    Livewire::test(EditPost::class, compact('post'))
         ->assertStatus(200);
 });
 
