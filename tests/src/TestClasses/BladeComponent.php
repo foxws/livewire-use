@@ -16,7 +16,7 @@ class BladeComponent extends Component
             ])
             ->classMerge()
         }}>
-            Blade Component
+            {{-- wow, such great content here --}}
         </div>
         blade;
     }

@@ -13,7 +13,7 @@ class LivewireComponent extends Component
     {
         return <<<'HTML'
         <div>
-            {{-- wow, such a great form here --}}
+            {{-- wow, such great content here --}}
         </div>
         HTML;
     }
