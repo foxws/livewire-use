@@ -11,13 +11,6 @@ class TestCase extends Orchestra
 {
     use WithWorkbench;
 
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->withFactories(__DIR__.'/../database/factories');
-    }
-
     protected function getEnvironmentSetUp($app)
     {
         $app['config']->set('cache.default', 'file');
