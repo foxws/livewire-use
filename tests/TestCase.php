@@ -3,10 +3,19 @@
 namespace Foxws\LivewireUse\Tests;
 
 use Foxws\LivewireUse\LivewireUseServiceProvider;
+use Illuminate\Support\Facades\Artisan;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        Artisan::call('view:clear');
+        Artisan::call('cache:clear');
+    }
+
     protected function getEnvironmentSetUp($app)
     {
         $app['config']->set('cache.default', 'file');
@@ -18,7 +27,7 @@ class TestCase extends Orchestra
             'prefix' => '',
         ]);
 
-        $app['config']->set('view.paths', __DIR__.'/../resources/views');
+        $app['config']->set('view.paths', [__DIR__.'/../resources/views']);
     }
 
     protected function getPackageProviders($app)
