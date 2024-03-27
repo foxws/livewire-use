@@ -18,7 +18,7 @@ class TestCase extends Orchestra
             'prefix' => '',
         ]);
 
-        $app['config']->set('view.paths', __DIR__ . '/../resources/views');
+        $app['config']->set('view.paths', __DIR__.'/../resources/views');
     }
 
     protected function getPackageProviders($app)
