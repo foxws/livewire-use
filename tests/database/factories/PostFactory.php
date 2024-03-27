@@ -1,6 +1,6 @@
 <?php
 
-namespace Foxws\LivewireUse\Database\Factories;
+namespace Foxws\LivewireUse\Tests\Database\Factories;
 
 use Foxws\LivewireUse\Tests\Models\Post;
 use Foxws\LivewireUse\Tests\Models\User;
