@@ -23,6 +23,15 @@ class PostEditForm extends Component
 {
     public Post $post;
 
+    public function render()
+    {
+        return <<<'HTML'
+        <div>
+            {{-- Your Blade template goes here... --}}
+        </div>
+        HTML;
+    }
+
     public function getRouteKey(): string
     {
         return $this->post->getRouteKey();
