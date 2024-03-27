@@ -29,9 +29,7 @@ php artisan vendor:publish --tag="livewire-use-views"
 
 ## Usage
 
-This package is still under construction. We hope to publish the documentation as soon as possible.
-
-For now you can use the [Hub project](https://github.com/francoism90/hub) as a reference.
+TODO
 
 ## Testing
 
