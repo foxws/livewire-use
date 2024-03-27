@@ -36,6 +36,7 @@
         </include>
     </source>
     <php>
+        <env name="APP_KEY" value="base64:+vhxltaNPPQSllGUEjOe2QnO8xaLyfnbttaq07A6k68="/>
         <env name="CACHE_STORE" value="file"/>
         <env name="SESSION_DRIVER" value="file"/>
     </php>
