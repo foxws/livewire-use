@@ -19,6 +19,6 @@ class TestCase extends Orchestra
 
     public function getEnvironmentSetUp($app)
     {
-        $app['config']->set('view.paths', [__DIR__ . '/resources/views']);
+        $app['config']->set('view.paths', [__DIR__.'/resources/views']);
     }
 }
