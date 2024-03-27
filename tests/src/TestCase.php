@@ -43,7 +43,7 @@ abstract class TestCase extends Orchestra
     }
 
     /**
-     * @param \Illuminate\Foundation\Application $app
+     * @param  \Illuminate\Foundation\Application  $app
      */
     protected function setUpDatabase($app)
     {
@@ -57,7 +57,7 @@ abstract class TestCase extends Orchestra
             $table->string('password');
             $table->rememberToken();
             $table->timestamp('email_verified_at')->nullable();
-            $table->timestamps();;
+            $table->timestamps();
         });
 
         Schema::create('posts', function (Blueprint $table) {
