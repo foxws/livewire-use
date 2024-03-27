@@ -138,7 +138,7 @@ class LivewireUseServiceProvider extends PackageServiceProvider
             /** @var ComponentAttributeBag $this */
             $value = $this->only(app(Bladeable::class)->cssClassKey($keys));
 
-            $this->offsetSet('class', $value->implode(' '));
+            $this->offsetSet('class', $value->join(' '));
 
             return $this
                 ->classSort()
