@@ -1,9 +1,12 @@
 <?php
 
 use Foxws\LivewireUse\Tests\Models\Post;
+use Foxws\LivewireUse\Tests\TestCase;
 use Livewire\Component;
 
 use function Pest\Livewire\livewire;
+
+uses(TestCase::class);
 
 it('can use model route key', function () {
     $post = Post::factory()->create();
