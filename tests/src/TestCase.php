@@ -3,8 +3,12 @@
 namespace Foxws\LivewireUse\Tests;
 
 use Foxws\LivewireUse\LivewireUseServiceProvider;
+use Foxws\LivewireUse\Tests\TestClasses\BladeComponent;
+use Foxws\LivewireUse\Tests\TestClasses\LivewireComponent;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Schema;
+use Livewire\Livewire;
 use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\Concerns\WithWorkbench;
 use Orchestra\Testbench\TestCase as Orchestra;
@@ -18,6 +22,7 @@ abstract class TestCase extends Orchestra
         parent::setUp();
 
         $this->setUpDatabase($this->app);
+        $this->setUpComponents($this->app);
     }
 
     protected function getEnvironmentSetUp($app)
@@ -69,5 +74,21 @@ abstract class TestCase extends Orchestra
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });
+    }
+
+    /**
+     * @param  \Illuminate\Foundation\Application  $app
+     */
+    protected function setUpComponents($app)
+    {
+        Blade::component('test-component', BladeComponent::class);
+    }
+
+    /**
+     * @param  \Illuminate\Foundation\Application  $app
+     */
+    protected function setUpLivewire($app)
+    {
+        Livewire::component('test-component', LivewireComponent::class);
     }
 }

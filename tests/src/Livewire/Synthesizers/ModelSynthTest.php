@@ -10,7 +10,6 @@ uses(TestCase::class);
 
 beforeEach(function () {
     Livewire::propertySynthesizer(ModelSynth::class);
-    Livewire::component(LivewireComponent::class);
 });
 
 it('can overrule model synthesizer', function () {
