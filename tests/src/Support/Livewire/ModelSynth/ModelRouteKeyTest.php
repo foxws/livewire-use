@@ -5,6 +5,8 @@ use Foxws\LivewireUse\Tests\TestCase;
 use Livewire\Component;
 use Livewire\Livewire;
 
+use function Pest\Livewire\livewire;
+
 uses(TestCase::class);
 
 beforeEach(function () {
@@ -14,7 +16,7 @@ beforeEach(function () {
 it('can use model route key', function () {
     $post = Post::factory()->create();
 
-    Livewire::test(PostEditForm::class, compact('post'))
+    livewire(PostEditForm::class, compact('post'))
         ->call('getRouteKey')
         ->assertSee($post->getRouteKey());
 });
