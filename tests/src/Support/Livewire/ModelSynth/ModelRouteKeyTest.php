@@ -7,6 +7,10 @@ use Livewire\Livewire;
 
 uses(TestCase::class);
 
+beforeEach(function () {
+    Livewire::component(PostEditForm::class);
+});
+
 it('can use model route key', function () {
     $post = Post::factory()->create();
 
