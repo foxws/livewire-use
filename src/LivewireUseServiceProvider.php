@@ -87,7 +87,7 @@ class LivewireUseServiceProvider extends PackageServiceProvider
         ComponentAttributeBag::macro('cssClass', function (array $values = []): ComponentAttributeBag {
             /** @var ComponentAttributeBag $this */
             foreach ($values as $key => $value) {
-                $key = app(Bladeable::class)->cssClassKey($key);
+                $key = app(Bladeable::class)->cssClassKey($key)->first();
 
                 if (! $this->has($key)) {
                     $this->offsetSet($key, $value);
@@ -111,7 +111,7 @@ class LivewireUseServiceProvider extends PackageServiceProvider
                         is_numeric($key) ? $value : $key
                     );
 
-                    return $this->get($key, '');
+                    return $this->get($key->first(), '');
                 })
                 ->merge($this->get('class'))
                 ->join(' ');
@@ -125,9 +125,20 @@ class LivewireUseServiceProvider extends PackageServiceProvider
 
         ComponentAttributeBag::macro('classFor', function (string $key, ?string $default = null): ComponentAttributeBag {
             /** @var ComponentAttributeBag $this */
-            $value = $this->get(app(Bladeable::class)->cssClassKey($key), $default ?? '');
+            $value = $this->get(app(Bladeable::class)->cssClassKey($key)->first(), $default ?? '');
 
             $this->offsetSet('class', $value);
+
+            return $this
+                ->classSort()
+                ->classWithout();
+        });
+
+        ComponentAttributeBag::macro('classAny', function (...$keys): ComponentAttributeBag {
+            /** @var ComponentAttributeBag $this */
+            $value = $this->only(app(Bladeable::class)->cssClassKey($keys));
+
+            $this->offsetSet('class', $value->join(' '));
 
             return $this
                 ->classSort()

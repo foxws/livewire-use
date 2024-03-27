@@ -2,6 +2,8 @@
 
 namespace Foxws\LivewireUse\Support\Blade;
 
+use Illuminate\Support\Collection;
+
 class Bladeable
 {
     public static function classSort(string $class = ''): string
@@ -13,8 +15,9 @@ class Bladeable
             ->implode(' ');
     }
 
-    public static function cssClassKey(string $key): string
+    public static function cssClassKey(...$keys): Collection
     {
-        return str($key)->startsWith('class:') ? $key : "class:{$key}";
+        return collect($keys)
+            ->map(fn (string $value) => str($value)->startsWith('class:') ? $value : "class:{$value}");
     }
 }
