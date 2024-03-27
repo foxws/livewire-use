@@ -48,7 +48,7 @@
     "autoload-dev": {
         "psr-4": {
             "Workbench\\App\\": "workbench/app/",
-            "Foxws\\LivewireUse\\Tests\\": "tests/"
+            "Foxws\\LivewireUse\\Tests\\": "tests/src/"
         }
     },
     "scripts": {
