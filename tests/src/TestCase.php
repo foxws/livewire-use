@@ -23,6 +23,7 @@ abstract class TestCase extends Orchestra
 
         $this->setUpDatabase($this->app);
         $this->setUpComponents($this->app);
+        $this->setUpLivewire($this->app);
     }
 
     protected function getEnvironmentSetUp($app)
