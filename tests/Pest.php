@@ -8,7 +8,7 @@ use Tests\CreatesApplication;
 expect()
     ->extend('toBeSameModel', fn (Model $model) => $this->is($model)->toBeTrue());
 
-uses(TestCase::class, CreatesApplication::class, RefreshDatabase::class)
+uses(TestCase::class, RefreshDatabase::class)
     ->beforeEach(function () {
         // Fake instances
         \Illuminate\Support\Facades\Bus::fake();
@@ -16,8 +16,5 @@ uses(TestCase::class, CreatesApplication::class, RefreshDatabase::class)
         \Illuminate\Support\Facades\Notification::fake();
         \Illuminate\Support\Facades\Queue::fake();
         \Illuminate\Support\Facades\Storage::fake();
-
-        // Setup database
-        $this->seed();
     })
     ->in(__DIR__);
