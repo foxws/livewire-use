@@ -3,7 +3,6 @@
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\TestCase;
-use Tests\CreatesApplication;
 
 expect()
     ->extend('toBeSameModel', fn (Model $model) => $this->is($model)->toBeTrue());
