@@ -19,4 +19,3 @@ it('can overrule model synthesizer', function () {
     Livewire::test(EditPost::class, compact('post'))
         ->assertStatus(200);
 });
-
