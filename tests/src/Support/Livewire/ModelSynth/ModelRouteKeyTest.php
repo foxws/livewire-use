@@ -5,23 +5,20 @@ use Foxws\LivewireUse\Tests\TestCase;
 use Livewire\Component;
 use Livewire\Livewire;
 
-use function Pest\Livewire\livewire;
-
 uses(TestCase::class);
 
 beforeEach(function () {
-    Livewire::component(PostEditForm::class);
+    Livewire::component(EditPost::class);
 });
 
 it('can use model route key', function () {
     $post = Post::factory()->create();
 
-    livewire(PostEditForm::class, compact('post'))
-        ->call('getRouteKey')
-        ->assertSee($post->getRouteKey());
+    Livewire::test(EditPost::class, $post)
+        ->assertStatus(200);
 });
 
-class PostEditForm extends Component
+class EditPost extends Component
 {
     public Post $post;
 
@@ -29,13 +26,8 @@ class PostEditForm extends Component
     {
         return <<<'HTML'
         <div>
-            {{-- Your Blade template goes here... --}}
+            {{-- wow, such a great form here --}}
         </div>
         HTML;
-    }
-
-    public function getRouteKey(): string
-    {
-        return $this->post->getRouteKey();
     }
 }

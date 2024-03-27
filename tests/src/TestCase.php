@@ -51,7 +51,7 @@ abstract class TestCase extends Orchestra
 
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->uuid('uuid');
+            $table->uuid();
             $table->string('email')->unique();
             $table->string('name')->nullable();
             $table->string('password');
@@ -62,7 +62,7 @@ abstract class TestCase extends Orchestra
 
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->uuid('uuid');
+            $table->uuid();
             $table->foreignId('user_id')->nullable()->index();
             $table->string('title');
             $table->text('content')->nullable();
