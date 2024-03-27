@@ -9,20 +9,16 @@ class TestCase extends Orchestra
 {
     protected function getEnvironmentSetUp($app)
     {
-        // Views
-        $app['config']->set('view.paths', [
-            ...$app['config']->get('view.paths'),
-            __DIR__.'/../resources/views',
-        ]);
+        $app['config']->set('cache.default', 'array');
 
-        // Databases
-        $app['config']->set('database.default', 'testbench');
-
-        $app['config']->set('database.connections.testbench', [
+        $app['config']->set('database.default', 'sqlite');
+        $app['config']->set('database.connections.sqlite', [
             'driver' => 'sqlite',
             'database' => ':memory:',
             'prefix' => '',
         ]);
+
+        $app['config']->set('view.paths', __DIR__ . '/../resources/views');
     }
 
     protected function getPackageProviders($app)
