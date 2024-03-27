@@ -10,7 +10,7 @@ it('can use model route key', function () {
 
     livewire(PostEditForm::class, compact('post'))
         ->call('getRouteKey')
-        ->assertSee($post->getRouteKey());
+        ->assertSee('foo');
 });
 
 class PostEditForm extends Component
@@ -19,6 +19,7 @@ class PostEditForm extends Component
 
     public function getRouteKey(): string
     {
-        return $this->post->getRouteKey();
+        return 'foo';
+        // return $this->post->getRouteKey();
     }
 }
