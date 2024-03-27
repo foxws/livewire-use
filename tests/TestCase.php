@@ -9,8 +9,11 @@ class TestCase extends Orchestra
 {
     protected function getEnvironmentSetUp($app)
     {
-        // Resources
-        $app['config']->set('view.paths', [__DIR__.'/resources/views']);
+        // Views
+        $app['config']->set('view.paths', [
+            ...$app['config']->get('view.paths'),
+            __DIR__ . '/../resources/views',
+        ]);
 
         // Databases
         $app['config']->set('database.default', 'testbench');
