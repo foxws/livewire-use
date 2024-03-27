@@ -3,7 +3,6 @@
 namespace Foxws\LivewireUse\Tests;
 
 use Foxws\LivewireUse\LivewireUseServiceProvider;
-use Orchestra\Testbench\Concerns\WithWorkbench;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
