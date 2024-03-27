@@ -6,13 +6,13 @@ use Illuminate\View\Component;
 
 class BladeComponent extends Component
 {
-    public function render()
+    public function render(): string
     {
         return <<<'blade'
         <div {{ $attributes
             ->cssClass([
                 'layer' => 'flex flex-nowrap',
-                'disabled' => 'bg-gray-300 opacity-50',
+                'color' => 'bg-gray-300 opacity-50',
             ])
             ->classMerge()
         }}>
