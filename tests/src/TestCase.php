@@ -3,10 +3,13 @@
 namespace Foxws\LivewireUse\Tests;
 
 use Foxws\LivewireUse\LivewireUseServiceProvider;
+use Orchestra\Testbench\Concerns\WithWorkbench;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {
+    use WithWorkbench;
+
     protected function getEnvironmentSetUp($app)
     {
         $app['config']->set('cache.default', 'file');
