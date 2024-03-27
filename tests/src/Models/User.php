@@ -27,7 +27,9 @@ class User extends Authenticatable implements MustVerifyEmail
         parent::boot();
 
         static::creating(function (User $model) {
-            $model->uuid = (string) Str::uuid();
+            if (blank($model->uuid)) {
+                $model->uuid = (string) Str::uuid();
+            }
         });
     }
 

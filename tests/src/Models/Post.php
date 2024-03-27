@@ -21,7 +21,9 @@ class Post extends Model
         parent::boot();
 
         static::creating(function (Post $model) {
-            $model->uuid = (string) Str::uuid();
+            if (blank($model->uuid)) {
+                $model->uuid = (string) Str::uuid();
+            }
         });
     }
 
