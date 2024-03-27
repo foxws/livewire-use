@@ -2,7 +2,7 @@
 
 namespace Foxws\LivewireUse\Tests\Models;
 
-use Foxws\LivewireUse\Database\Factories\UserFactory;
+use Foxws\LivewireUse\Tests\Database\Factories\UserFactory;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;

@@ -49,8 +49,7 @@
         "psr-4": {
             "Workbench\\App\\": "workbench/app/",
             "Foxws\\LivewireUse\\Tests\\": "tests/src/",
-            "Foxws\\LivewireUse\\Tests\\Database\\Factories\\": "tests/database/factories/",
-            "Foxws\\LivewireUse\\Tests\\Database\\Seeders\\": "tests/database/seeders/"
+            "Foxws\\LivewireUse\\Tests\\Database\\Factories\\": "tests/database/factories/"
         }
     },
     "scripts": {

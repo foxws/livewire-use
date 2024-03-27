@@ -2,7 +2,7 @@
 
 namespace Foxws\LivewireUse\Tests\Models;
 
-use Foxws\LivewireUse\Database\Factories\PostFactory;
+use Foxws\LivewireUse\Tests\Database\Factories\PostFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
