@@ -1,7 +1,7 @@
 <div {{ $attributes
     ->cssClass([
-        'base' => 'container mx-auto w-full max-w-4xl xl:max-w-5xl',
-        'padding' => 'px-6',
+        'layer' => 'container mx-auto w-full',
+        'base' => 'px-6 max-w-4xl xl:max-w-5xl',
     ])
     ->classMerge();
 }}>
